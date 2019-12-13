@@ -58,7 +58,7 @@ body
 div
 {
 	display: block;
-	position: relative;
+	/* position: relative; */
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1135,8 +1135,8 @@ section
 }
 .counter_content
 {
-	padding-top: 119px;
-	padding-bottom: 125px;
+	padding-top: 49%;
+	/* padding-bottom: 50%; */
 }
 .counter_title
 {
