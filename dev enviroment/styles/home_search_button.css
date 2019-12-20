@@ -1,0 +1,15 @@
+.home_search_button {
+    width: 120px;
+    height: 46px;
+    background: #14bdee;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    float: right;
+}

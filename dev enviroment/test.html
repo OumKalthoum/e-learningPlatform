@@ -14,9 +14,12 @@
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/home_search_button.css">
-    <link rel="stylesheet" type="text/css" href="styles/course.css">
-    <link rel="stylesheet" type="text/css" href="styles/course_responsive.css">
-
+    <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/blog.css">
+    <link rel="stylesheet" type="text/css" href="styles/blog_single.css">
+    <link rel="stylesheet" type="text/css" href="styles/blog_single_responsive.css">
+    <link rel="stylesheet" type="text/css" href="styles/courses.css">
+    <link rel="stylesheet" type="text/css" href="styles/courses_responsive.css">
 </head>
 
 <body>
@@ -34,13 +37,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <ul class="top_bar_contact_list">
-                                        <li>
-                                            <div class="question">Have any questions?</div>
-                                        </li>
-                                    </ul>
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="#">Register or Login</a></div>
+                                        <div class="login_button"><a href="sign_in.html">Register or Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -65,9 +63,7 @@
                                         <li><a href="index.html">Home</a></li>
                                         <li><a href="about.html">About</a></li>
                                         <li class="active"><a href="courses.html">Courses</a></li>
-                                        <!--
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Page</a></li>-->
+								
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
 
@@ -134,7 +130,7 @@
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="courses.html">Courses</a></li>
-                                    <li>Course Details</li>
+                                    <li>Exam</li>
                                 </ul>
                             </div>
                         </div>
@@ -145,101 +141,87 @@
 
         <!-- Course -->
 
-        <div class="course">
+        <div class="blog">
             <div class="container">
                 <div class="row">
 
-                    <!-- Course -->
+                    <!-- Blog Content -->
                     <div class="col-lg-8">
-
-                        <div class="course_container">
-                            <div class="course_title">Software Training</div>
-                            <form action="follow_course.html">
-                                <button type="submit" class="home_search_button">Start</button>
-                            </form>
-                            <div class="course_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-
-                                <!-- Course Info Item -->
-                                <div class="course_info_item">
-                                    <div class="course_info_title">Professor:</div>
-                                    <div class="course_info_text"><a href="#">Jacke Masito</a></div>
-                                </div>
-
-                                <!-- Course Info Item -->
-                                <div class="course_info_item">
-                                    <div class="course_info_title">Category:</div>
-                                    <div class="course_info_text"><a href="#">Languages</a></div>
-                                </div>
-
+                        <div class="blog_content">
+                            <div class="blog_title">‘I Kept Thinking of Antioch’: Long Before #MeToo, a times Video Journalist Remembered</div>
+                            <div class="blog_meta">
+                                <ul>
+                                    <li>Post on <a href="#">May 5, 2018</a></li>
+                                    <li>By <a href="#">admin</a></li>
+                                </ul>
                             </div>
-
-                            <!-- Course Tabs -->
-                            <div class="course_tabs_container">
-                                <div class="tabs d-flex flex-row align-items-center justify-content-start">
-                                    <div class="tab active">description</div>
-                                </div>
-                                <div class="tab_panels">
-
-                                    <!-- Description -->
-                                    <div class="tab_panel active">
-                                        <div class="tab_panel_title">Software Training</div>
-                                        <div class="tab_panel_content">
-                                            <div class="tab_panel_text">
-                                                <p>Lorem Ipsn gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosquad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                            </div>
-                                            <div class="tab_panel_section">
-                                                <div class="tab_panel_subtitle">Requirements</div>
-                                                <ul class="tab_panel_bullets">
-                                                    <li>Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora torquent.</li>
-                                                    <li>Cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a.</li>
-                                                    <li>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat.</li>
-                                                    <li>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="tab_panel_section">
-                                                <div class="tab_panel_subtitle">What is the target audience?</div>
-                                                <div class="tab_panel_text">
-                                                    <p>This course is intended for anyone interested in learning to master his or her own body.This course is aimed at beginners, so no previous experience with hand balancing skillts is necessary Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante pretium, consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="blog_subtitle">Question 1 : This is the content of the first question</div>
+                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
+                            <br>
+                            <div class="courses_search_container">
+                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                        <option>Answer</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
                             </div>
+                            <div class="blog_subtitle">Question 2 : This is the content of the second question</div>
+                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
+                            <br>
+                            <div class="courses_search_container">
+                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                        <option>Answer</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                            </div>
+                            <div class="blog_subtitle">Question 3 : This is the content of the third question</div>
+                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
+                            <br>
+                            <div class="courses_search_container">
+                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                        <option>Answer</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                            </div>
+                            
+
                         </div>
+                        <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                        </div>
+                        <br>
+                        <form action="result.html">
+                            <button type="submit" class="home_search_button">Submit</button>
+                        </form>
                     </div>
 
-                    <!-- Course Sidebar -->
+                    <!-- Blog Sidebar -->
                     <div class="col-lg-4">
                         <div class="sidebar">
 
-                            <!-- Feature -->
+                            <!-- Categories -->
                             <div class="sidebar_section">
-                                <div class="sidebar_section_title">Course</div>
-                                <div class="sidebar_feature">
-
-                                    <!-- Features -->
-                                    <div class="feature_list">
-
-                                        <!-- Feature -->
-                                        <div class="feature d-flex flex-row align-items-center justify-content-start">
-                                            <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Duration:</span></div>
-                                            <div class="feature_text ml-auto">2 hours</div>
-                                        </div>
-
-                                        <!-- Feature -->
-                                        <div class="feature d-flex flex-row align-items-center justify-content-start">
-                                            <div class="feature_title"><i class="fa fa-users" aria-hidden="true"></i><span>Participants:</span></div>
-                                            <div class="feature_text ml-auto">35</div>
-                                        </div>
-
-                                    </div>
+                                <div class="sidebar_section_title">Chapitres</div>
+                                <div class="sidebar_categories">
+                                    <ul class="categories_list">
+                                        <li><a href="#" class="clearfix">Chapiter 1<span>(05:34)</span></a></li>
+                                        <li><a href="#" class="clearfix">Chapiter 2<span>(17:01)</span></a></li>
+                                        <li><a href="#" class="clearfix">Chapiter 3<span>(30:11)</span></a></li>
+                                        <li><a href="#" class="clearfix">Chapiter 4<span>(12:56)</span></a></li>
+                                        <li><a href="#" class="clearfix">Chapiter 5<span>(07:09)</span></a></li>
+                                        <li><a href="#" class="clearfix">Test</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <!-- Footer -->
@@ -296,6 +278,8 @@
     <script src="styles/bootstrap4/bootstrap.min.js"></script>
     <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/masonry/masonry.js"></script>
+    <script src="plugins/video-js/video.min.js"></script>
     <script src="plugins/parallax-js-master/parallax.min.js"></script>
     <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
     <script src="js/course.js"></script>

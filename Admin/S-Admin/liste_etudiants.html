@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Admin E-Learning</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -42,7 +44,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Deconnexion</a>
+                    <a href="../connexion.html" class="nav-link">Deconnexion</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="profile.html" class="nav-link">Profile</a>
@@ -88,14 +90,19 @@
                                 <p>Liste des cours</p>
                             </a>
                         </li>
+                        <li class="nav-header">GESTION COMPTES</li>
                         <li class="nav-item">
-                            <a href="ajouter_cours.html" class="nav-link active">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p>Ajouter un cours</p>
+                            <a href="liste_etudiants.html" class="nav-link active">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>Liste des etudiants</p>
                             </a>
                         </li>
-
-
+                        <li class="nav-item">
+                            <a href="liste_professeurs.html" class="nav-link">
+                                <i class="nav-icon fas fa-school"></i>
+                                <p>Liste des professeurs</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -112,7 +119,7 @@
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Ajouter un cours</li>
+                                <li class="breadcrumb-item active">Liste des etudiants</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -123,68 +130,77 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <!-- left column -->
-                        <div class="col-md-12">
-                            <!-- general form elements -->
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Nouveau cours</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <!-- form start -->
-                                <form role="form">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="nom">Nom</label>
-                                            <input type="text" class="form-control" id="nom" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="categorie">Categorie</label>
-                                            <select class="form-control" id="categorie">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sylabus">Syllabus</label>
-                                            <textarea type="text" class="form-control" id="sylabus" placeholder="" rows="4"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Videos</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video">
-                                                    <label class="custom-file-label" for="video">choisissez un fichier</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="">Ouvrir</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.card -->
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nom etudiant</th>
+                                        <th>E-mail</th>
+                                        <th>Date d'inscription</th>
+                                        <th>N° Cours suivi</th>
+                                        <th>N° evaluation passer</th>
+                                        <th>Etat</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td>Win 95+</td>
+                                        <td> 4</td>
+                                        <td>X</td>
+                                        <td>X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>Internet
+                                            Explorer 5.0
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td>Win 95+</td>
+                                        <td>5</td>
+                                        <td>C</td>
+                                        <td>C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>Internet
+                                            Explorer 5.5
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td>Win 95+</td>
+                                        <td>5.5</td>
+                                        <td>A</td>
+                                        <td>A</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nom etudiant</th>
+                                        <th>E-mail</th>
+                                        <th>Date d'inscription</th>
+                                        <th>N° Cours suivi</th>
+                                        <th>N° evaluation passer</th>
+                                        <th>Etat</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
+                        <!-- /.card-body -->
                     </div>
+
                 </div>
             </section>
 
         </div>
-        <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
     <!-- /.content -->
     <!-- /.content-wrapper -->
@@ -199,15 +215,26 @@
     </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
+
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable();
 
+        });
+
+    </script>
 </body>
 
 </html>
