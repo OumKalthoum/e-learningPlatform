@@ -242,52 +242,9 @@
             </div>
         </div>
 
-        <!-- Footer -->
-
-        <footer class="footer">
-            <div class="footer_background" style="background-color: #192236"></div>
-            <div class="container">
-                <div class="row footer_row">
-                    <div class="col">
-                        <div class="footer_content">
-                            <div class="row">
-
-                                <div class="col-lg-3 footer_col">
-
-                                    <!-- Footer About -->
-                                    <div class="footer_section footer_about">
-                                        <div class="footer_logo_container">
-                                            <a href="#">
-                                                <div class="logo_text">E-<span>learning</span></div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-3c ol-lg-offset-3 footer_col">
-
-                                    <!-- Footer Contact -->
-                                    <div class="footer_section footer_contact">
-                                        <div class="footer_title">Contact Us</div>
-                                        <div class="footer_contact_info">
-                                            <ul>
-                                                <li>Email: e.learning@gmail.com</li>
-                                                <li>Phone: +(88) 111 111 111</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </footer>
+     
+      <?php include_once("includes/footer.html");?>
+      
 
     </div>
 
