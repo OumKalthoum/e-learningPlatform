@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/home_search_button.css">
-    <link rel="stylesheet" type="text/css" href="styles/course.css">
-    <link rel="stylesheet" type="text/css" href="styles/course_responsive.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+    <link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="../styles/home_search_button.css">
+    <link rel="stylesheet" type="text/css" href="../styles/course.css">
+    <link rel="stylesheet" type="text/css" href="../styles/course_responsive.css">
 
 </head>
 
@@ -34,13 +34,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <ul class="top_bar_contact_list">
-                                        <li>
-                                            <div class="question">Have any questions?</div>
-                                        </li>
-                                    </ul>
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="#">Register or Login</a></div>
+                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -62,13 +57,13 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li class="active"><a href="courses.html">Courses</a></li>
+                                        <li><a href="../index.php">Home</a></li>
+                                        <li><a href="../general/about.php">About</a></li>
+                                        <li class="active"><a href="course_list.php">Courses</a></li>
                                         <!--
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Page</a></li>-->
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="../general/contact.php">Contact</a></li>
                                     </ul>
 
                                     <!-- Hamburger -->
@@ -115,10 +110,10 @@
             </div>
             <nav class="menu_nav">
                 <ul class="menu_mm">
-                    <li class="menu_mm"><a href="index.html">Home</a></li>
-                    <li class="menu_mm"><a href="#">About</a></li>
-                    <li class="menu_mm"><a href="#">Courses</a></li>
-                    <li class="menu_mm"><a href="contact.html">Contact</a></li>
+                    <li class="menu_mm"><a href="../index.php">Home</a></li>
+                    <li class="menu_mm"><a href="../general/about.php">About</a></li>
+                    <li class="menu_mm"><a href="course_list.php">Courses</a></li>
+                    <li class="menu_mm"><a href="../general/contact.php">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -132,8 +127,8 @@
                         <div class="col">
                             <div class="breadcrumbs">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="course_list.php">Courses</a></li>
                                     <li>Course Details</li>
                                 </ul>
                             </div>
@@ -154,7 +149,7 @@
 
                         <div class="course_container">
                             <div class="course_title">Software Training</div>
-                            <form action="follow_course.html">
+                            <form action="follow_course.php">
                                 <button type="submit" class="home_search_button">Start</button>
                             </form>
                             <div class="course_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
@@ -241,21 +236,18 @@
                 </div>
             </div>
         </div>
-
-     
-      <?php include_once("includes/footer.html");?>
-      
+      <?php include_once("../includes/footer.html");?>
 
     </div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="styles/bootstrap4/popper.js"></script>
-    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-    <script src="plugins/easing/easing.js"></script>
-    <script src="plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
-    <script src="js/course.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../styles/bootstrap4/popper.js"></script>
+    <script src="../styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="../plugins/easing/easing.js"></script>
+    <script src="../plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="../plugins/colorbox/jquery.colorbox-min.js"></script>
+    <script src="../js/course.js"></script>
 </body>
 
 </html>

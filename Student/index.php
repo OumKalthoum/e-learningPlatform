@@ -32,7 +32,7 @@
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="sign_in.html">Register or Login</a></div>
+                                        <div class="login_button"><a href="signup/sign_up.html">Register or Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -55,12 +55,12 @@
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
                                         <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
+                                        <li><a href="general/about.php">About</a></li>
+                                        <li><a href="course/course_list.php">Courses</a></li>
                                         <!--
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Page</a></li>-->
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="general/contact.php">Contact</a></li>
                                     </ul>
 
                                     <!-- Hamburger -->
@@ -99,18 +99,13 @@
         <!-- Menu -->
 
         <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-            <div class="menu_close_container">
-                <div class="menu_close">
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
+           
             <nav class="menu_nav">
                 <ul class="menu_mm">
-                    <li class="menu_mm"><a href="index.html">Home</a></li>
-                    <li class="menu_mm"><a href="#">About</a></li>
-                    <li class="menu_mm"><a href="#">Courses</a></li>
-                    <li class="menu_mm"><a href="contact.html">Contact</a></li>
+                    <li class="menu_mm"><a href="index.php">Home</a></li>
+                    <li class="menu_mm"><a href="general/about.php">About</a></li>
+                    <li class="menu_mm"><a href="course/course_list.php">Courses</a></li>
+                    <li class="menu_mm"><a href="general/contact.php">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -195,10 +190,6 @@
                                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                         <span>20 Student</span>
                                     </div>
-                                    <div class="course_info">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <span>5 Ratings</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -220,10 +211,6 @@
                                     <div class="course_info">
                                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                         <span>20 Student</span>
-                                    </div>
-                                    <div class="course_info">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <span>5 Ratings</span>
                                     </div>
                                 </div>
                             </div>
@@ -247,10 +234,6 @@
                                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                                         <span>20 Student</span>
                                     </div>
-                                    <div class="course_info">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <span>5 Ratings</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +248,7 @@
             </div>
         </div>
 
-        
+        <?php include_once('includes/footer.html');?>
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>

@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="styles/contact.css">
-    <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+    <link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="../styles/contact_responsive.css">
 </head>
 
 <body>
@@ -23,13 +23,13 @@
 
             <!-- Top Bar -->
             <div class="top_bar">
-                <div class="top_bar_container ml-auto">
-                    <div class="container ml-auto">
-                        <div class="row ml-auto">
-                            <div class="col-sm-2 text-right ">
+                <div class="top_bar_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="sign_in.html">Register or Login</a></div>
+                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Header Content -->
             <div class="header_container">
                 <div class="container">
@@ -51,13 +50,13 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="courses.html">Courses</a></li>
+                                        <li><a href="../index.php">Home</a></li>
+                                        <li><a href="about.php">About</a></li>
+                                        <li><a href="../course/course_list.php">Courses</a></li>
                                         <!--
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Page</a></li>-->
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li class="active"><a href="contact.php">Contact</a></li>
                                     </ul>
 
                                     <!-- Hamburger -->
@@ -212,90 +211,17 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer_background" style="background-color: #192236"></div>
-            <div class="container">
-                <div class="row footer_row">
-                    <div class="col">
-                        <div class="footer_content">
-                            <div class="row">
-
-                                <div class="col-lg-3 footer_col">
-
-                                    <!-- Footer About -->
-                                    <div class="footer_section footer_about">
-                                        <div class="footer_logo_container">
-                                            <a href="#">
-                                                <div class="logo_text">E-<span>learning</span></div>
-                                            </a>
-                                        </div>
-                                        <div class="footer_social">
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-3c ol-lg-offset-3 footer_col">
-
-                                    <!-- Footer Contact -->
-                                    <div class="footer_section footer_contact">
-                                        <div class="footer_title">Contact Us</div>
-                                        <div class="footer_contact_info">
-                                            <ul>
-                                                <li>Email: Info.deercreative@gmail.com</li>
-                                                <li>Phone: +(88) 111 555 666</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row copyright_row">
-                    <div class="col">
-                        <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
-                            <div class="cr_text">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>
-                                    document.write(new Date().getFullYear());
-
-                                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </div>
-                            <div class="ml-lg-auto cr_links">
-                                <ul class="cr_list">
-                                    <li><a href="#">Copyright notification</a></li>
-                                    <li><a href="#">Terms of Use</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
+        <?php include_once('../includes/footer.html');?>
     </div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="styles/bootstrap4/popper.js"></script>
-    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="plugins/easing/easing.js"></script>
-    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../styles/bootstrap4/popper.js"></script>
+    <script src="../styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="../plugins/easing/easing.js"></script>
+    <script src="../plugins/parallax-js-master/parallax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-    <script src="plugins/marker_with_label/marker_with_label.js"></script>
-    <script src="js/contact.js"></script>
+    <script src="../plugins/marker_with_label/marker_with_label.js"></script>
+    <script src="../js/contact.js"></script>
 </body>
 
 </html>

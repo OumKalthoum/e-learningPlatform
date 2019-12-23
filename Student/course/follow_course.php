@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="styles/home_search_button.css">
-    <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="styles/blog.css">
-    <link rel="stylesheet" type="text/css" href="styles/blog_single.css">
-    <link rel="stylesheet" type="text/css" href="styles/blog_single_responsive.css">
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
+    <link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="../styles/home_search_button.css">
+    <link href="../plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../styles/blog.css">
+    <link rel="stylesheet" type="text/css" href="../styles/blog_single.css">
+    <link rel="stylesheet" type="text/css" href="../styles/blog_single_responsive.css">
 </head>
 
 <body>
@@ -35,13 +35,8 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <ul class="top_bar_contact_list">
-                                        <li>
-                                            <div class="question">Have any questions?</div>
-                                        </li>
-                                    </ul>
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="#">Register or Login</a></div>
+                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -63,18 +58,11 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li class="active"><a href="courses.html">Courses</a></li>
-                                        <!--
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Page</a></li>-->
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="../index.php">Home</a></li>
+                                        <li><a href="../general/about.php">About</a></li>
+                                        <li class="active"><a href="course_list.php">Courses</a></li>
+                                        <li><a href="../general/contact.php">Contact</a></li>
                                     </ul>
-
-                                    <!-- Hamburger -->
-
-                                    <!--<div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>-->
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                     </div>
@@ -116,10 +104,10 @@
             </div>
             <nav class="menu_nav">
                 <ul class="menu_mm">
-                    <li class="menu_mm"><a href="index.html">Home</a></li>
-                    <li class="menu_mm"><a href="#">About</a></li>
-                    <li class="menu_mm"><a href="#">Courses</a></li>
-                    <li class="menu_mm"><a href="contact.html">Contact</a></li>
+                    <li class="menu_mm"><a href="../index.php">Home</a></li>
+                    <li class="menu_mm"><a href="../general/about.php">About</a></li>
+                    <li class="menu_mm"><a href="course_list.php">Courses</a></li>
+                    <li class="menu_mm"><a href="../general/contact.php">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -133,8 +121,8 @@
                         <div class="col">
                             <div class="breadcrumbs">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="courses.html">Courses</a></li>
+                                    <li><a href="../index.php">Home</a></li>
+                                    <li><a href="course_list.php">Courses</a></li>
                                     <li>Course Details</li>
                                 </ul>
                             </div>
@@ -162,9 +150,9 @@
                             </div>
                             <div class="">
                                 <div class="blog_post_video_container">
-                                    <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "poster": "images/blog_2.jpg"}'>
-                                        <source src="images/mov_bbb.mp4" type="video/mp4">
-                                        <source src="images/mov_bbb.ogg" type="video/ogg">
+                                    <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "poster": "../images/blog_2.jpg"}'>
+                                        <source src="../images/mov_bbb.mp4" type="video/mp4">
+                                        <source src="../images/mov_bbb.ogg" type="video/ogg">
                                         Your browser does not support HTML5 video.
                                     </video>
                                 </div>
@@ -184,7 +172,7 @@
 
                             <!-- Categories -->
                             <div class="sidebar_section">
-                                <div class="sidebar_section_title">Chapitres</div>
+                                <div class="sidebar_section_title">Chapiters</div>
                                 <div class="sidebar_categories">
                                     <ul class="categories_list">
                                         <li><a href="#" class="clearfix">Chapiter 1<span>(05:34)</span></a></li>
@@ -192,7 +180,7 @@
                                         <li><a href="#" class="clearfix">Chapiter 3<span>(30:11)</span></a></li>
                                         <li><a href="#" class="clearfix">Chapiter 4<span>(12:56)</span></a></li>
                                         <li><a href="#" class="clearfix">Chapiter 5<span>(07:09)</span></a></li>
-                                        <li><a href="test.html" class="clearfix">Test</a></li>
+                                        <li><a href="../exam/exam.php" class="clearfix">Exam</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -204,64 +192,19 @@
         </div>
 
         <!-- Footer -->
-
-        <footer class="footer">
-            <div class="footer_background" style="background-color: #192236"></div>
-            <div class="container">
-                <div class="row footer_row">
-                    <div class="col">
-                        <div class="footer_content">
-                            <div class="row">
-
-                                <div class="col-lg-3 footer_col">
-
-                                    <!-- Footer About -->
-                                    <div class="footer_section footer_about">
-                                        <div class="footer_logo_container">
-                                            <a href="#">
-                                                <div class="logo_text">E-<span>learning</span></div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="col-lg-3c ol-lg-offset-3 footer_col">
-
-                                    <!-- Footer Contact -->
-                                    <div class="footer_section footer_contact">
-                                        <div class="footer_title">Contact Us</div>
-                                        <div class="footer_contact_info">
-                                            <ul>
-                                                <li>Email: e.learning@gmail.com</li>
-                                                <li>Phone: +(88) 111 111 111</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </footer>
-
+      <?php include_once("../includes/footer.html");?>
     </div>
 
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="styles/bootstrap4/popper.js"></script>
-    <script src="styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-    <script src="plugins/easing/easing.js"></script>
-    <script src="plugins/masonry/masonry.js"></script>
-    <script src="plugins/video-js/video.min.js"></script>
-    <script src="plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
-    <script src="js/course.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../styles/bootstrap4/popper.js"></script>
+    <script src="../styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="../plugins/easing/easing.js"></script>
+    <script src="../plugins/masonry/masonry.js"></script>
+    <script src="../plugins/video-js/video.min.js"></script>
+    <script src="../plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="../plugins/colorbox/jquery.colorbox-min.js"></script>
+    <script src="../js/course.js"></script>
 </body>
 
 </html>
