@@ -44,10 +44,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../connexion.html" class="nav-link">Deconnexion</a>
+                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -68,7 +68,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Bienvenu Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -78,22 +78,22 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="index.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-header">GESTION COURS</li>
+                        <li class="nav-header">COURSE MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="liste_cours.html" class="nav-link active">
+                            <a href="course_list.php" class="nav-link active">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p>Liste des cours</p>
+                                <p>Course List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="ajouter_cours.html" class="nav-link">
+                            <a href="add_course.php" class="nav-link">
                                 <i class="nav-icon fas fa-plus"></i>
-                                <p>Ajouter un cours</p>
+                                <p>Add Course</p>
                             </a>
                         </li>
 
@@ -113,8 +113,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Liste des cours</li>
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Course List</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -154,7 +154,7 @@
                                         <td>37</td>
                                         <td style="color: forestgreen;">Y</td>
                                         <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modofier</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lancer</button></td>
+                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
                                     </tr>
                                     <tr>
                                         <td>Course</td>
@@ -166,7 +166,7 @@
                                         <td>37</td>
                                         <td style="color: forestgreen;">Y</td>
                                         <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modofier</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lancer</button></td>
+                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
                                     </tr>
                                     <tr>
                                         <td>Course</td>
@@ -178,7 +178,7 @@
                                         <td>37</td>
                                         <td style="color: forestgreen;">Y</td>
                                         <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modofier</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lancer</button></td>
+                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>

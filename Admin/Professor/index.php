@@ -42,7 +42,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../connexion.php" class="nav-link">Deconnexion</a>
+                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="profile.php" class="nav-link">Profile</a>
@@ -66,7 +66,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Bienvenu Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -146,7 +146,7 @@
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3>150</h3>
-                                    <p>Subscribed Students</p>
+                                    <p>Subscriptions</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>

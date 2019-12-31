@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -45,7 +47,7 @@
                     <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -89,7 +91,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="category_list.php" class="nav-link">
+                            <a href="category_list.php" class="nav-link active">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>Category List</p>
                             </a>
@@ -128,8 +130,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Ajouter un cours</li>
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Course List</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -140,47 +142,70 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-2">
+
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Category 1</td>
+                                        <td>Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,</td>
+                                        <td>
+                                            <form method="post" action="modify_category.php">
+                                                <button type="submit" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
+                                                
+                                            </form>
+                                            <button type="button" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Category 1</td>
+                                        <td>Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
+                                            typographers and the like. Some people hate it and argue for
+                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,</td>
+                                        <td>
+                                            <form method="post" action="modify_category.php">
+                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
+                                                
+                                            </form>
+                                            <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-                        <div class="col-md-9">
-
-                            <!-- Profile Image -->
-                            <div class="card card-success card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Admin</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Email</b> <a class="float-right">email.example@template.com </a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Mot de passe</b> <a class="float-right">*******</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Date de creation</b> <a class="float-right">12/12/2019</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-success btn-block"><b>Modifier profile</b></a>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div> <!-- /.col -->
-
+                        <!-- /.card-body -->
                     </div>
+
                 </div>
             </section>
 
         </div>
-        <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
     <!-- /.content -->
     <!-- /.content-wrapper -->
@@ -195,15 +220,26 @@
     </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
+
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables -->
+    <script src="../plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable();
 
+        });
+
+    </script>
 </body>
 
 </html>

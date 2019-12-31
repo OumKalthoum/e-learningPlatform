@@ -45,7 +45,7 @@
                     <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -73,8 +73,6 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="index.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -94,8 +92,8 @@
                                 <p>Category List</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="add_category.php" class="nav-link">
+                         <li class="nav-item">
+                            <a href="add_category.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Category</p>
                             </a>
@@ -113,6 +111,8 @@
                                 <p>Professor List</p>
                             </a>
                         </li>
+
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -128,8 +128,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Ajouter un cours</li>
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Add Category</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -141,40 +141,35 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-9">
-
-                            <!-- Profile Image -->
-                            <div class="card card-success card-outline">
-                                <div class="card-body box-profile">
-                                    <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="../dist/img/user4-128x128.jpg" alt="User profile picture">
-                                    </div>
-
-                                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                                    <p class="text-muted text-center">Admin</p>
-
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Email</b> <a class="float-right">email.example@template.com </a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Mot de passe</b> <a class="float-right">*******</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Date de creation</b> <a class="float-right">12/12/2019</a>
-                                        </li>
-                                    </ul>
-
-                                    <a href="#" class="btn btn-success btn-block"><b>Modifier profile</b></a>
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">New Category</h3>
                                 </div>
-                                <!-- /.card-body -->
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form role="form" action="add_exam.php">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="nom">Category Name</label>
+                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+
+                                    <div class="card-footer text-right">
+                                        <button type="submit" class="btn btn-primary">Create Category</button>
+                                    </div>
+                                </form>
                             </div>
                             <!-- /.card -->
-                        </div> <!-- /.col -->
-
+                        </div>
                     </div>
                 </div>
             </section>

@@ -42,10 +42,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Deconnexion</a>
+                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -66,7 +66,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Bienvenu Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -76,22 +76,22 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="index.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-header">GESTION COURS</li>
+                        <li class="nav-header">COURSE MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="liste_cours.html" class="nav-link">
+                            <a href="course_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p>Liste des cours</p>
+                                <p>Course List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="ajouter_cours.html" class="nav-link active">
+                            <a href="add_course.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
-                                <p>Ajouter un cours</p>
+                                <p>Add Course</p>
                             </a>
                         </li>
 
@@ -111,8 +111,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Ajouter un cours</li>
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Add Course</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -129,18 +129,18 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Nouveau cours</h3>
+                                    <h3 class="card-title">New Course</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
                                 <form role="form">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="nom">Nom</label>
+                                            <label for="nom">Name</label>
                                             <input type="text" class="form-control" id="nom" placeholder="">
                                         </div>
                                         <div class="form-group">
-                                            <label for="categorie">Categorie</label>
+                                            <label for="categorie">Category</label>
                                             <select class="form-control" id="categorie">
                                                 <option>option 1</option>
                                                 <option>option 2</option>
@@ -162,10 +162,10 @@
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="video">
-                                                    <label class="custom-file-label" for="video">choisissez un fichier</label>
+                                                    <label class="custom-file-label" for="video">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">
-                                                    <span class="input-group-text" id="">Ouvrir</span>
+                                                    <span class="input-group-text" id="">Open</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +173,7 @@
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Submit & Create Exam</button>
                                     </div>
                                 </form>
                             </div>

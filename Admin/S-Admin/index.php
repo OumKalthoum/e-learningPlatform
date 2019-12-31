@@ -42,10 +42,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../connexion.html" class="nav-link">Log out</a>
+                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -66,7 +66,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Bienvenu Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -76,29 +76,41 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link active">
+                            <a href="index.php" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li class="nav-header">COURSE MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="liste_cours.html" class="nav-link">
+                            <a href="course_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p>Course list</p>
+                                <p>Course List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="category_list.php" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Category List</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="add_category.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Category</p>
                             </a>
                         </li>
                         <li class="nav-header">ACCOUNT MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="liste_etudiants.html" class="nav-link">
+                            <a href="student_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
-                                <p>Liste des etudiants</p>
+                                <p>Students List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="liste_professeurs.html" class="nav-link">
+                            <a href="professor_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-school"></i>
-                                <p>Liste des professeurs</p>
+                                <p>Professor List</p>
                             </a>
                         </li>
                     </ul>
@@ -139,7 +151,7 @@
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <h3>53</h3>
-                                    <p>Total Cours</p>
+                                    <p>Total Courses</p>
                                 </div>
                                 <div class="icon">
                                     <i class="nav-icon fas fa-book"></i>
@@ -151,7 +163,7 @@
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3>150</h3>
-                                    <p>Etudiants Inscrits</p>
+                                    <p>Subscriptions</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
@@ -177,7 +189,7 @@
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3>44</h3>
-                                    <p>Total Evaluations Effectuées</p>
+                                    <p>Total Passed Evaluations</p>
                                 </div>
                                 <div class="icon">
                                     <i class="nav-icon fas fa-edit"></i>

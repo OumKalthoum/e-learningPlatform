@@ -44,10 +44,10 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../connexion.html" class="nav-link">Deconnexion</a>
+                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="profile.php" class="nav-link">Profile</a>
                 </li>
             </ul>
 
@@ -58,7 +58,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="index.php" class="brand-link">
                 <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">E-Learning : Admin</span>
             </a>
@@ -68,7 +68,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Bienvenu Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -78,29 +78,41 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="index.php" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-header">GESTION COURS</li>
+                        <li class="nav-header">COURSE MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="liste_cours.html" class="nav-link">
+                            <a href="course_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p>Liste des cours</p>
+                                <p>Course List</p>
                             </a>
                         </li>
-                        <li class="nav-header">GESTION COMPTES</li>
                         <li class="nav-item">
-                            <a href="liste_etudiants.html" class="nav-link active">
+                            <a href="category_list.php" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>Category List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="add_category.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Category</p>
+                            </a>
+                        </li>
+                        <li class="nav-header">ACCOUNT MANAGEMENT</li>
+                        <li class="nav-item">
+                            <a href="student_list.php" class="nav-link active">
                                 <i class="nav-icon fas fa-user"></i>
-                                <p>Liste des etudiants</p>
+                                <p>Students List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="liste_professeurs.html" class="nav-link">
+                            <a href="professor_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-school"></i>
-                                <p>Liste des professeurs</p>
+                                <p>Professors List</p>
                             </a>
                         </li>
                     </ul>
@@ -118,8 +130,8 @@
                     <div class="row mb-2">
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Liste des etudiants</li>
+                                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Professor List</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -137,59 +149,32 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nom etudiant</th>
+                                        <th>Name</th>
                                         <th>E-mail</th>
-                                        <th>Date d'inscription</th>
-                                        <th>N° Cours suivi</th>
-                                        <th>N° evaluation passer</th>
-                                        <th>Etat</th>
-                                        <th>Actions</th>
+                                        <th>Date of subscription</th>
+                                        <th>Courses</th>
+                                        <th>Evaluations</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>C</td>
-                                        <td>C</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.5
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>Win 95+</td>
-                                        <td>5.5</td>
-                                        <td>A</td>
-                                        <td>A</td>
+                                        <td>xxx@xxxx</td>
+                                        <td>2019/12/12</td>
+                                        <td>8</td>
+                                        <td>4</td>
+                                        <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Nom etudiant</th>
+                                        <th>Name</th>
                                         <th>E-mail</th>
-                                        <th>Date d'inscription</th>
-                                        <th>N° Cours suivi</th>
-                                        <th>N° evaluation passer</th>
-                                        <th>Etat</th>
-                                        <th>Actions</th>
+                                        <th>Date of subscription</th>
+                                        <th>Courses</th>
+                                        <th>Evaluations</th>
+                                        <th>Status</th>
                                     </tr>
                                 </tfoot>
                             </table>
