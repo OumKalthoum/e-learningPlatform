@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Course Details</title>
+    <title>E-learning</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
@@ -63,7 +63,7 @@
                                         <li><a href="../index.php">Home</a></li>
                                         <li><a href="../general/about.php">About</a></li>
                                         <li class="active"><a href="../course/course_list.php">Courses</a></li>
-								
+
                                         <li><a href="../general/contact.php">Contact</a></li>
                                     </ul>
                                     <div class="hamburger menu_mm">
@@ -157,37 +157,58 @@
                             <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
                             <br>
                             <div class="courses_search_container">
-                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                        <option>Answer</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <option>Answer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                             </div>
                             <div class="blog_subtitle">Question 2 : This is the content of the second question</div>
                             <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
                             <br>
                             <div class="courses_search_container">
-                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                        <option>Answer</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <option>Answer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                             </div>
                             <div class="blog_subtitle">Question 3 : This is the content of the third question</div>
                             <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
                             <br>
                             <div class="courses_search_container">
-                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                        <option>Answer</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
+                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <option>Answer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                             </div>
-                            
+                            <div class="blog_subtitle">Question 4 : This is the content of the fourth question</div>
+                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
+                            <br>
+                            <div class="courses_search_container">
+                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <option>Answer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
 
+                            <div class="blog_subtitle">Question 5 : This is the content of the fifth question</div>
+                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
+                            <br>
+                            <div class="courses_search_container">
+                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <option>Answer</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
                         </div>
@@ -203,7 +224,7 @@
         </div>
 
         <!-- Footer -->
-      <?php include_once("../includes/footer.html");?>
+        <?php include_once("../includes/footer.html");?>
     </div>
 
     <script src="../js/jquery-3.2.1.min.js"></script>
