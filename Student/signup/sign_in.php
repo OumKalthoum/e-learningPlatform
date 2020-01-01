@@ -40,10 +40,10 @@
                 <div class="counter_form">
                     <div class="row fill_height">
                         <div class="col fill_height">
-                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="actions/sign_in.php">
                                 <div class="counter_form_title">Se connecter</div>
-                                <input type="email" class="counter_input" placeholder="E-mail" required="required">
-                                <input type="password" class="counter_input" placeholder="Mot de passe" required="required">
+                                <input type="email" class="counter_input" name="email" placeholder="E-mail" required="required">
+                                <input type="password" class="counter_input" name="password" placeholder="Mot de passe" required="required">
                                 <button type="submit" class="counter_form_button">Se connecter</button>
                                 <br>
                                 <a href="sign_up.php">Vous n'avez pas de compte étudiant?</a>
