@@ -23,17 +23,18 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-CREATE DATABASE `elearning2`;
+CREATE DATABASE `dbel`;
 --
 -- Structure de la table `compte`
 --
 
-CREATE TABLE `compte` (
-  `id_compte` int(15) NOT NULL,
-  `nom` varchar(30) DEFAULT NULL,
+CREATE TABLE `account` (
+  `id_account` int(15) NOT NULL,
+  `full_name` varchar(30) DEFAULT NULL,
   `email` varchar(35) DEFAULT NULL,
-  `mot_pass` varchar(11) NOT NULL,
-  `type_compte` varchar(11) NOT NULL
+  `password` varchar(11) NOT NULL,
+  `date` date NOT NULL,
+  `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42,11 +43,11 @@ CREATE TABLE `compte` (
 -- Structure de la table `cours`
 --
 
-CREATE TABLE `cours` (
-  `id_cours` int(15) NOT NULL,
-  `nom_cours` varchar(60) NOT NULL,
-  `description_cours` varchar(100) NOT NULL,
-  `sellabus` varchar(100) NOT NULL,
+CREATE TABLE `course` (
+  `id_course` int(15) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `syllabus` varchar(100) NOT NULL,
   `id_prof` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,9 +57,9 @@ CREATE TABLE `cours` (
 -- Structure de la table `cours_etudiant`
 --
 
-CREATE TABLE `cours_etudiant` (
-  `id_etudiant` int(15) NOT NULL,
-  `id_cours` int(15) NOT NULL
+CREATE TABLE `course_student` (
+  `id_stud` int(15) NOT NULL,
+  `id_course` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -69,8 +70,8 @@ CREATE TABLE `cours_etudiant` (
 
 CREATE TABLE `evaluation` (
   `id_evaluation` int(15) NOT NULL,
-  `seuil` int(15) NOT NULL,
-  `id_cours` int(15) NOT NULL
+  `threshold` int(15) NOT NULL, -- seuil
+  `id_course` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,8 +82,8 @@ CREATE TABLE `evaluation` (
 
 CREATE TABLE `question` (
   `id_question` int(15) NOT NULL,
-  `titre` varchar(100) NOT NULL,
-  `description_question` varchar(100) DEFAULT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
   `id_evaluation` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -92,10 +93,10 @@ CREATE TABLE `question` (
 -- Structure de la table `reponse`
 --
 
-CREATE TABLE `reponse` (
-  `id_reponse` int(15) NOT NULL,
-  `reponse` varchar(60) NOT NULL,
-  `etat_reponse` varchar(11) DEFAULT NULL,
+CREATE TABLE `response` (
+  `id_response` int(15) NOT NULL,
+  `response` varchar(60) NOT NULL,
+  `status` int(1) DEFAULT NULL, -- 0 false , 1 true
   `id_question` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -105,8 +106,8 @@ CREATE TABLE `reponse` (
 -- Structure de la table `resultat_evaluation`
 --
 
-CREATE TABLE `resultat_evaluation` (
-  `id_etudiant` int(15) NOT NULL,
+CREATE TABLE `evaluation_result` (
+  `id_stud` int(15) NOT NULL,
   `id_evaluation` int(15) NOT NULL,
   `note` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -120,7 +121,7 @@ CREATE TABLE `resultat_evaluation` (
 CREATE TABLE `video` (
   `id_video` int(15) NOT NULL,
   `path` varchar(30) NOT NULL,
-  `id_cours` int(15) NOT NULL,
+  `id_course` int(15) NOT NULL,
   `description_video` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -131,14 +132,14 @@ CREATE TABLE `video` (
 --
 -- Index pour la table `compte`
 --
-ALTER TABLE `compte`
-  ADD PRIMARY KEY (`id_compte`);
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id_account`);
 
 --
 -- Index pour la table `cours`
 --
-ALTER TABLE `cours`
-  ADD PRIMARY KEY (`id_cours`);
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id_course`);
 
 --
 -- Index pour la table `question`
