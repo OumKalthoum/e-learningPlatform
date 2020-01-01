@@ -26,9 +26,9 @@
             <div class="counter_background" style="background-image:url(../images/counter_background.jpg)"></div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <div class="counter_content">
-                            <h2 class="counter_title">Se connecter</h2>
+                            <h2 class="counter_title">Se connecter en tant que étudiant</h2>
                             <div class="counter_text">
                                 <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                             </div>
@@ -46,8 +46,8 @@
                                 <input type="password" class="counter_input" placeholder="Mot de passe" required="required">
                                 <button type="submit" class="counter_form_button">Se connecter</button>
                                 <br>
-                                <a href="sign_up.php">Vous n'avez pas de compte ?</a>
-
+                                <a href="sign_up.php">Vous n'avez pas de compte étudiant?</a>
+                                <a href="../../Admin/Authentification/sign_in.php">Vous êtes un professeur?</a>
                             </form>
                         </div>
                     </div>

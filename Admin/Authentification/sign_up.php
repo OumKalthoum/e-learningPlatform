@@ -38,9 +38,9 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in</p>
-                <form action="index3.html" method="post">
+                <form action="actions/sign_up.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="nom" placeholder="Nom et prenom">
+                        <input type="text" class="form-control" name="fullName" id="nom" placeholder="Nom et prenom" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -64,18 +64,18 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="re_password" placeholder="Re-Password">
+                        <input type="password" class="form-control" name="re-password" id="re_password" placeholder="Re-Password" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="social-auth-links text-center mb-3">
-                    <a href="inscription.html" class="btn btn-block btn-primary">
+                    
+                    <button type="submit" class="btn btn-block btn-primary">
                         Submit
-                    </a>
-                </div>
+                    </button>
+   
                 </form>
                 <div class="ml-auto">
                     <a href="sign_in.php" class="ml-auto">

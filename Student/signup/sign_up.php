@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="counter_content">
-                            <h2 class="counter_title">S’inscrire</h2>
+                            <h2 class="counter_title">S’inscrire en tant que étudiant</h2>
                             <div class="counter_text">
                                 <p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dumy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                             </div>
@@ -40,20 +40,16 @@
                 <div class="counter_form">
                     <div class="row fill_height">
                         <div class="col fill_height">
-                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
+                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="actions/sign_up.php" method="post">
                                 <div class="counter_form_title">S’inscrire</div>
-                                <input type="text" class="counter_input" placeholder="Nom Complet" required="required">
-                                <input type="email" class="counter_input" placeholder="E-mail" required="required">
-                                <select name="counter_select" id="counter_select" class="counter_input counter_options">
-                                    <option>Qui vous étes ?</option>
-                                    <option>Etudiant</option>
-                                    <option>Professeur</option>
-                                </select>
-                                <input type="password" class="counter_input" placeholder="Mot de passe" required="required">
-                                <input type="password" class="counter_input" placeholder="Confirmation de votre mot de passe" required="required">
+                                <input type="text" class="counter_input" name="fullName" placeholder="Nom Complet" required="required">
+                                <input type="email" class="counter_input" name="email" placeholder="E-mail" required="required">
+                                <input type="password" class="counter_input" name="password" placeholder="Mot de passe" required="required">
+                                <input type="password" class="counter_input" name="re-password" placeholder="Confirmation de votre mot de passe" required="required">
                                 <button type="submit" class="counter_form_button">S’inscrire</button>
                                 <br>
                                 <a href="sign_in.php">Vous avez déja un compte ?</a>
+                                <a href="../../Admin/Authentification/sign_up.php">Vous êtes un professeur?</a>
                             </form>
                         </div>
                     </div>
@@ -63,6 +59,8 @@
         </div>
 
     </div>
+
+  
 
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../styles/bootstrap4/popper.js"></script>
