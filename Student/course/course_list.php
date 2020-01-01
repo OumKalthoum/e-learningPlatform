@@ -1,3 +1,6 @@
+<?php
+    include_once("../../Database/db_connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,12 +144,17 @@
                             <form action="#" id="courses_search_form" class="courses_search_form d-flex flex-row align-items-center justify-content-start">
                                 <input type="search" class="courses_search_input" placeholder="Search Courses" required="required">
                                 <select id="courses_search_select" class="courses_search_select courses_search_input">
-                                    <option>All Categories</option>
-                                    <option>Art & Design</option>
-                                    <option>Business</option>
-                                    <option>Programming</option>
-                                    <option>IT & Software</option>
-                                    <option>Languages</option>
+
+                                <?php 
+                          
+                                    $cat = mysqli_query($conn, "SELECT * from category");
+                                    if(mysqli_num_rows($cat) > 0){
+                                        while($rowCat = mysqli_fetch_array($cat)){
+                                            echo '<option>'.$rowCat["label_category"].'</option>'; 
+                                        }
+                                    }
+                                ?>
+
                                 </select>
                                 <button action="submit" class="courses_search_button ml-auto">search now</button>
                             </form>
@@ -155,26 +163,49 @@
                             <div class="row courses_row">
 
                                 <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_4.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Software Training</a></h3>
-                                            <div class="course_teacher">Mr. John Taylor</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
+                                
+                                <?php 
+                                    $course = mysqli_query($conn, "SELECT * from course");
+                                    if(mysqli_num_rows($course) > 0){
+                                        while($row = mysqli_fetch_array($course)){
+
+                                            //image part : <img src="../../Admin/image_course/'.$row["image_course"].'"
+
+                                            echo '
+                                            <div class="col-lg-6 course_col">
+                                            <div class="course">
+                                            <div class="course_image"><img src="../../Admin/image_course/blog_4.jpg" alt=""></div>
+                                            <div class="course_body">
+                                                <h3 class="course_title"><a href="course.php">'.$row["name"].'</a></h3>';
+
+                                            $id_prof = $row["id_prof"];
+                                            $prof = mysqli_query($conn, "SELECT * from account where id_account = $id_prof");
+                                            $row_account = mysqli_fetch_array($prof);
+
+
+                                            echo '
+                                                <div class="course_teacher">'.$row_account["full_name"].'</div>
+                                                <div class="course_text">
+                                                    <p>'.$row["description"].'</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
+                                            <div class="course_footer">
+                                                <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                                    <div class="course_info">
+                                                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                        <span>20 Student</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        </div>
+                                            ';
+
+                                        }
+                                    }
+                                ?>
+                                    
+                                
 
                                 <!-- Course -->
                                 <div class="col-lg-6 course_col">
@@ -324,11 +355,18 @@
                                 <div class="sidebar_section_title">Categories</div>
                                 <div class="sidebar_categories">
                                     <ul>
-                                        <li><a href="#">Art & Design</a></li>
-                                        <li><a href="#">Business</a></li>
-                                        <li><a href="#">IT & Software</a></li>
-                                        <li><a href="#">Languages</a></li>
-                                        <li><a href="#">Programming</a></li>
+                                    <?php 
+                                        $cat = mysqli_query($conn, "SELECT * from category");
+                                        if(mysqli_num_rows($cat) > 0){
+                                            while($rowCat = mysqli_fetch_array($cat)){
+
+                                                echo '
+                                                <li><a href="#">'.$rowCat["label_category"].'</a></li>
+                                                ';
+
+                                            }
+                                        }
+                                    ?>
                                     </ul>
                                 </div>
                             </div>

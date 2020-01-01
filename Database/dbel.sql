@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 01 jan. 2020 à 20:00
+-- Généré le :  mer. 01 jan. 2020 à 23:44
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -43,7 +43,29 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`) VALUES
 (1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S'),
-(2, 'Oumaiyma', 'administrator@ka.ma', 'rootazzz', '2001-01-20', 'S');
+(30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A'),
+(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P'),
+(32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
+  `label_category` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`id_category`, `label_category`) VALUES
+(1, 'informatique'),
+(2, 'cuisine'),
+(3, 'dance');
 
 -- --------------------------------------------------------
 
@@ -56,8 +78,18 @@ CREATE TABLE `course` (
   `name` varchar(60) NOT NULL,
   `description` varchar(100) NOT NULL,
   `syllabus` varchar(100) NOT NULL,
-  `id_prof` int(15) NOT NULL
+  `id_prof` int(15) NOT NULL,
+  `image_course` varchar(100) NOT NULL,
+  `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `course`
+--
+
+INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`) VALUES
+(1, 'PHP Course', 'loremmmmaaat epssommaatat', 'syllabussat', 31, 'image_course', 1),
+(2, 'HTML Course', 'loremmmmaaat epssommaatatloremmmmaaat epssommaatat', 'syllabussat', 31, 'image_course', 1);
 
 -- --------------------------------------------------------
 
@@ -144,6 +176,12 @@ ALTER TABLE `account`
   ADD PRIMARY KEY (`id_account`);
 
 --
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
 -- Index pour la table `course`
 --
 ALTER TABLE `course`
@@ -169,7 +207,13 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT pour la table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
