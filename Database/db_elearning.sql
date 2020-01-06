@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  mer. 01 jan. 2020 à 23:44
--- Version du serveur :  10.4.8-MariaDB
--- Version de PHP :  7.3.11
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 06, 2020 at 08:17 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `dbel`
+-- Database: `db_elearning`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `account`
+-- Table structure for table `account`
 --
 
-CREATE TABLE `account` (
-  `id_account` int(15) NOT NULL,
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `id_account` int(15) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(30) DEFAULT NULL,
   `email` varchar(35) DEFAULT NULL,
   `password` varchar(11) NOT NULL,
   `date` date NOT NULL,
-  `type` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `type` varchar(11) NOT NULL,
+  PRIMARY KEY (`id_account`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `account`
+-- Dumping data for table `account`
 --
 
 INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`) VALUES
@@ -50,41 +52,48 @@ INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `id_category` int(11) NOT NULL,
-  `label_category` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id_category` int(11) NOT NULL AUTO_INCREMENT,
+  `label_category` varchar(100) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_category`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `category`
+-- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id_category`, `label_category`) VALUES
-(1, 'informatique'),
-(2, 'cuisine'),
-(3, 'dance');
+INSERT INTO `category` (`id_category`, `label_category`, `description`, `active`) VALUES
+(1, 'informatique', NULL, 1),
+(2, 'cuisine', 'This category is related to cooking and bakery courses only!', 0),
+(3, 'dance', NULL, 1),
+(6, 'Java beginners course  ', 'Java programming course', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `course`
+-- Table structure for table `course`
 --
 
-CREATE TABLE `course` (
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE IF NOT EXISTS `course` (
   `id_course` int(15) NOT NULL,
   `name` varchar(60) NOT NULL,
   `description` varchar(100) NOT NULL,
   `syllabus` varchar(100) NOT NULL,
   `id_prof` int(15) NOT NULL,
   `image_course` varchar(100) NOT NULL,
-  `id_category` int(11) NOT NULL
+  `id_category` int(11) NOT NULL,
+  PRIMARY KEY (`id_course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `course`
+-- Dumping data for table `course`
 --
 
 INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`) VALUES
@@ -94,10 +103,11 @@ INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `course_student`
+-- Table structure for table `course_student`
 --
 
-CREATE TABLE `course_student` (
+DROP TABLE IF EXISTS `course_student`;
+CREATE TABLE IF NOT EXISTS `course_student` (
   `id_stud` int(15) NOT NULL,
   `id_course` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -105,10 +115,11 @@ CREATE TABLE `course_student` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evaluation`
+-- Table structure for table `evaluation`
 --
 
-CREATE TABLE `evaluation` (
+DROP TABLE IF EXISTS `evaluation`;
+CREATE TABLE IF NOT EXISTS `evaluation` (
   `id_evaluation` int(15) NOT NULL,
   `threshold` int(15) NOT NULL,
   `id_course` int(15) NOT NULL
@@ -117,10 +128,11 @@ CREATE TABLE `evaluation` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `evaluation_result`
+-- Table structure for table `evaluation_result`
 --
 
-CREATE TABLE `evaluation_result` (
+DROP TABLE IF EXISTS `evaluation_result`;
+CREATE TABLE IF NOT EXISTS `evaluation_result` (
   `id_stud` int(15) NOT NULL,
   `id_evaluation` int(15) NOT NULL,
   `note` int(15) NOT NULL
@@ -129,23 +141,26 @@ CREATE TABLE `evaluation_result` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `question`
+-- Table structure for table `question`
 --
 
-CREATE TABLE `question` (
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE IF NOT EXISTS `question` (
   `id_question` int(15) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `id_evaluation` int(15) NOT NULL
+  `id_evaluation` int(15) NOT NULL,
+  PRIMARY KEY (`id_question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `response`
+-- Table structure for table `response`
 --
 
-CREATE TABLE `response` (
+DROP TABLE IF EXISTS `response`;
+CREATE TABLE IF NOT EXISTS `response` (
   `id_response` int(15) NOT NULL,
   `response` varchar(60) NOT NULL,
   `status` int(1) DEFAULT NULL,
@@ -155,65 +170,17 @@ CREATE TABLE `response` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `video`
+-- Table structure for table `video`
 --
 
-CREATE TABLE `video` (
+DROP TABLE IF EXISTS `video`;
+CREATE TABLE IF NOT EXISTS `video` (
   `id_video` int(15) NOT NULL,
   `path` varchar(30) NOT NULL,
   `id_course` int(15) NOT NULL,
-  `description_video` varchar(100) NOT NULL
+  `description_video` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_video`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `account`
---
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`id_account`);
-
---
--- Index pour la table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id_category`);
-
---
--- Index pour la table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`id_course`);
-
---
--- Index pour la table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id_question`);
-
---
--- Index pour la table `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`id_video`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `account`
---
-ALTER TABLE `account`
-  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT pour la table `category`
---
-ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

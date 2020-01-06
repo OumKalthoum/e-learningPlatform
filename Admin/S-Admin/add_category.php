@@ -92,7 +92,7 @@
                                 <p>Category List</p>
                             </a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="add_category.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Category</p>
@@ -150,15 +150,23 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="add_exam.php">
+                                <form role="form" action="actions/add_category.php" method="post">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="nom">Category Name</label>
-                                            <input type="text" class="form-control" id="nom" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label for="nom">Category Name</label>
+                                                    <input type="text" class="form-control" id="label" name="label" placeholder="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3"></textarea>
+                                                </div>
+                                                <select class="form-control select2" name="active">
+                                                    <option  value="1" selected="selected">Active</option>
+                                                    <option  value="0">Hidden</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

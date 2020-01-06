@@ -1,3 +1,8 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    $sql = "SELECT * FROM category";
+    $result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -155,38 +160,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    //Category data
+                                    while($row = $result->fetch_assoc()):
+                                    $id_category = $row["id_category"];
+                                    $label_category = $row["label_category"];
+                                    $description = $row["description"];
+                                    $active = $row["active"];
+                                    ?>
                                     <tr>
-                                        <td>Category 1</td>
-                                        <td>Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,</td>
+                                        <td><?php echo $label_category;?></td>
+                                        <td><?php echo $description;?></td>
                                         <td>
-                                            <form method="post" action="modify_category.php">
+                                            <form method="post" action="modify_category.php&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
-                                                
+
                                             </form>
-                                            <button type="button" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Category 1</td>
-                                        <td>Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,</td>
-                                        <td>
-                                            <form method="post" action="modify_category.php">
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
-                                                
+                                            <?php if($active == '1'):?>
+                                            <form method="post" action="hide_category.php&id=<?php echo $id_category;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+
                                             </form>
-                                            <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+                                            <?php endif;?>
+                                            <?php if($active == '0'):?>
+                                            <form method="post" action="show_category.php&id=<?php echo $id_category;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-success btn-xs">Show</button>
+
+                                            </form>
+                                            <?php endif;?>
+                                            <?php endwhile;?>
                                         </td>
                                     </tr>
                                 </tbody>
