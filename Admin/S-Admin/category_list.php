@@ -174,18 +174,18 @@
                                         <td><?php echo $label_category;?></td>
                                         <td><?php echo $description;?></td>
                                         <td>
-                                            <form method="post" action="modify_category.php&id=<?php echo $id_category;?>">
+                                            <form method="post" action="modify_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
 
                                             </form>
                                             <?php if($active == '1'):?>
-                                            <form method="post" action="hide_category.php&id=<?php echo $id_category;?>">
+                                            <form method="post" action="hide_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
 
                                             </form>
                                             <?php endif;?>
                                             <?php if($active == '0'):?>
-                                            <form method="post" action="show_category.php&id=<?php echo $id_category;?>">
+                                            <form method="post" action="show_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-success btn-xs">Show</button>
 
                                             </form>
@@ -250,6 +250,12 @@
                 echo "Toast.fire({
                         type: 'success',
                         title: '  Category has been added successfuly !'
+                    })";
+            endif;
+            if(isset($_GET['modify']) && $_GET['modify'] == 'true'):
+                echo "Toast.fire({
+                        type: 'success',
+                        title: '  Category has been modified successfuly !'
                     })";
             endif;
         ?>

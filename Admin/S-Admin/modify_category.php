@@ -1,3 +1,14 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    $id_category = $_GET['id'];
+    $sql = "SELECT * FROM category WHERE id_category = '$id_category'";
+    $result = mysqli_query($conn,$sql) or die(mysqli_error());
+    $row = mysqli_fetch_assoc($result);
+    $label_category = $row["label_category"];
+    $description = $row["description"];
+    $active = $row["active"];
+    
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +22,8 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
@@ -92,7 +105,7 @@
                                 <p>Category List</p>
                             </a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="add_category.php" class="nav-link">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Category</p>
@@ -129,7 +142,7 @@
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active">Add Category</li>
+                                <li class="breadcrumb-item active">Modify Category</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -150,21 +163,29 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="add_exam.php">
+                                <form role="form" action="actions/modify_category.php" method="post">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="nom">Category Name</label>
-                                            <input type="text" class="form-control" id="nom" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="form-group">
+                                                    <label for="nom">Category Name</label>
+                                                    <input type="text" class="form-control" id="label" name="label" value="<?php echo $label_category;?>" placeholder="" required><input type="text" hidden class="form-control" id="id" name="id" value="<?php echo $id_category;?>" placeholder="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="description">Description</label>
+                                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3"><?php echo $description;?></textarea>
+                                                </div>
+                                                <select class="form-control select2" name="active" value="<?php echo $active;?>" required>
+                                                    <option value="1" selected="selected">Active</option>
+                                                    <option value="0">Hidden</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
 
                                     <div class="card-footer text-right">
-                                        <button type="submit" class="btn btn-primary">Update Category</button>
+                                        <button type="submit" class="btn btn-primary">Modify Category</button>
                                     </div>
                                 </form>
                             </div>
@@ -198,6 +219,27 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        <?php
+            if(isset($_GET['modify']) && $_GET['modify'] == 'false'):
+                echo "Toast.fire({
+                        type: 'warning',
+                        title: '  Please apply modifications before you submit !'
+                    })";
+            endif;
+        ?>
+
+        });
+        
+    </script>
 
 </body>
 
