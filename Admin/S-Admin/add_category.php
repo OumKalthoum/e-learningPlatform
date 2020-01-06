@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
@@ -156,15 +158,15 @@
                                             <div class="col-md-10">
                                                 <div class="form-group">
                                                     <label for="nom">Category Name</label>
-                                                    <input type="text" class="form-control" id="label" name="label" placeholder="">
+                                                    <input type="text" class="form-control" id="label" name="label" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
                                                     <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3"></textarea>
                                                 </div>
-                                                <select class="form-control select2" name="active">
-                                                    <option  value="1" selected="selected">Active</option>
-                                                    <option  value="0">Hidden</option>
+                                                <select class="form-control select2" name="active" required>
+                                                    <option value="1" selected="selected">Active</option>
+                                                    <option value="0">Hidden</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -206,6 +208,27 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        <?php
+            if(isset($_GET['success']) && $_GET['success'] == 'false'):
+                echo "Toast.fire({
+                        type: 'error',
+                        title: '  Category already exists !'
+                    })";
+            endif;
+        ?>
+
+        });
+        
+    </script>
 
 </body>
 

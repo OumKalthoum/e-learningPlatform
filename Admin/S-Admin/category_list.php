@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
@@ -234,6 +236,27 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+            <?php
+            if(isset($_GET['success']) && $_GET['success'] == 'true'):
+                echo "Toast.fire({
+                        type: 'success',
+                        title: '  Category has been added successfuly !'
+                    })";
+            endif;
+        ?>
+
+        });
+
+    </script>
     <!-- page script -->
     <script>
         $(function() {
