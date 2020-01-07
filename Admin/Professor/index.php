@@ -1,3 +1,7 @@
+<?php 
+ include_once("../../Database/db_connection.php");
+?> 
+
 <!DOCTYPE html>
 <html>
 
@@ -133,7 +137,12 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
+                                    <?php
+                                      $post = "SELECT * FROM course INNER JOIN account ON course.id_prof=account.id_account";
+                                      $run_post = mysqli_query($conn,$post);  
+                                      $num_rows = mysqli_num_rows($run_post);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $num_rows;?></div></h3>
                                     <p>Total Courses</p>
                                 </div>
                                 <div class="icon">
@@ -145,7 +154,13 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <?php
+                                      $typeA='P';
+                                      $post = "SELECT * FROM `account` WHERE `type`='$typeA' ";
+                                      $result = mysqli_query($conn,$post);  
+                                      $rowcount = mysqli_num_rows($result);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $rowcount;?></div></h3>
                                     <p>Subscriptions</p>
                                 </div>
                                 <div class="icon">
@@ -158,7 +173,14 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                     <?php
+                                      $post = "SELECT * FROM evaluation  JOIN course
+                                       ON evaluation.id_course=course.id_course
+                                      JOIN account ON course.id_prof=account.id_account";;
+                                      $result = mysqli_query($conn,$post);  
+                                      $rowcount = mysqli_num_rows($result);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $rowcount;?></div></h3>
                                     <p>Total Evaluations</p>
                                 </div>
                                 <div class="icon">
@@ -171,7 +193,15 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <?php
+                                      $post = "SELECT * FROM evaluation_result JOIN evaluation     
+                                         ON evaluation_result.id_evaluation=evaluation.id_evaluation
+                                        JOIN course ON evaluation.id_course=course.id_course
+                                        JOIN account ON course.id_prof=account.id_account";
+                                      $result = mysqli_query($conn,$post);  
+                                      $rowcount = mysqli_num_rows($result);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $rowcount;?></div></h3>
                                     <p>Total Passed Evaluations</p>
                                 </div>
                                 <div class="icon">
