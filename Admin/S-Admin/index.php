@@ -1,3 +1,8 @@
+<?php 
+ include_once("../../Database/db_connection.php");
+?> 
+
+
 <!DOCTYPE html>
 <html>
 
@@ -150,7 +155,12 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>53</h3>
+                                    <?php
+                                      $post = "SELECT * FROM `course`";
+                                      $run_post = mysqli_query($conn,$post);  
+                                      $num_rows = mysqli_num_rows($run_post);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $num_rows;?></div></h3>
                                     <p>Total Courses</p>
                                 </div>
                                 <div class="icon">
@@ -162,7 +172,12 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <?php
+                                      $post = "SELECT * FROM `account`";
+                                      $run_post = mysqli_query($conn,$post);  
+                                      $num_rows = mysqli_num_rows($run_post);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $num_rows;?></div></h3>
                                     <p>Subscriptions</p>
                                 </div>
                                 <div class="icon">
@@ -175,7 +190,12 @@
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>65</h3>
+                                      <?php
+                                      $post = "SELECT * FROM `evaluation`";
+                                      $run_post = mysqli_query($conn,$post);  
+                                      $num_rows = mysqli_num_rows($run_post);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $num_rows;?></div></h3>
                                     <p>Total Evaluations</p>
                                 </div>
                                 <div class="icon">
@@ -188,7 +208,12 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                     <?php
+                                      $post = "SELECT * FROM `evaluation_result`";
+                                      $run_post = mysqli_query($conn,$post);  
+                                      $num_rows = mysqli_num_rows($run_post);   
+                                    ?>
+                                    <h3><div class="huge"><?php echo $num_rows;?></div></h3>
                                     <p>Total Passed Evaluations</p>
                                 </div>
                                 <div class="icon">
