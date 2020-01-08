@@ -1,5 +1,26 @@
 <?php
     include_once("../../Database/db_connection.php");
+    
+    if(isset($_GET["id"])){
+        $search_word = "";
+        $id = $_GET['id'];
+    	$sql = "SELECT * FROM course  WHERE id_category= $id";
+    }
+    
+    else if(isset($_GET["btn_search"])){
+    	$search_word = $_GET['search'];
+    	$sql = "SELECT * FROM course  WHERE name like '%$search_word%'";
+    }
+
+    else{  
+    	$search_word = "";
+    	$sql = "SELECT * FROM course";
+    }
+
+    $result = $conn->query($sql);
+
+    $sql_category 	 = "SELECT * FROM category";
+    $result_category = $conn->query($sql_category);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +77,7 @@
                                         <div class="logo_text">E-<span>learning</span></div>
                                     </a>
                                 </div>
+                                
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
                                         <li><a href="../index.php">Home</a></li>
@@ -83,8 +105,8 @@
                             <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
                                 <form action="#" class="header_search_form">
                                     <input type="search" class="search_input" placeholder="Search" required="required">
-                                    <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    <button class="courses_search_button ml-auto">
+                                        <i class="fa fa-search "></i>
                                     </button>
                                 </form>
                             </div>
@@ -92,7 +114,10 @@
                     </div>
                 </div>
             </div>
+
+            
         </header>
+        
 
         <!-- Menu -->
 
@@ -141,22 +166,9 @@
                     <!-- Courses Main Content -->
                     <div class="col-lg-8">
                         <div class="courses_search_container">
-                            <form action="#" id="courses_search_form" class="courses_search_form d-flex flex-row align-items-center justify-content-start">
-                                <input type="search" class="courses_search_input" placeholder="Search Courses" required="required">
-                                <select id="courses_search_select" class="courses_search_select courses_search_input">
-
-                                <?php 
-                          
-                                    $cat = mysqli_query($conn, "SELECT * from category");
-                                    if(mysqli_num_rows($cat) > 0){
-                                        while($rowCat = mysqli_fetch_array($cat)){
-                                            echo '<option>'.$rowCat["label_category"].'</option>'; 
-                                        }
-                                    }
-                                ?>
-
-                                </select>
-                                <button action="submit" class="courses_search_button ml-auto">search now</button>
+                            <form action="course_list.php" method="GET" id="courses_search_form" class="courses_search_form d-flex flex-row align-items-center justify-content-start">
+                                <input type="search" name="search" value="<?php echo $search_word ?>" class="courses_search_input col-10" placeholder="Search Courses" >
+                                <button action="submit" name="btn_search" class="courses_search_button ml-auto">search now</button>
                             </form>
                         </div>
                         <div class="courses_container">
@@ -165,9 +177,9 @@
                                 <!-- Course -->
                                 
                                 <?php 
-                                    $course = mysqli_query($conn, "SELECT * from course");
-                                    if(mysqli_num_rows($course) > 0){
-                                        while($row = mysqli_fetch_array($course)){
+                                    
+                                
+                                        while($row = $result->fetch_assoc()){
 
                                             //image part : <img src="../../Admin/image_course/'.$row["image_course"].'"
 
@@ -202,147 +214,17 @@
                                             ';
 
                                         }
-                                    }
+
+                                     
+                                    
                                 ?>
                                     
+                               
+
                                 
 
-                                <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_5.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Developing Mobile Apps</a></h3>
-                                            <div class="course_teacher">Ms. Lucius</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                                            </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_6.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Starting a Startup</a></h3>
-                                            <div class="course_teacher">Mr. Charles</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                                            </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_7.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Learn Basic German Fast</a></h3>
-                                            <div class="course_teacher">Mr. John Taylor</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                                            </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_8.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Business Groud Up</a></h3>
-                                            <div class="course_teacher">Ms. Lucius</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                                            </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Course -->
-                                <div class="col-lg-6 course_col">
-                                    <div class="course">
-                                        <div class="course_image"><img src="../images/course_9.jpg" alt=""></div>
-                                        <div class="course_body">
-                                            <h3 class="course_title"><a href="course.php">Java Technology</a></h3>
-                                            <div class="course_teacher">Mr. Charles</div>
-                                            <div class="course_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                                            </div>
-                                        </div>
-                                        <div class="course_footer">
-                                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                                                <div class="course_info">
-                                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                    <span>20 Student</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                            <div class="row pagination_row">
-                                <div class="col">
-                                    <div class="pagination_container d-flex flex-row align-items-center justify-content-start">
-                                        <ul class="pagination_list">
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                        </ul>
-                                        <div class="courses_show_container ml-auto clearfix">
-                                            <div class="courses_show_text">Showing <span class="courses_showing">1-6</span> of <span class="courses_total">26</span> results:</div>
-                                            <div class="courses_show_content">
-                                                <span>Show: </span>
-                                                <select id="courses_show_select" class="courses_show_select">
-                                                    <option>06</option>
-                                                    <option>12</option>
-                                                    <option>24</option>
-                                                    <option>36</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -355,18 +237,15 @@
                                 <div class="sidebar_section_title">Categories</div>
                                 <div class="sidebar_categories">
                                     <ul>
-                                    <?php 
-                                        $cat = mysqli_query($conn, "SELECT * from category");
-                                        if(mysqli_num_rows($cat) > 0){
-                                            while($rowCat = mysqli_fetch_array($cat)){
-
-                                                echo '
-                                                <li><a href="#">'.$rowCat["label_category"].'</a></li>
-                                                ';
-
-                                            }
-                                        }
+                                 
+                                    <?php
+                                        // output data of each row
+                                        while($row = $result_category->fetch_assoc()) { 
+                                            $id_cat  = $row["id_category"];   
+                                            $label_cat = $row["label_category"];     
                                     ?>
+                                        <li><a href="course_list.php?id=<?php echo $id_cat ?>"><?php echo $label_cat ?></a></li>								
+                                        <?php } ?>
                                     </ul>
                                 </div>
                             </div>
