@@ -9,7 +9,7 @@
     $row = mysqli_fetch_assoc($result);
 
     $id_category = $row["id_category"];
-    $id_coursename = $row["name"];
+    $course_name = $row["name"];
     $description = $row["description"];
     $release_date = $row["release_date"];
     $syllabus = htmlspecialchars_decode($row["syllabus"]);
@@ -165,7 +165,7 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Course Detail</h3>
+                                    <h3 class="card-title"><?php echo $course_name;?></h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -198,7 +198,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <h4>Syllabus</h4>
+                                                    <h4 class="text-primary">Syllabus</h4>
                                                     <div class="post">
                                                         <p><?php echo $syllabus;?></p>
                                                     </div>
@@ -207,11 +207,11 @@
                                         </div>
                                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
                                             <h5 class="mt-5 text-muted">Date of release: <?php echo $release_date;?></h5>
-                                            <h3 class="text-primary">Description</h3>
+                                            <h4 class="text-primary">Description</h4>
                                             <p><?php echo $description?></p>
                                             <br>
                                             <div class="text-right mt-5 mb-3">
-                                                <a href="#" class="btn btn-sm btn-success">Lunch</a>
+                                                <a href="exam_detail.php?&id=<?php echo $id_course;?>" class="btn btn-sm btn-success">View Exam</a>
                                                 <a href="#" class="btn btn-sm btn-primary">Modify</a>
 
                                             </div>

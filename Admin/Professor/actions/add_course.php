@@ -18,12 +18,19 @@
             VALUES ('$name', '$description', '$syllabus', '$id_prof', '$image', '$category', '$lunched', '$today')";
         $result = mysqli_query($conn,$sql)or die(mysqli_error($conn));
         if($result):
-            header("Location: ../course_list.php?success=true");
+        
+             //Get id_question
+            $get_course = "SELECT * FROM `course` WHERE id_course = (SELECT MAX(id_course) FROM `course`)";
+            $course_result = mysqli_query($conn,$get_course)or die(mysqli_error($conn));
+            $course_row = mysqli_fetch_assoc($course_result);
+            $id_course = $course_row['id_course'];
+            header("Location: ../add_exam.php?id=$id_course");
+        
             exit();
         endif;
 
     }
     die( move_uploaded_file($_FILES["image"]["tmp_name"], $image_path));
-    header("Location: ../course_list.php?success=faljse");
+    header("Location: ../course_list.php?success=false");
 
 ?>
