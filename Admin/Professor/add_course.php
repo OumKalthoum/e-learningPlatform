@@ -1,3 +1,10 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    //$id_prof = $_SESSION['id'];
+    $id_prof = '1';
+    $sql = "SELECT * FROM category WHERE active = '1'";
+    $result = mysqli_query($conn, $sql);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -133,44 +140,55 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="add_exam.php">
+                                <form role="form" action="actions/add_course.php" method="post" enctype="multipart/form-data">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nom">Name</label>
-                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="" required>
+                                            <input type="hidden" class="form-control" id="id_prof" name="id_prof" value="<?php echo $id_prof;?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="categorie">Category</label>
-                                            <select class="form-control" id="categorie">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
+                                            <select class="form-control" id="category" name="category" required>
+                                                <?php
+                                            //Category data
+                                            while($row = mysqli_fetch_assoc($result)):
+                                                $id_category = $row["id_category"];
+                                                $label_category = $row["label_category"];
+                                                echo "<option value='".$id_category."'>".$label_category."</option>";
+                                                
+                                            endwhile;?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
+                                            <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="sylabus">Syllabus</label>
-                                            <textarea type="text" class="form-control" id="sylabus" placeholder="" rows="4"></textarea>
+                                            <textarea class="textarea" placeholder="Place some text here" name="syllabus" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Videos</label>
+                                            <label for="image">Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video">
-                                                    <label class="custom-file-label" for="video">Choose a file</label>
+                                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                                    <label class="custom-file-label" for="image">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="">Open</span>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Lunch course immediately</label>
+                                            <select class="form-control select2" name="lunched" required>
+                                                <option value="0" selected="selected">No</option>
+                                                <option value="1">yes</option>
+                                            </select>
+                                        </div>
+
                                     </div>
-                                    <!-- /.card-body -->
 
                                     <div class="card-footer text-right">
                                         <button type="submit" class="btn btn-primary">Submit & Create Exam</button>
@@ -207,7 +225,27 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <!-- Summernote -->
+    <script src="../plugins/summernote/summernote-bs4.min.js"></script>
+    <script>
+        $(function() {
+            // Summernote
+            $('.textarea').summernote()
+        })
 
+    </script>
+    <script>
+       
+        $(document).on('change', '#video', function(event) {
+            $(this).next('.custom-file-label').html(event.target.files[0].name);
+           
+        });
+        $(document).on('change', '#image', function(event) {
+            $(this).next('.custom-file-label').html(event.target.files[0].name);
+           
+        });
+
+    </script>
 </body>
 
 </html>

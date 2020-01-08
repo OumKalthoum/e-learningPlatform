@@ -1,3 +1,8 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    $sql = "SELECT * FROM `course`";
+    $result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -126,77 +131,88 @@
             <section class="content">
                 <div class="container-fluid">
 
-                    <div class="card">
+                    <div class="card row">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Course</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
-                                        <th>N° Videos</th>
-                                        <th>Total periode</th>
-                                        <th>N° Subscribed students</th>
-                                        <th>Active</th>
-                                        <th>Lunched</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td style="color: forestgreen;">Y</td>
-                                        <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td style="color: forestgreen;">Y</td>
-                                        <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td style="color: forestgreen;">Y</td>
-                                        <td style="color: crimson;">N</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-warning btn-xs">Modify</button><button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Course</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
-                                        <th>N° Videos</th>
-                                        <th>Total periode</th>
-                                        <th>N° Subscribed students</th>
-                                        <th>Active</th>
-                                        <th>Lunched</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                            <div>
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Course</th>
+                                            <th>Category</th>
+                                            <th>Description</th>
+                                            <th>N° Videos</th>
+                                            <th>N° Subscriptions</th>
+                                            <th>Active</th>
+                                            <th>Lunched</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                    //Course data
+                                    while($row = $result->fetch_assoc()):
+                                    $id_course = $row["id_course"];
+                                    //Get category name
+                                    $id_category = $row["id_category"];
+                                    $category_sql = "SELECT * FROM `category` WHERE id_category = '$id_category'";
+                                    $category_result = mysqli_query($conn, $category_sql);
+                                    $category_row = mysqli_fetch_assoc($category_result);
+                                    $label_category = $category_row["label_category"];
+                                    
+                                    $name = $row["name"];
+                                    $description = $row["description"];
+                                    $active = $row["active"];
+                                    $lunched = $row["lunched"];
+                                        
+                                    //number of videos  
+                                    $video_sql = "SELECT count(*) as count FROM `video` WHERE id_course = '$id_course'";
+                                    $video_result = mysqli_query($conn, $video_sql);
+                                    $video_row = mysqli_fetch_assoc($video_result);
+                                    $videos_number = $video_row['count'];
+                                        
+                                        
+                                    //number of students = subsriptions 
+                                    $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
+                                    $student_result = mysqli_query($conn, $student_sql);
+                                    $student_row = mysqli_fetch_assoc($student_result);
+                                    $student_number = $student_row['count'];
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $name;?></td>
+                                            <td><?php echo $label_category;?></td>
+                                            <td><?php echo $description;?></td>
+                                            <td><?php echo $videos_number;?></td>
+                                            <td><?php echo $student_number;?></td>
+                                            <td><?php echo $active;?></td>
+                                            <td><?php echo $lunched;?></td>
+                                            <td>
+
+                                                <form method="post" action="course_detail.php">
+                                                    <input type="hidden" name="id_course" value="<?php echo $id_course;?>">
+                                                    <button type="submit" class="btn btn-block btn-outline-warning btn-xs">View</button>
+                                                </form>
+                                                
+                                                <button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button>
+                                            </td>
+                                        </tr>
+                                        <?php endwhile;?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Course</th>
+                                            <th>Category</th>
+                                            <th>Description</th>
+                                            <th>N° Videos</th>
+                                            <th>N° Subscriptions</th>
+                                            <th>Active</th>
+                                            <th>Lunched</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div> <!-- /.card-body -->
                     </div>
 
                 </div>
@@ -231,9 +247,8 @@
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
-        $(function() {
-            $("#example1").DataTable();
-
+        $(document).ready(function() {
+            var table = $('#example1').DataTable();
         });
 
     </script>

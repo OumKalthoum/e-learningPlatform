@@ -1,3 +1,39 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    if(!isset($_POST['id_course'])):
+        header('Location: ../General/404.html');
+    endif;
+    $id_course = $_POST['id_course'];
+    $sql = "SELECT * FROM `course` WHERE id_course = '$id_course'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $id_category = $row["id_category"];
+    $id_coursename = $row["name"];
+    $description = $row["description"];
+    $release_date = $row["release_date"];
+    $syllabus = htmlspecialchars_decode($row["syllabus"]);
+    $active = $row["active"];
+    $lunched = $row["lunched"];
+
+    //number of videos  
+    $video_sql = "SELECT count(*) as count FROM `video` WHERE id_course = '$id_course'";
+    $video_result = mysqli_query($conn, $video_sql);
+    $video_row = mysqli_fetch_assoc($video_result);
+    $videos_number = $video_row['count'];
+
+    //number of students = subsriptions 
+    $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
+    $student_result = mysqli_query($conn, $student_sql);
+    $student_row = mysqli_fetch_assoc($student_result);
+    $student_number = $student_row['count'];
+
+    //number of passed evaluations
+    $exams_sql = "SELECT count(*) as count FROM `evaluation` e INNER JOIN `evaluation_result` er ON e.id_evaluation = er. id_evaluation WHERE id_course = '$id_course'";
+    $exams_result = mysqli_query($conn, $exams_sql)or die(mysqli_error($conn));
+    $exams_row = mysqli_fetch_assoc($exams_result);
+    $exams_number = $exams_row['count'];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -139,15 +175,15 @@
                                                     <div class="info-box bg-light">
                                                         <div class="info-box-content">
                                                             <span class="info-box-text text-center text-muted">Total Subscriptions</span>
-                                                            <span class="info-box-number text-center text-muted mb-0">2300</span>
+                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $student_number;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-4">
                                                     <div class="info-box bg-light">
                                                         <div class="info-box-content">
-                                                            <span class="info-box-text text-center text-muted"><i class="far fa-fw fa-clock"></i>Total time</span>
-                                                            <span class="info-box-number text-center text-muted mb-0">5 hour</span>
+                                                            <span class="info-box-text text-center text-muted"><i class="far fa-fw fa-clock"></i>Total videos</span>
+                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $videos_number;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -155,7 +191,7 @@
                                                     <div class="info-box bg-light">
                                                         <div class="info-box-content">
                                                             <span class="info-box-text text-center text-muted">Total Passed Evaluations</span>
-                                                            <span class="info-box-number text-center text-muted mb-0">20 <span>
+                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $exams_number;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -164,61 +200,20 @@
                                                 <div class="col-12">
                                                     <h4>Syllabus</h4>
                                                     <div class="post">
-                                                        <p>Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            ke. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.Lorem ipsum represents a long-held tradition for designers,
-                                                            typographers and the like. Some people hate it and argue for
-                                                            its demise, but others ignore.
-                                                        </p>
-
-                                                        <p>
-                                                        </p>
+                                                        <p><?php echo $syllabus;?></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                                            <h5 class="mt-5 text-muted">Date of release: 2019/11/08</h5>
+                                            <h5 class="mt-5 text-muted">Date of release: <?php echo $release_date;?></h5>
                                             <h3 class="text-primary">Description</h3>
-                                            <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+                                            <p><?php echo $description?></p>
                                             <br>
                                             <div class="text-right mt-5 mb-3">
                                                 <a href="#" class="btn btn-sm btn-success">Lunch</a>
                                                 <a href="#" class="btn btn-sm btn-primary">Modify</a>
+
                                             </div>
                                         </div>
                                     </div>

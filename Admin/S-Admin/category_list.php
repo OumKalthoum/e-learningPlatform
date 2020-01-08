@@ -179,13 +179,13 @@
 
                                             </form>
                                             <?php if($active == '1'):?>
-                                            <form method="post" action="hide_category.php?&id=<?php echo $id_category;?>">
+                                            <form method="post" action="actions/hide_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
 
                                             </form>
                                             <?php endif;?>
                                             <?php if($active == '0'):?>
-                                            <form method="post" action="show_category.php?&id=<?php echo $id_category;?>">
+                                            <form method="post" action="actions/show_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-success btn-xs">Show</button>
 
                                             </form>
@@ -256,6 +256,12 @@
                 echo "Toast.fire({
                         type: 'success',
                         title: '  Category has been modified successfuly !'
+                    })";
+            endif;
+            if(isset($_GET['update']) && $_GET['update'] == 'true'):
+                echo "Toast.fire({
+                        type: 'success',
+                        title: '  Category has been updated successfuly !'
                     })";
             endif;
         ?>

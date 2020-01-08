@@ -222,7 +222,7 @@
                 echo "Toast.fire({
                         type: 'error',
                         title: '  Category already exists !'
-                    })";
+                      })";
             endif;
         ?>
 

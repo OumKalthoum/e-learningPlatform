@@ -129,52 +129,129 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">New Course</h3>
+                                    <h3 class="card-title">New Exam</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="nom">Name</label>
-                                            <input type="text" class="form-control" id="nom" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="categorie">Category</label>
-                                            <select class="form-control" id="categorie">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" placeholder="" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sylabus">Syllabus</label>
-                                            <textarea type="text" class="form-control" id="sylabus" placeholder="" rows="4"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Videos</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video">
-                                                    <label class="custom-file-label" for="video">Choose a file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="">Open</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
+                                <form role="form" id="exam_form">
+                                        <section>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="nom">Question 1:</label>
+                                                            <textarea type="text" class="form-control" id="question" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 1:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 2:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 3:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="categorie">Correct Answer : </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <!-- Material inline 1 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline1">1</label>
+                                                            </div>
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit & Create Exam</button>
-                                    </div>
+                                                            <!-- Material inline 2 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline2">2</label>
+                                                            </div>
+
+                                                            <!-- Material inline 3 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline3" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline3">3</label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- /.card-body -->
+
+                                        </section>
+                                        <section>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="nom">Question 2:</label>
+                                                            <textarea type="text" class="form-control" id="question" placeholder=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 1:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 2:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="nom">Answer 3:</label>
+                                                            <input type="text" class="form-control" id="nom" placeholder="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9 offset-md-1">
+                                                        <div class="form-group">
+                                                            <label for="categorie">Correct Answer : </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <!-- Material inline 1 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline1">1</label>
+                                                            </div>
+
+                                                            <!-- Material inline 2 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline2">2</label>
+                                                            </div>
+
+                                                            <!-- Material inline 3 -->
+                                                            <div class="form-check form-check-inline">
+                                                                <input type="radio" class="form-check-input" id="materialInline3" name="inlineMaterialRadiosExample">
+                                                                <label class="form-check-label" for="materialInline3">3</label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- /.card-body -->
+
+
+                                        </section>
+                                        <div class="card-footer text-right">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                                 </form>
                             </div>
                             <!-- /.card -->
@@ -206,7 +283,27 @@
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+    <script></script>
+    <script src="../dist/js/demo.js">
+        var form = $("#exam_form");
+        form.children("div").steps({
+            headerTag: "h4",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            onStepChanging: function(event, currentIndex, newIndex) {
+                form.validate().settings.ignore = ":disabled,:hidden";
+                return form.valid();
+            },
+            onFinishing: function(event, currentIndex) {
+                form.validate().settings.ignore = ":disabled";
+                return form.valid();
+            },
+            onFinished: function(event, currentIndex) {
+                alert("Submitted!");
+            }
+        });
+
+    </script>
 
 </body>
 
