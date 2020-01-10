@@ -1,3 +1,33 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    session_start();
+    $connected = "";
+	if(isset($_SESSION["connected"])){
+        $id_account = $_SESSION["id_account"];
+        $connected = $_SESSION["connected"];
+        
+        $sql = "SELECT * from account where id_account = $id_account" ;
+        $result = $conn->query($sql);
+
+        while($row = $result->fetch_assoc()) { 
+            $id_account   = $row["id_account"];
+            $full_name    = $row["full_name"];      
+            
+        }
+            
+    }
+    if(isset($_GET['startcourse']))
+    {
+        $id_course = $_SESSION["id_course"];
+        $query = "INSERT INTO course_student (id_stud, id_course, Avancement) VALUES ($id_account, $id_course, '0')";
+        if ($conn->query($query)) {
+            header("Location: follow_course.php?id=1&counter=1"); 
+        }
+    }
+        
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +64,19 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
-                                    </div>
+                                <?php 
+                                    if($connected == "connected"){
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="../signup/logout.php">Logout</a></div>
+                                        ';
+                                    }else{
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
+                                        ';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -64,6 +104,22 @@
 									<li><a href="blog.html">Blog</a></li>
 									<li><a href="#">Page</a></li>-->
                                         <li><a href="../general/contact.php">Contact</a></li>
+                                        <?php
+
+                                        if($connected == "connected"){
+                                        echo '
+                                        <li>
+                                            <button class="home_search_button">
+                                                
+                                                '.$full_name.'
+                                                <div class="hamburger menu_mm">
+                                                    <i class="glyphicon-user"></i>
+                                                </div>
+                                            </button>
+                                        </li>
+                                        ';
+                                        }
+                                        ?>
                                     </ul>
 
                                     <!-- Hamburger -->
@@ -114,6 +170,18 @@
                     <li class="menu_mm"><a href="../general/about.php">About</a></li>
                     <li class="menu_mm"><a href="course_list.php">Courses</a></li>
                     <li class="menu_mm"><a href="../general/contact.php">Contact</a></li>
+                    <?php
+
+                    if($connected == "connected"){
+                    echo '
+                    <li class="menu_mm">
+                    <a>
+                            '.$full_name.'
+                            </a>    
+                    </li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -146,27 +214,83 @@
 
                     <!-- Course -->
                     <div class="col-lg-8">
+                        <?php 
+                        $id_course = $_GET['id'];
+                        $_SESSION["id_course"] = $id_course;
+                        $sql = mysqli_query($conn, "SELECT * FROM course  WHERE id_course= $id_course");
+                        $row_course = mysqli_fetch_array($sql);
+
+                        $id_prof = $row_course["id_prof"];
+                        $prof = mysqli_query($conn, "SELECT * from account where id_account = $id_prof");
+                        $row_account = mysqli_fetch_array($prof);
+
+                        $id_cat = $row_course["id_category"];
+                        $cat = mysqli_query($conn,"SELECT * FROM category where id_category = $id_cat");
+                        $row_cat = mysqli_fetch_array($cat);
+
+                        ?>
 
                         <div class="course_container">
-                            <div class="course_title">Software Training</div>
-                            <form action="follow_course.php">
-                                <button type="submit" class="home_search_button">Start</button>
-                            </form>
+                            <div class="course_title"> <?php echo $row_course["name"] ?></div>
+                            <?php 
+                                if($connected == "connected"){
+                                    $exist = 'NO';
+                                    $start = mysqli_query($conn, "SELECT * FROM course_student");
+                                    while($row_start = mysqli_fetch_array($start)) { 
+                                        $id_stud = $row_start["id_stud"];
+                                        $id_started_course = $row_start["id_course"];  
+
+                                        if($id_stud == $id_account && $id_started_course == $id_course){
+                                            $exist = 'yes';
+                                        }
+                                    }
+                                    if($exist == 'yes'){
+                                        echo '
+                                        <form action="follow_course.php?id=1&counter=1" >
+                                            <button type="submit" class="home_search_button">See your course</button>
+                                        </form>
+                                        ';
+                                    }
+                                    else{
+                                        echo '
+                                        <form method="Get" >
+                                            <button name="startcourse" type="submit" class="home_search_button">Start</button>
+                                        </form>
+                                        
+                                        ';
+                                    }
+                                }else{
+                                    echo '
+                                    <form action="../signup/sign_up.php">
+                                        <button type="submit" class="home_search_button">Start</button>
+                                    </form>      
+                                    ';
+                                }
+                            ?>
+
+                            
                             <div class="course_info d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
 
                                 <!-- Course Info Item -->
                                 <div class="course_info_item">
                                     <div class="course_info_title">Professor:</div>
-                                    <div class="course_info_text"><a href="#">Jacke Masito</a></div>
+                                    <div class="course_info_text"><a href="#"><?php echo $row_account["full_name"] ?></a></div>
                                 </div>
 
                                 <!-- Course Info Item -->
                                 <div class="course_info_item">
                                     <div class="course_info_title">Category:</div>
-                                    <div class="course_info_text"><a href="#">Languages</a></div>
+                                    <div class="course_info_text"><a href="#"><?php echo $row_cat["label_category"] ?></a></div>
                                 </div>
 
                             </div>
+
+                            <!-- Course Image -->
+                            <div class="course_image"><img src="../images/course_image.jpg" alt=""></div>
+
+                            <!-- when image is added
+                            <div class="course_image"><img src="../images/<?php echo $row_course["image_course"] ?>" alt=""></div>
+                            -->
 
                             <!-- Course Tabs -->
                             <div class="course_tabs_container">
@@ -177,25 +301,10 @@
 
                                     <!-- Description -->
                                     <div class="tab_panel active">
-                                        <div class="tab_panel_title">Software Training</div>
+                                        <div class="tab_panel_title"><?php echo $row_course["name"] ?></div>
                                         <div class="tab_panel_content">
                                             <div class="tab_panel_text">
-                                                <p>Lorem Ipsn gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auci elit consequat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosquad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora torquent per conubia nostra, per inceptos himenaeos.</p>
-                                            </div>
-                                            <div class="tab_panel_section">
-                                                <div class="tab_panel_subtitle">Requirements</div>
-                                                <ul class="tab_panel_bullets">
-                                                    <li>Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora torquent.</li>
-                                                    <li>Cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a.</li>
-                                                    <li>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat.</li>
-                                                    <li>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</li>
-                                                </ul>
-                                            </div>
-                                            <div class="tab_panel_section">
-                                                <div class="tab_panel_subtitle">What is the target audience?</div>
-                                                <div class="tab_panel_text">
-                                                    <p>This course is intended for anyone interested in learning to master his or her own body.This course is aimed at beginners, so no previous experience with hand balancing skillts is necessary Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante pretium, consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                                                </div>
+                                                <p><?php echo $row_course["description"] ?></p>
                                             </div>
                                         </div>
                                     </div>

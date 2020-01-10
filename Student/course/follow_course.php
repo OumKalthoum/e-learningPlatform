@@ -1,3 +1,38 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    session_start();
+    $connected = "";
+	if(isset($_SESSION["connected"])){
+        $id_account = $_SESSION["id_account"];
+        $connected = $_SESSION["connected"];
+        $id_course = $_SESSION["id_course"];
+        
+        $sql = "SELECT * from account where id_account = $id_account" ;
+        $result = $conn->query($sql);
+
+        while($row = $result->fetch_assoc()) { 
+            $id_account   = $row["id_account"];
+            $full_name    = $row["full_name"];      
+            
+        }
+
+        if(isset($_GET["id"])){
+            $search_word = "";
+            $id_chapter = $_GET['id'];
+            $counter = $_GET['counter'];
+            $_SESSION["counter"] = $counter;
+            $query = "SELECT * from chapter where id_course = $id_course and id_chapter = $id_chapter";
+            $result_query = $conn->query($query);
+            $row = $result_query->fetch_assoc();
+        }
+        
+        $sql1 = "SELECT * from chapter where id_course = $id_course" ;
+
+        $result1 = $conn->query($sql1);
+            
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +70,19 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
-                                    </div>
+                                <?php 
+                                    if($connected == "connected"){
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="signup/logout.php">Logout</a></div>
+                                        ';
+                                    }else{
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
+                                        ';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -62,6 +107,22 @@
                                         <li><a href="../general/about.php">About</a></li>
                                         <li class="active"><a href="course_list.php">Courses</a></li>
                                         <li><a href="../general/contact.php">Contact</a></li>
+                                        <?php
+
+                                        if($connected == "connected"){
+                                        echo '
+                                        <li>
+                                            <button class="home_search_button">
+                                                
+                                                '.$full_name.'
+                                                <div class="hamburger menu_mm">
+                                                    <i class="glyphicon-user"></i>
+                                                </div>
+                                            </button>
+                                        </li>
+                                        ';
+                                        }
+                                        ?>
                                     </ul>
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
@@ -108,6 +169,18 @@
                     <li class="menu_mm"><a href="../general/about.php">About</a></li>
                     <li class="menu_mm"><a href="course_list.php">Courses</a></li>
                     <li class="menu_mm"><a href="../general/contact.php">Contact</a></li>
+                    <?php
+
+                    if($connected == "connected"){
+                    echo '
+                    <li class="menu_mm">
+                    <a>
+                            '.$full_name.'
+                            </a>    
+                    </li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -140,14 +213,12 @@
 
                     <!-- Blog Content -->
                     <div class="col-lg-8">
+
                         <div class="blog_content">
-                            <div class="blog_title">‘I Kept Thinking of Antioch’: Long Before #MeToo, a times Video Journalist Remembered</div>
-                            <div class="blog_meta">
-                                <ul>
-                                    <li>Post on <a href="#">May 5, 2018</a></li>
-                                    <li>By <a href="#">admin</a></li>
-                                </ul>
-                            </div>
+                        <?php 
+                            $counter = $_SESSION['counter'];?>
+                            <div class="blog_title">Chapter <?php echo $counter.' : '.$row["title_chapter"] ?></div>
+                </br>
                             <div class="">
                                 <div class="blog_post_video_container">
                                     <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "poster": "../images/blog_2.jpg"}'>
@@ -157,10 +228,7 @@
                                     </video>
                                 </div>
                             </div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch College in Yellow Springs, Ohio — before I could read the spines of her textbooks or drink a disgusting but lovingly prepared vodka/sparkling wine/Red Bull — I had to report to security:</p>
-                            <div class="blog_subtitle">All the current students</div>
-                            <p>I followed up with for the video told me that being sexual with an Antioch student is different from being sexual with someone else. They spoke of a common language everyone is taught beginning at orientation, so that when one student starts asking questions of another student in the midst of sexual activity, it doesn’t seem so out there.</p>
-                            <p>But what is it like to be an 18-year-old and have the expectation set that you will talk during sex? I, for one, have never been part of a community with that expectation. Spending time at Antioch’s orientation, I thought about how that might change your sexual interactions for the rest of your life.</p>
+                            <p><?php echo $row["description_chapter"] ?></p>
                         </div>
                         <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
                         </div>
@@ -175,12 +243,18 @@
                                 <div class="sidebar_section_title">Chapiters</div>
                                 <div class="sidebar_categories">
                                     <ul class="categories_list">
-                                        <li><a href="#" class="clearfix">Chapiter 1<span>(05:34)</span></a></li>
-                                        <li><a href="#" class="clearfix">Chapiter 2<span>(17:01)</span></a></li>
-                                        <li><a href="#" class="clearfix">Chapiter 3<span>(30:11)</span></a></li>
-                                        <li><a href="#" class="clearfix">Chapiter 4<span>(12:56)</span></a></li>
-                                        <li><a href="#" class="clearfix">Chapiter 5<span>(07:09)</span></a></li>
+                                    <?php
+                                        // output data of each row
+                                        $count=0;
+                                        while($row_chapter = $result1->fetch_assoc()) { 
+                                            $id_chapter  = $row_chapter["id_chapter"];   
+                                            $title_chapter = $row_chapter["title_chapter"]; 
+                                            $count ++;
+                                    ?>
+                                        <li><a href="follow_course.php?id=<?php echo $id_chapter.'&counter='.$count ?>" class="clearfix">Chapter  <?php echo $count.' : <span>'.substr($title_chapter, 0, 40).'</span>'; ?></a></li>								
+                                        <?php } ?>
                                         <li><a href="../exam/exam.php" class="clearfix">Exam</a></li>
+                                        
                                     </ul>
                                 </div>
                             </div>

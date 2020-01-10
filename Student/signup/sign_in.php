@@ -1,3 +1,37 @@
+<?php
+	session_start();
+    include_once("../../Database/db_connection.php");
+        if(isset($_GET["btn_sing_in"])){
+            $email = $_GET["email"];
+            $pswd = $_GET["password"];
+
+            $sql = "SELECT * from account" ;
+            $result = $conn->query($sql);
+
+		while($row = $result->fetch_assoc()) { 
+		    $id_account       = $row["id_account"];
+		    $email_account    = $row["email"];      
+            $password_account = $row["password"]; 
+            $type_account     = $row["type"];
+
+		    if($email_account == $email && $password_account == $pswd && $type_account =='S'){
+		    	header('Location: ../index.php');
+		    	// Set session variables
+				$_SESSION["id_account"] = $id_account;
+				$_SESSION["connected"] = "connected";
+			}
+		    else{
+		    	$message = "wrong Email or Password";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+		    }
+		}
+    }
+    else{
+    	$email = "";
+	    $password = "";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,11 +74,11 @@
                 <div class="counter_form">
                     <div class="row fill_height">
                         <div class="col fill_height">
-                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="actions/sign_in.php" method="post">
+                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="sign_in.php" method="Get">
                                 <div class="counter_form_title">Se connecter</div>
                                 <input type="email" class="counter_input" name="email" placeholder="E-mail" required="required">
                                 <input type="password" class="counter_input" name="password" placeholder="Mot de passe" required="required">
-                                <button type="submit" class="counter_form_button">Se connecter</button>
+                                <button type="submit" name="btn_sing_in" class="counter_form_button">Se connecter</button>
                                 <br>
                                 <a href="sign_up.php">Vous n'avez pas de compte étudiant?</a>
                                 <a href="../../Admin/Authentification/sign_in.php">Vous êtes un professeur?</a>

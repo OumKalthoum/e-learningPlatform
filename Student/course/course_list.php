@@ -1,5 +1,21 @@
 <?php
     include_once("../../Database/db_connection.php");
+    session_start();
+    $connected = "";
+	if(isset($_SESSION["connected"])){
+        $id_account = $_SESSION["id_account"];
+        $connected = $_SESSION["connected"];
+        
+        $sql1 = "SELECT * from account where id_account = $id_account" ;
+        $result1 = $conn->query($sql1);
+
+        while($row = $result1->fetch_assoc()) { 
+            $id_account   = $row["id_account"];
+            $full_name    = $row["full_name"];      
+            
+        }
+            
+	}
     
     if(isset($_GET["id"])){
         $search_word = "";
@@ -56,9 +72,19 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
-                                    </div>
+                                <?php 
+                                    if($connected == "connected"){
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="../signup/logout.php">Logout</a></div>
+                                        ';
+                                    }else{
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
+                                        ';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +110,22 @@
                                         <li><a href="../general/about.php">About</a></li>
                                         <li class="active"><a href="course_list.php">Courses</a></li>
                                         <li><a href="../general/contact.php">Contact</a></li>
+                                        <?php
+
+                                            if($connected == "connected"){
+                                            echo '
+                                            <li>
+                                                <button class="home_search_button">
+                                                    
+                                                    '.$full_name.'
+                                                    <div class="hamburger menu_mm">
+                                                        <i class="glyphicon-user"></i>
+                                                    </div>
+                                                </button>
+                                            </li>
+                                            ';
+                                            }
+                                        ?>
                                     </ul>
 
                                     <div class="hamburger menu_mm">
@@ -134,6 +176,18 @@
                     <li class="menu_mm"><a href="../general/about.php">About</a></li>
                     <li class="menu_mm"><a href="course_list.php">Courses</a></li>
                     <li class="menu_mm"><a href="../general/contact.php">Contact</a></li>
+                    <?php
+
+                    if($connected == "connected"){
+                    echo '
+                    <li class="menu_mm">
+                    <a>
+                            '.$full_name.'
+                            </a>    
+                    </li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
@@ -188,7 +242,7 @@
                                             <div class="course">
                                             <div class="course_image"><img src="../../Admin/image_course/blog_4.jpg" alt=""></div>
                                             <div class="course_body">
-                                                <h3 class="course_title"><a href="course.php">'.$row["name"].'</a></h3>';
+                                                <h3 class="course_title"><a href="course.php?id='.$row["id_course"].'">'.$row["name"].'</a></h3>';
 
                                             $id_prof = $row["id_prof"];
                                             $prof = mysqli_query($conn, "SELECT * from account where id_account = $id_prof");

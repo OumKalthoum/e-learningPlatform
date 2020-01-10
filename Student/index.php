@@ -1,3 +1,23 @@
+<?php
+    include_once("../Database/db_connection.php");
+    session_start();
+    $connected = "";
+	if(isset($_SESSION["connected"])){
+        $id_account = $_SESSION["id_account"];
+        $connected = $_SESSION["connected"];
+        
+        $sql = "SELECT * from account where id_account = $id_account" ;
+        $result = $conn->query($sql);
+
+        while($row = $result->fetch_assoc()) { 
+            $id_account   = $row["id_account"];
+            $full_name    = $row["full_name"];      
+            
+        }
+            
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,90 +44,135 @@
 
         <header class="header">
 
-            <!-- Top Bar -->
-            <div class="top_bar">
-                <div class="top_bar_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+        <!-- Top Bar -->
+        <div class="top_bar">
+            <div class="top_bar_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                            
+
+                            <?php 
+                                if($connected == "connected"){
+                                    echo '
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
-                                    </div>
+                                    <div  class="login_button"><a href="signup/logout.php">Logout</a></div>
+                                    ';
+                                }else{
+                                    echo '
+                                    <div class="top_bar_login ml-auto">
+                                    <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
+                                    ';
+                                }
+                            ?>
+
+
+
+                                
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Header Content -->
-            <div class="header_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="logo_container">
-                                    <a href="index.php">
-                                        <div class="logo_text">E-<span>learning</span></div>
-                                    </a>
+        <!-- Header Content -->
+        <div class="header_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo_container">
+                                <a href="index.php">
+                                    <div class="logo_text">E-<span>learning</span></div>
+                                </a>
+                            </div>
+                            <nav class="main_nav_contaner ml-auto">
+                                <ul class="main_nav">
+                                    <li class="active"><a href="index.php">Home</a></li>
+                                    <li><a href="general/about.php">About</a></li>
+                                    <li><a href="course/course_list.php">Courses</a></li>
+                                    <!--
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="#">Page</a></li>-->
+                                    <li><a href="general/contact.php">Contact</a></li>
+                                    <?php
+
+                                    if($connected == "connected"){
+                                    echo '
+                                    <li>
+                                        <button class="home_search_button">
+                                            
+                                            '.$full_name.'
+                                            <div class="hamburger menu_mm">
+                                                <i class="glyphicon-user"></i>
+                                            </div>
+                                        </button>
+                                    </li>
+                                    ';
+                                    }
+                                ?>
+                                </ul>
+                                
+                                <!-- Hamburger -->
+
+                                <!--<div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>-->
+                                <div class="hamburger menu_mm">
+                                    <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
                                 </div>
-                                <nav class="main_nav_contaner ml-auto">
-                                    <ul class="main_nav">
-                                        <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="general/about.php">About</a></li>
-                                        <li><a href="course/course_list.php">Courses</a></li>
-                                        <!--
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="#">Page</a></li>-->
-                                        <li><a href="general/contact.php">Contact</a></li>
-                                    </ul>
+                            </nav>
 
-                                    <!-- Hamburger -->
-
-                                    <!--<div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>-->
-                                    <div class="hamburger menu_mm">
-                                        <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
-                                    </div>
-                                </nav>
-
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Header Search Panel -->
-            <div class="header_search_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
-                                <form action="#" class="header_search_form">
-                                    <input type="search" class="search_input" placeholder="Search" required="required">
-                                    <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </button>
-                                </form>
-                            </div>
+        <!-- Header Search Panel -->
+        <div class="header_search_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+                            <form action="#" class="header_search_form">
+                                <input type="search" class="search_input" placeholder="Search" required="required">
+                                <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </header>
 
         <!-- Menu -->
 
         <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-           
-            <nav class="menu_nav">
-                <ul class="menu_mm">
-                    <li class="menu_mm"><a href="index.php">Home</a></li>
-                    <li class="menu_mm"><a href="general/about.php">About</a></li>
-                    <li class="menu_mm"><a href="course/course_list.php">Courses</a></li>
-                    <li class="menu_mm"><a href="general/contact.php">Contact</a></li>
-                </ul>
-            </nav>
+
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li class="menu_mm"><a href="index.php">Home</a></li>
+                <li class="menu_mm"><a href="general/about.php">About</a></li>
+                <li class="menu_mm"><a href="course/course_list.php">Courses</a></li>
+                <li class="menu_mm"><a href="general/contact.php">Contact</a></li>
+                <?php
+
+                    if($connected == "connected"){
+                    echo '
+                    <li class="menu_mm">
+                    <a>
+                            '.$full_name.'
+                            </a>    
+                    </li>
+                    ';
+                    }
+                    ?>
+            </ul>
+        </nav>
         </div>
 
         <!-- Home -->

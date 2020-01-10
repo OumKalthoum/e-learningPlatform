@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Generation Time: Jan 08, 2020 at 12:07 PM
+-- Généré le :  ven. 10 jan. 2020 à 03:06
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -44,9 +44,10 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`) VALUES
 (1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S'),
 (30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A'),
-(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P'),
+(31, 'Mouchawrab', 'prof@prof.ma', 'prof', '2001-01-20', 'P'),
 (32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S'),
-(33, 'Jacke Masito', 'paris@paris.ma', '123456', '0000-00-00', 'P');
+(33, 'Jacke Masito', 'paris@paris.ma', '123456', '0000-00-00', 'P'),
+(35, 'Hannah', 'hannah@edu.ma', 'hannaf', '2001-09-20', 'S');
 
 -- --------------------------------------------------------
 
@@ -58,21 +59,39 @@ CREATE TABLE `category` (
   `id_category` int(11) NOT NULL,
   `label_category` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `category`
 --
 
 INSERT INTO `category` (`id_category`, `label_category`) VALUES
-(1, 'informatique', '', 1),
-(2, 'Kitchen', 'This category is related to cooking and bakery courses only!', 1),
-(3, 'Dance ', '', 1),
-(6, 'Java beginners course  ', 'Java programming course', 1),
-(13, 'Java beginners course	', '', 1),
-(14, 'Python', '', 1),
-(15, 'Sign language', '', 1),
-(16, 'Design patterns', '', 1);
+(1, 'informatique'),
+(2, 'cuisine'),
+(3, 'dance'),
+(4, 'Languages');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chapter`
+--
+
+CREATE TABLE `chapter` (
+  `id_chapter` int(15) NOT NULL,
+  `path_video` varchar(30) NOT NULL,
+  `id_course` int(15) NOT NULL,
+  `title_chapter` varchar(100) NOT NULL,
+  `description_chapter` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `chapter`
+--
+
+INSERT INTO `chapter` (`id_chapter`, `path_video`, `id_course`, `title_chapter`, `description_chapter`) VALUES
+(1, 'video', 1, '‘I Kept Thinking of Antioch’: Long Before #MeToo, a times Video Journalist Remembered', 'Times Insider delivers behind-the-scenes insights into how news, features and opinion come together '),
+(2, 'vidoeokn', 1, 'title chapter 2', 'description chapter 2\r\n'),
+(3, 'video', 1, 'title chzapter3 ', 'description chapter 3');
 
 -- --------------------------------------------------------
 
@@ -81,31 +100,25 @@ INSERT INTO `category` (`id_category`, `label_category`) VALUES
 --
 
 CREATE TABLE `course` (
-  `id_course` int(15) NOT NULL AUTO_INCREMENT,
+  `id_course` int(15) NOT NULL,
   `name` varchar(60) NOT NULL,
   `description` varchar(100) NOT NULL,
-  `syllabus` mediumtext NOT NULL,
+  `syllabus` varchar(100) NOT NULL,
   `id_prof` int(15) NOT NULL,
   `image_course` varchar(100) NOT NULL,
   `id_category` int(11) NOT NULL
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `lunched` tinyint(1) NOT NULL DEFAULT '0',
-  `release_date` date NOT NULL,
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `course`
 --
 
-INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`, `active`, `lunched`, `release_date`) VALUES
-(1, 'PHP Course', 'loremmmmaaat epssommaatat', 'syllabussat', 31, 'image_course', 1, 1, 0, '0000-00-00'),
-(2, 'HTML Course', 'loremmmmaaat epssommaatatloremmmmaaat epssommaatat', 'syllabussat', 31, 'image_course', 1, 1, 0, '0000-00-00'),
-(3, 'java course', 'intro', '&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 0);&quot;&gt;this is a demo&lt;/span&g', 1, '', 15, 1, 1, '0000-00-00'),
-(4, 'BQs', 'vcv', '&lt;h3&gt;&lt;span style=&quot;background-color: rgb(57, 132, 198);&quot;&gt;this is a demo&lt;/span', 1, '', 16, 1, 0, '0000-00-00'),
-(5, 'rv', 'SSE', '&lt;p&gt;EE&lt;/p&gt;', 1, 'jaouhara_chanchaf_convocation_examen.jpg', 15, 1, 1, '0000-00-00'),
-(6, 'demo course', 'BSL', '&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 198, 156);&quot;&gt;THIS IS A DEMO SYLLABUS', 1, 'jaouhara_chanchaf_convocation_examen.jpg', 15, 1, 0, '2020-01-07'),
-(7, 'Salsa', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore', '&lt;p&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Chapter 1:&amp;nbsp;&lt;/span&gt;&l', 1, 'jaouhara_chanchaf_convocation_examen.jpg', 3, 1, 0, '2020-01-08'),
-(8, 'java course 2', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore', '&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify; background-color: rgb(255, 255, 0);&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 'jaouhara_chanchaf_convocation_examen.jpg', 1, 1, 0, '2020-01-08');
+INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`) VALUES
+(0, 'Design pattern', 'Lorem epson kda kda kda', 'syllabus description', 31, 'image_course', 1),
+(1, 'PHP Course', 'loremmmmaaat epssommaatat', 'syllabussat', 36, 'image_course', 1),
+(2, 'HTML Course', 'Lorem Ipsn gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auci elit', 'syllabussat', 33, 'image_course', 3),
+(4, 'Software Training', 'Lorem epson kda kda kda', 'syllabus description', 36, 'image_course', 2),
+(5, 'Starting a Startup', 'Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor', 'Syllabus', 31, 'image_course', 3);
 
 -- --------------------------------------------------------
 
@@ -120,20 +133,21 @@ CREATE TABLE `course_student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `course_student`
+-- Déchargement des données de la table `course_student`
 --
 
-INSERT INTO `course_student` (`id_stud`, `id_course`) VALUES
-(1, 2),
-(1, 1),
-(6, 1),
-(2, 1),
-(2, 2),
-(3, 1),
-(5, 1),
-(5, 2),
-(4, 1),
-(1, 2);
+INSERT INTO `course_student` (`id_stud`, `id_course`, `Avancement`) VALUES
+(0, 1, 0),
+(35, 1, 0),
+(35, 5, 0),
+(35, 4, 0),
+(1, 1, 0),
+(1, 0, 0),
+(1, 1, 0),
+(1, 1, 0),
+(32, 0, 0),
+(32, 1, 0),
+(32, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -142,19 +156,10 @@ INSERT INTO `course_student` (`id_stud`, `id_course`) VALUES
 --
 
 CREATE TABLE `evaluation` (
-  `id_evaluation` int(15) NOT NULL AUTO_INCREMENT,
+  `id_evaluation` int(15) NOT NULL,
   `threshold` int(15) NOT NULL,
-  `id_course` int(15) NOT NULL,
-  PRIMARY KEY (`id_evaluation`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `evaluation`
---
-
-INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
-(1, 3, 1),
-(2, 4, 2);
+  `id_course` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -163,19 +168,10 @@ INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
 --
 
 CREATE TABLE `evaluation_result` (
-  `id_evaluation` int(15) NOT NULL,
-  `note` int(15) NOT NULL,
   `id_stud` int(15) NOT NULL,
-  PRIMARY KEY (`id_evaluation`,`id_stud`)
+  `id_evaluation` int(15) NOT NULL,
+  `note` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `evaluation_result`
---
-
-INSERT INTO `evaluation_result` (`id_evaluation`, `note`, `id_stud`) VALUES
-(1, 4, 1),
-(1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -203,34 +199,28 @@ CREATE TABLE `response` (
   `id_question` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `video`
+-- Index pour les tables déchargées
 --
 
-CREATE TABLE `video` (
-  `id_video` int(15) NOT NULL AUTO_INCREMENT,
-  `path` varchar(30) NOT NULL,
-  `id_course` int(15) NOT NULL,
-  `description_video` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
 --
--- Dumping data for table `video`
+-- Index pour la table `account`
 --
-
-INSERT INTO `video` (`id_video`, `path`, `id_course`, `description_video`) VALUES
-(1, 'path', 1, 'chapter 1 : introduction'),
-(2, 'path', 1, 'chapter 2 : Basics'),
-(3, 'path', 1, 'chapter 3 : demo'),
-(4, 'path', 2, 'chapter 1 : introduction');
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id_account`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Index pour la table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`);
+
+--
+-- Index pour la table `chapter`
+--
+ALTER TABLE `chapter`
+  ADD PRIMARY KEY (`id_chapter`);
 
 --
 -- Index pour la table `course`
@@ -245,12 +235,6 @@ ALTER TABLE `question`
   ADD PRIMARY KEY (`id_question`);
 
 --
--- Index pour la table `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`id_video`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -258,13 +242,19 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT pour la table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `chapter`
+--
+ALTER TABLE `chapter`
+  MODIFY `id_chapter` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

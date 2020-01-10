@@ -1,3 +1,23 @@
+<?php
+    include_once("../../Database/db_connection.php");
+    session_start();
+    $connected = "";
+	if(isset($_SESSION["connected"])){
+        $id_account = $_SESSION["id_account"];
+        $connected = $_SESSION["connected"];
+        
+        $sql = "SELECT * from account where id_account = $id_account" ;
+        $result = $conn->query($sql);
+
+        while($row = $result->fetch_assoc()) { 
+            $id_account   = $row["id_account"];
+            $full_name    = $row["full_name"];      
+            
+        }
+            
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,9 +52,19 @@
                         <div class="row">
                             <div class="col">
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                                    <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
-                                    </div>
+                                    <?php 
+                                    if($connected == "connected"){
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="signup/logout.php">Logout</a></div>
+                                        ';
+                                    }else{
+                                        echo '
+                                        <div class="top_bar_login ml-auto">
+                                        <div  class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
+                                        ';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -59,6 +89,23 @@
                                         <li class="active"><a href="about.html">About</a></li>
                                         <li><a href="../course/course_list.php">Courses</a></li>
                                         <li><a href="contact.php">Contact</a></li>
+                                        <?php
+
+                                            if($connected == "connected"){
+                                            echo '
+                                            <li>
+                                                <button class="home_search_button">
+                                                    
+                                                    '.$full_name.'
+                                                    <div class="hamburger menu_mm">
+                                                        <i class="glyphicon-user"></i>
+                                                    </div>
+                                                </button>
+                                            </li>
+                                            ';
+                                            }
+                                        ?>
+                                </ul>
                                     </ul>
 
                                     <!-- Hamburger -->
@@ -108,6 +155,18 @@
                     <li class="menu_mm"><a href="about.php">About</a></li>
                     <li class="menu_mm"><a href="../course/course_list.php">Courses</a></li>
                     <li class="menu_mm"><a href="contact.php">Contact</a></li>
+                    <?php
+
+                    if($connected == "connected"){
+                    echo '
+                    <li class="menu_mm">
+                    <a>
+                            '.$full_name.'
+                            </a>    
+                    </li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
