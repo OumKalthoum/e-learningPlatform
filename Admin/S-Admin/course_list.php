@@ -152,8 +152,9 @@
                                         <th>Course</th>
                                         <th>Category</th>
                                         <th>Description</th>
-                                        <th>N° Videos</th>
-                                        <th>Total periode</th>
+                                        <th>N° Chapters</th>
+                                        <th>Professor</th>
+                                        <th>Date </th>
                                         <th>N° Subscribed students</th>
                                         <th>Status</th>
                                         <th>Lunched</th>
@@ -161,49 +162,72 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
-                                        <td style="color: crimson;">No</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td><button type="button" class="btn btn-danger btn-xs">Blocked</button></td>
-                                        <td style="color: crimson;">No</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Course</td>
-                                        <td>Category 1
-                                        </td>
-                                        <td>Desc</td>
-                                        <td>5</td>
-                                        <td>12 hours</td>
-                                        <td>37</td>
-                                        <td><button type="button" class="btn btn-danger btn-xs">Blocked</button></td>
-                                        <td style="color: crimson;">No</td>
-                                        <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
-                                    </tr>
+                                    
+                                    <?php 
+		                             include('C:\xampp\htdocs\e-learningPlatform-master\Database\db_connection.php');
+		
+		                                 $select_course="SELECT * FROM course  ";
+		                                 $result_course = mysqli_query($conn,$select_course);
+		                                 
+		                                 while($row = mysqli_fetch_assoc($result_course)) {
+			
+			                             $id= $row['id_course'];
+			                             $name=$row['name'];
+			                             $description=$row['description'];
+			                             $date=$row['release_date'];
+                                         $id_category=$row['id_category'];
+                                         $id_prof=$row['id_prof'];
+                                         //rearchCategory
+                                         $select_category="SELECT * FROM category  WHERE id_category='$id_category' ";
+                                         $result_category = mysqli_query($conn,$select_category);
+                                         $row1= mysqli_fetch_assoc($result_category);
+                                         $Category=$row1['label_category'];
+                                          //NB total Chapter of this course
+                                         $select_chapters="SELECT count(*) FROM chapter  WHERE id_course='$id' ";
+                                         $result_chapters = mysqli_query($conn,$select_chapters);
+                                         $row2= mysqli_fetch_assoc($result_chapters);
+                                         $NB_chapters=$row2['count(*)'];
+                                         //Professor
+                                         $select_prof="SELECT * FROM account  WHERE id_account='$id_prof' ";
+                                         $result_prof= mysqli_query($conn,$select_prof);
+                                         $row3= mysqli_fetch_assoc($result_prof);
+                                         $name_prof=$row3['full_name'];
+                                         //NB total of students
+                                         $select_Students="SELECT count(*) FROM course_student  WHERE id_course='$id' ";
+                                         $result_Students= mysqli_query($conn,$select_Students);
+                                         $row4= mysqli_fetch_assoc($result_Students);
+                                         $NB_Students=$row4['count(*)'];
+                                         
+                                         
+		                           ?>											
+                                  <tr>
+	                               <td><?php echo $name ;?></td>
+                                   <td> <?php echo $Category;?></td>
+                                   <td> <?php echo $description ;?></td>
+                                   <td> <?php echo $NB_chapters ;?></td>
+                                   <td> <?php echo $name_prof;?></td>
+                                    <td><?php echo $date ;?></td>
+                                    <td> <?php echo $NB_Students ;?></td>
+                                   
+	                                <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
+                                    <td style="color: crimson;">No</td>
+                                    <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
+                                 </tr>
+	                          <?php } ?>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Course</th>
                                         <th>Category</th>
                                         <th>Description</th>
-                                        <th>N° Videos</th>
+                                        <th>N° Chapters</th>
                                         <th>Total periode</th>
                                         <th>N° Subscribed students</th>
                                         <th>Active</th>
