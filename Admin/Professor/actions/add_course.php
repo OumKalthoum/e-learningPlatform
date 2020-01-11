@@ -2,12 +2,13 @@
     include_once("../../../Database/db_connection.php");
 
     $name = $_POST["name"];
-    $description = $_POST["description"];
-    $syllabus = htmlspecialchars($_POST["syllabus"]);
+    $description = addslashes($_POST["description"]);
+    $syllabus = addslashes(htmlspecialchars($_POST["syllabus"]));
     $id_prof = $_POST["id_prof"];
     $image = $_FILES["image"]["name"];
     $category = $_POST["category"];
     $lunched = $_POST["lunched"];
+    $nb_chapters = $_POST["nb_chapters"];
     $today = date("Y-m-d");
     //path to store the uploaded image & videos
     $image_path = "../images/".basename($image);
@@ -24,7 +25,7 @@
             $course_result = mysqli_query($conn,$get_course)or die(mysqli_error($conn));
             $course_row = mysqli_fetch_assoc($course_result);
             $id_course = $course_row['id_course'];
-            header("Location: ../add_exam.php?id=$id_course");
+            header("Location: ../add_chapter.php?&id=$id_course&nb=$nb_chapters");
         
             exit();
         endif;
