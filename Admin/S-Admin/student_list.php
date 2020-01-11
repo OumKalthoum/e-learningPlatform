@@ -158,14 +158,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>xxx@xxxx</td>
-                                        <td>2019/12/12</td>
-                                        <td>8</td>
-                                        <td>4</td>
-                                        <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
-                                    </tr>
+                                   <?php 
+		                             include('C:\xampp\htdocs\e-learningPlatform-master\Database\db_connection.php');
+		
+		                                 $select_accountS="SELECT * FROM account WHERE type='S'  ";
+		                                 $result_accountS = mysqli_query($conn,$select_accountS);
+		                                 
+		                                 while($row = mysqli_fetch_assoc($result_accountS)) {
+			
+			                             $id= $row['id_account'];
+			                             $name=$row['full_name'];
+			                             $email=$row['email'];
+			                             $date=$row['date'];
+                                         $select_course="SELECT count(*) FROM course_student  WHERE id_stud='$id' ";
+                                         $result_course = mysqli_query($conn,$select_course);
+                                         $row1= mysqli_fetch_assoc($result_course);
+                                         $NB_course=$row1['count(*)'];
+                                         $select_evaluation="SELECT count(*) FROM evaluation_result  WHERE id_stud='$id' ";
+                                         $result_evaluation = mysqli_query($conn,$select_evaluation);
+                                         $row2= mysqli_fetch_assoc($result_evaluation);
+                                         $NB_evaluation=$row2['count(*)'];
+                                         
+		                           ?>											
+                                  <tr>
+	                               <td><?php echo $name ;?></td>
+                                   <td> <?php echo $email;?></td>
+                                   <td> <?php echo $date ;?></td>
+                                   <td> <?php echo $NB_course ;?></td>
+                                   <td> <?php echo $NB_evaluation;?></td>
+	                              <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
+                                 </tr>
+	                          <?php } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -177,6 +200,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </tfoot>
+                               
                             </table>
                         </div>
                         <!-- /.card-body -->
