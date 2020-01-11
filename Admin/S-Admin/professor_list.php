@@ -157,13 +157,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>xxx@xxxx</td>
-                                        <td>2019/12/12</td>
-                                        <td>8</td>
-                                        <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
-                                    </tr>
+                                  <?php 
+		                             include('C:\xampp\htdocs\e-learningPlatform-master\Database\db_connection.php');
+		
+		                                 $select_account="SELECT * FROM account WHERE type='P'  ";
+		                                 $result_account = mysqli_query($conn,$select_account);
+		                                 
+		                                 while($row = mysqli_fetch_assoc($result_account)) {
+			
+			                             $id= $row['id_account'];
+			                             $name=$row['full_name'];
+			                             $email=$row['email'];
+			                             $date=$row['date'];
+                                         $select_course="SELECT count(*) FROM course  WHERE id_prof='$id' ";
+                                         $result_course = mysqli_query($conn,$select_course);
+                                         $row1= mysqli_fetch_assoc($result_course);
+                                         $NB_course=$row1['count(*)'];
+                                         
+		                           ?>											
+                                  <tr>
+	                               <td><?php echo $name ;?></td>
+                                   <td> <?php echo $email;?></td>
+                                   <td> <?php echo $date ;?></td>
+                                   <td> <?php echo $NB_course ;?></td>
+	                              <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
+                                 </tr>
+	                          <?php } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -174,6 +193,7 @@
                                         <th>Status</th>
                                     </tr>
                                 </tfoot>
+                               
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -185,6 +205,7 @@
         </div>
     </div><!-- /.container-fluid -->
     <!-- /.content -->
+  
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <strong>Copyright &copy; 2019 <a href="http://adminlte.io">E-learning.org</a>.</strong>
