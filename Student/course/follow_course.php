@@ -17,7 +17,6 @@
         }
 
         if(isset($_GET["id"])){
-            $search_word = "";
             $id_chapter = $_GET['id'];
             $counter = $_GET['counter'];
             $_SESSION["counter"] = $counter;
@@ -216,22 +215,49 @@
 
                         <div class="blog_content">
                         <?php 
+                            if($row){
                             $counter = $_SESSION['counter'];?>
                             <div class="blog_title">Chapter <?php echo $counter.' : '.$row["title_chapter"] ?></div>
                 </br>
                             <div class="">
                                 <div class="blog_post_video_container">
-                                    <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto", "poster": "../images/blog_2.jpg"}'>
-                                        <source src="../images/mov_bbb.mp4" type="video/mp4">
-                                        <source src="../images/mov_bbb.ogg" type="video/ogg">
+                                    <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
+                                    <source src="../../Admin/<?php echo $row["path_video"] ?>" type="video/mp4">
                                         Your browser does not support HTML5 video.
                                     </video>
                                 </div>
                             </div>
-                            <p><?php echo $row["description_chapter"] ?></p>
-                        </div>
-                        <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-                        </div>
+                            <p><?php echo $row["description_chapter"]; 
+                            
+                            echo ' </div>
+                             <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                             </div></p>';
+                        
+                        }else{
+
+                            $query = "SELECT * from chapter where id_course = $id_course ORDER BY `chapter`.`id_chapter` ASC ";
+                            $result_query = $conn->query($query);
+                            $row = $result_query->fetch_assoc();
+
+                         ?>
+                        <div class="blog_title">Chapter <?php echo '1 : '.$row["title_chapter"] ?></div>
+                </br>
+                            <div class="">
+                                <div class="blog_post_video_container">
+                                    <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
+                                        <!--<source src="../images/mov_bbb.mp4" type="video/mp4">-->
+                                        <source src="../../Admin/<?php echo $row["path_video"] ?>" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </div>
+                            </div>
+                            <p><?php echo $row["description_chapter"]; 
+                            
+                            echo ' </div>
+                             <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                             </div></p>';
+                         } ?>
+                       
                     </div>
 
                     <!-- Blog Sidebar -->
@@ -240,7 +266,7 @@
 
                             <!-- Categories -->
                             <div class="sidebar_section">
-                                <div class="sidebar_section_title">Chapiters</div>
+                                <div class="sidebar_section_title">Chapters</div>
                                 <div class="sidebar_categories">
                                     <ul class="categories_list">
                                     <?php
