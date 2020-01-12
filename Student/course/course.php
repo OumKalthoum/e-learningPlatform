@@ -21,7 +21,7 @@
         $id_course = $_SESSION["id_course"];
         $query = "INSERT INTO course_student (id_stud, id_course, Avancement) VALUES ($id_account, $id_course, '0')";
         if ($conn->query($query)) {
-            header("Location: follow_course.php?id=1&counter=1"); 
+            header("Location: follow_course.php"); 
         }
     }
         
@@ -73,7 +73,7 @@
                                     }else{
                                         echo '
                                         <div class="top_bar_login ml-auto">
-                                        <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
+                                        <div  class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
                                         ';
                                     }
                                     ?>
@@ -246,7 +246,7 @@
                                     }
                                     if($exist == 'yes'){
                                         echo '
-                                        <form action="follow_course.php?id=1&counter=1" >
+                                        <form action="follow_course.php" >
                                             <button type="submit" class="home_search_button">See your course</button>
                                         </form>
                                         ';

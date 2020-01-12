@@ -73,7 +73,7 @@
                                     if($connected == "connected"){
                                         echo '
                                         <div class="top_bar_login ml-auto">
-                                        <div  class="login_button"><a href="signup/logout.php">Logout</a></div>
+                                        <div  class="login_button"><a href="../signup/logout.php">Logout</a></div>
                                         ';
                                     }else{
                                         echo '
@@ -208,15 +208,30 @@
 
         <div class="blog">
             <div class="container">
+            <?php 
+            if($row){
+            $counter = $_SESSION['counter'];
+            
+            
+            $qAvan = "SELECT * from course_student where id_course = $id_course and id_stud = $id_account";
+            $result_avancement = $conn->query($qAvan);
+            $rowCoursStud = $result_avancement->fetch_assoc();
+            ?>
+                <div class="blog_title">Your progress in this course is : </div>
+                <br>
+                    <div class=" text-center">
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar" role="progressbar" style="width: <?php echo $rowCoursStud["Avancement"];?>%; height: 25px;" aria-valuenow="<?php echo $rowCoursStud["Avancement"];?>" aria-valuemin="0" aria-valuemax="100"><?php echo $rowCoursStud["Avancement"]; ?>%</div>
+                        </div>
+                    </div>
+                    </br></br>
                 <div class="row">
 
                     <!-- Blog Content -->
                     <div class="col-lg-8">
 
                         <div class="blog_content">
-                        <?php 
-                            if($row){
-                            $counter = $_SESSION['counter'];?>
+                       
                             <div class="blog_title">Chapter <?php echo $counter.' : '.$row["title_chapter"] ?></div>
                 </br>
                             <div class="">
@@ -238,8 +253,25 @@
                             $query = "SELECT * from chapter where id_course = $id_course ORDER BY `chapter`.`id_chapter` ASC ";
                             $result_query = $conn->query($query);
                             $row = $result_query->fetch_assoc();
+                            
+                            $qAvan = "SELECT * from course_student where id_course = $id_course and id_stud = $id_account";
+                            $result_avancement = $conn->query($qAvan);
+                            $rowCoursStud = $result_avancement->fetch_assoc();
+                            ?>
+                                <div class="blog_title">Your progress in this course is : </div>
+                                <br>
+                                    <div class=" text-center">
+                                        <div class="progress" style="height: 25px;">
+                                            <div class="progress-bar" role="progressbar" style="width: <?php echo $rowCoursStud["Avancement"]?>%; height: 25px;" aria-valuenow="<?php echo $rowCoursStud["Avancement"]?>" aria-valuemin="0" aria-valuemax="100"><?php echo $rowCoursStud["Avancement"] ?>%</div>
+                                        </div>
+                                    </div>
+                                    </br></br>
+                        <div class="row">
 
-                         ?>
+                            <!-- Blog Content -->
+                            <div class="col-lg-8">
+
+                                <div class="blog_content">
                         <div class="blog_title">Chapter <?php echo '1 : '.$row["title_chapter"] ?></div>
                 </br>
                             <div class="">

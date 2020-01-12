@@ -53,7 +53,7 @@
                                     if($connected == "connected"){
                                         echo '
                                         <div class="top_bar_login ml-auto">
-                                        <div  class="login_button"><a href="signup/logout.php">Logout</a></div>
+                                        <div  class="login_button"><a href="../signup/logout.php">Logout</a></div>
                                         ';
                                     }else{
                                         echo '

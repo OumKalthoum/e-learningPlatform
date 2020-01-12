@@ -42,7 +42,7 @@
 <html lang="en">
 
 <head>
-    <title>E-learning</title>
+    <title>Course list</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
@@ -81,7 +81,7 @@
                                     }else{
                                         echo '
                                         <div class="top_bar_login ml-auto">
-                                        <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
+                                        <div  class="login_button"><a href="../signup/sign_up.php">Register or Login</a></div>
                                         ';
                                     }
                                     ?>
