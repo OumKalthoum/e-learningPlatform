@@ -237,10 +237,11 @@
 
                                             //image part : <img src="../../Admin/image_course/'.$row["image_course"].'"
                                             $id_course = $row["id_course"];
+                                            $image_course = $row["image_course"];
                                             echo '
                                             <div class="col-lg-6 course_col">
                                             <div class="course">
-                                            <div class="course_image"><img src="../../Admin/image_course/blog_4.jpg" alt=""></div>
+                                            <div class="course_image"><img src="../../Admin/images/'.$image_course.'" alt=""></div>
                                             <div class="course_body">
                                                 <h3 class="course_title"><a href="course.php?id='.$id_course.'">'.$row["name"].'</a></h3>';
 
