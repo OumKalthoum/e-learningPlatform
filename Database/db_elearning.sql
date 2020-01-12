@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 12, 2020 at 09:04 AM
--- Server version: 5.7.26
--- PHP Version: 7.3.5
+-- Hôte : 127.0.0.1
+-- Généré le :  Dim 12 jan. 2020 à 15:40
+-- Version du serveur :  10.4.8-MariaDB
+-- Version de PHP :  7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,28 +19,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_elearning`
+-- Base de données :  `db_elearning`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Structure de la table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE IF NOT EXISTS `account` (
-  `id_account` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `account` (
+  `id_account` int(15) NOT NULL,
   `full_name` varchar(30) DEFAULT NULL,
   `email` varchar(35) DEFAULT NULL,
   `password` varchar(11) NOT NULL,
   `date` date NOT NULL,
-  `type` varchar(11) NOT NULL,
-  PRIMARY KEY (`id_account`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+  `type` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `account`
+-- Déchargement des données de la table `account`
 --
 
 INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`) VALUES
@@ -52,20 +50,18 @@ INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Structure de la table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id_category` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
   `label_category` varchar(100) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+  `active` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- Déchargement des données de la table `category`
 --
 
 INSERT INTO `category` (`id_category`, `label_category`, `description`, `active`) VALUES
@@ -81,21 +77,19 @@ INSERT INTO `category` (`id_category`, `label_category`, `description`, `active`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chapter`
+-- Structure de la table `chapter`
 --
 
-DROP TABLE IF EXISTS `chapter`;
-CREATE TABLE IF NOT EXISTS `chapter` (
-  `id_chapter` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `chapter` (
+  `id_chapter` int(15) NOT NULL,
   `path_video` varchar(5000) NOT NULL,
   `id_course` int(15) NOT NULL,
   `title_chapter` varchar(2000) NOT NULL,
-  `description_chapter` varchar(50000) NOT NULL,
-  PRIMARY KEY (`id_chapter`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `description_chapter` varchar(50000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `chapter`
+-- Déchargement des données de la table `chapter`
 --
 
 INSERT INTO `chapter` (`id_chapter`, `path_video`, `id_course`, `title_chapter`, `description_chapter`) VALUES
@@ -111,26 +105,24 @@ INSERT INTO `chapter` (`id_chapter`, `path_video`, `id_course`, `title_chapter`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course`
+-- Structure de la table `course`
 --
 
-DROP TABLE IF EXISTS `course`;
-CREATE TABLE IF NOT EXISTS `course` (
-  `id_course` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `course` (
+  `id_course` int(15) NOT NULL,
   `name` varchar(60) NOT NULL,
   `description` varchar(50000) NOT NULL,
   `syllabus` mediumtext NOT NULL,
   `id_prof` int(15) NOT NULL,
   `image_course` varchar(100) NOT NULL,
   `id_category` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `lunched` tinyint(1) NOT NULL DEFAULT '0',
-  `release_date` date NOT NULL,
-  PRIMARY KEY (`id_course`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `lunched` tinyint(1) NOT NULL DEFAULT 0,
+  `release_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `course`
+-- Déchargement des données de la table `course`
 --
 
 INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`, `active`, `lunched`, `release_date`) VALUES
@@ -141,31 +133,44 @@ INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course_student`
+-- Structure de la table `course_student`
 --
 
-DROP TABLE IF EXISTS `course_student`;
-CREATE TABLE IF NOT EXISTS `course_student` (
+CREATE TABLE `course_student` (
   `id_stud` int(15) NOT NULL,
-  `id_course` int(15) NOT NULL
+  `id_course` int(15) NOT NULL,
+  `Avancement` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `course_student`
+--
+
+INSERT INTO `course_student` (`id_stud`, `id_course`, `Avancement`) VALUES
+(0, 1, 0),
+(1, 0, 0),
+(1, 1, 0),
+(32, 0, 0),
+(32, 1, 0),
+(32, 5, 0),
+(35, 1, 0),
+(35, 4, 0),
+(35, 5, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation`
+-- Structure de la table `evaluation`
 --
 
-DROP TABLE IF EXISTS `evaluation`;
-CREATE TABLE IF NOT EXISTS `evaluation` (
-  `id_evaluation` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `evaluation` (
+  `id_evaluation` int(15) NOT NULL,
   `threshold` int(15) NOT NULL,
-  `id_course` int(15) NOT NULL,
-  PRIMARY KEY (`id_evaluation`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `id_course` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `evaluation`
+-- Déchargement des données de la table `evaluation`
 --
 
 INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
@@ -176,33 +181,29 @@ INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluation_result`
+-- Structure de la table `evaluation_result`
 --
 
-DROP TABLE IF EXISTS `evaluation_result`;
-CREATE TABLE IF NOT EXISTS `evaluation_result` (
+CREATE TABLE `evaluation_result` (
   `id_evaluation` int(15) NOT NULL,
   `note` int(15) NOT NULL,
-  `id_stud` int(15) NOT NULL,
-  PRIMARY KEY (`id_evaluation`,`id_stud`)
+  `id_stud` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `question`
+-- Structure de la table `question`
 --
 
-DROP TABLE IF EXISTS `question`;
-CREATE TABLE IF NOT EXISTS `question` (
-  `id_question` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `question` (
+  `id_question` int(15) NOT NULL,
   `description` varchar(60000) DEFAULT NULL,
-  `id_evaluation` int(15) NOT NULL,
-  PRIMARY KEY (`id_question`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `id_evaluation` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `question`
+-- Déchargement des données de la table `question`
 --
 
 INSERT INTO `question` (`id_question`, `description`, `id_evaluation`) VALUES
@@ -219,20 +220,18 @@ INSERT INTO `question` (`id_question`, `description`, `id_evaluation`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `response`
+-- Structure de la table `response`
 --
 
-DROP TABLE IF EXISTS `response`;
-CREATE TABLE IF NOT EXISTS `response` (
-  `id_response` int(15) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `response` (
+  `id_response` int(15) NOT NULL,
   `response` varchar(20000) NOT NULL,
   `status` int(1) DEFAULT NULL,
-  `id_question` int(15) NOT NULL,
-  PRIMARY KEY (`id_response`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+  `id_question` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `response`
+-- Déchargement des données de la table `response`
 --
 
 INSERT INTO `response` (`id_response`, `response`, `status`, `id_question`) VALUES
@@ -263,6 +262,111 @@ INSERT INTO `response` (`id_response`, `response`, `status`, `id_question`) VALU
 (25, 'eze', 1, 9),
 (26, 'ezeez', 0, 9),
 (27, 'zezeze', 0, 9);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id_account`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Index pour la table `chapter`
+--
+ALTER TABLE `chapter`
+  ADD PRIMARY KEY (`id_chapter`);
+
+--
+-- Index pour la table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id_course`);
+
+--
+-- Index pour la table `course_student`
+--
+ALTER TABLE `course_student`
+  ADD PRIMARY KEY (`id_stud`,`id_course`);
+
+--
+-- Index pour la table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`id_evaluation`);
+
+--
+-- Index pour la table `evaluation_result`
+--
+ALTER TABLE `evaluation_result`
+  ADD PRIMARY KEY (`id_evaluation`,`id_stud`);
+
+--
+-- Index pour la table `question`
+--
+ALTER TABLE `question`
+  ADD PRIMARY KEY (`id_question`);
+
+--
+-- Index pour la table `response`
+--
+ALTER TABLE `response`
+  ADD PRIMARY KEY (`id_response`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `account`
+--
+ALTER TABLE `account`
+  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT pour la table `chapter`
+--
+ALTER TABLE `chapter`
+  MODIFY `id_chapter` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id_course` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `id_evaluation` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `question`
+--
+ALTER TABLE `question`
+  MODIFY `id_question` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `response`
+--
+ALTER TABLE `response`
+  MODIFY `id_response` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
