@@ -158,6 +158,7 @@
                                     <tr>
                                         <th>Category</th>
                                         <th>Description</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -173,6 +174,13 @@
                                     <tr>
                                         <td><?php echo $label_category;?></td>
                                         <td><?php echo $description;?></td>
+                                        <td>
+                                            <?php if($active == '1'){?>
+                                            <button type="button" class="btn btn-success btn-xs">Active</button>
+                                            <?php }else{?>
+                                            <button type="button" class="btn btn-warning btn-xs">Hidden</button>
+                                            <?php }?>
+                                        </td>
                                         <td>
                                             <form method="post" action="modify_category.php?&id=<?php echo $id_category;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-warning btn-xs">Modify</button>
@@ -198,6 +206,7 @@
                                     <tr>
                                         <th>Category</th>
                                         <th>Description</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
