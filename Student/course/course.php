@@ -32,7 +32,7 @@
 <html lang="en">
 
 <head>
-    <title>E-learning</title>
+    <title>Course details</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
