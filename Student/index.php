@@ -13,10 +13,8 @@
             $id_account   = $row["id_account"];
             $full_name    = $row["full_name"];      
             
-        }
-            
+        }           
 	}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,9 +37,7 @@
 <body>
 
     <div class="super_container">
-
         <!-- Header -->
-
         <header class="header">
 
         <!-- Top Bar -->
@@ -50,10 +46,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-                            
-
-                            <?php 
+                            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start"><?php 
                                 if($connected == "connected"){
                                     echo '
                                     <div class="top_bar_login ml-auto">
@@ -65,12 +58,7 @@
                                     <div  class="login_button"><a href="signup/sign_up.php">Register or Login</a></div>
                                     ';
                                 }
-                            ?>
-
-
-
-                                
-                                </div>
+                            ?></div>
                             </div>
                         </div>
                     </div>
@@ -160,15 +148,11 @@
                 <li class="menu_mm"><a href="course/course_list.php">Courses</a></li>
                 <li class="menu_mm"><a href="general/contact.php">Contact</a></li>
                 <?php
-
                     if($connected == "connected"){
-                    echo '
-                    <li class="menu_mm">
-                    <a>
-                            '.$full_name.'
-                            </a>    
-                    </li>
-                    ';
+                        echo '
+                        <li class="menu_mm">
+                        <a>'.$full_name.'</a>    
+                        </li>';
                     }
                     ?>
             </ul>
