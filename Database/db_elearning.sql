@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 12 jan. 2020 à 15:40
+-- Généré le :  Dim 12 jan. 2020 à 21:38
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -126,9 +126,9 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`, `active`, `lunched`, `release_date`) VALUES
-(1, 'BSL  ', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"', '&lt;div id=&quot;Content&quot; style=&quot;margin: 0px; padding: 0px; position: relative; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;div id=&quot;Translation&quot; style=&quot;margin: 0px 28.7917px; padding: 0px; text-align: left;&quot;&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198); font-weight: bold;&quot;&gt;The standard Lorem Ipsum passage, used since the 1500s&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;1914 translation by H. Rackham&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;1914 translation by H. Rackham&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr style=&quot;margin: 0px; padding: 0px; border-top: 0px; clear: both; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;br&gt;', 1, 'i1.png', 15, 1, 0, '2020-01-12'),
-(2, 'Demo course 1', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit sin', '&lt;p&gt;Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Ex sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Veniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit decore quodsi, case eruditi adolescens ne vim.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At mutat accusamus voluptatum mei, sed ut inermis recteque elaboraret. Cu cum idque audiam dignissim, cum agam scripta cu, no cum modus dicam. In pro officiis vulputate, dolor maluisset et vix. Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.&lt;/p&gt;', 1, 'i1.png', 16, 1, 0, '2020-01-12'),
-(3, 'Demo course 2', '______________________    ', '&lt;p&gt;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&lt;/p&gt;', 1, 'i1.png', 1, 1, 0, '2020-01-12');
+(1, 'BSL  ', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"', '&lt;div id=&quot;Content&quot; style=&quot;margin: 0px; padding: 0px; position: relative; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;div id=&quot;Translation&quot; style=&quot;margin: 0px 28.7917px; padding: 0px; text-align: left;&quot;&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198); font-weight: bold;&quot;&gt;The standard Lorem Ipsum passage, used since the 1500s&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;1914 translation by H. Rackham&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;1914 translation by H. Rackham&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr style=&quot;margin: 0px; padding: 0px; border-top: 0px; clear: both; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;br&gt;', 1, 'gallery_6_large.jpg', 15, 1, 0, '2020-01-12'),
+(2, 'Demo course 1', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit sin', '&lt;p&gt;Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Ex sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Veniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit decore quodsi, case eruditi adolescens ne vim.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At mutat accusamus voluptatum mei, sed ut inermis recteque elaboraret. Cu cum idque audiam dignissim, cum agam scripta cu, no cum modus dicam. In pro officiis vulputate, dolor maluisset et vix. Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.&lt;/p&gt;', 1, 'gallery_6_large.jpg', 16, 1, 0, '2020-01-12'),
+(3, 'Demo course 2', '______________________    ', '&lt;p&gt;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&lt;/p&gt;', 1, 'blog_4.jpg', 1, 1, 0, '2020-01-12');
 
 -- --------------------------------------------------------
 
@@ -147,15 +147,9 @@ CREATE TABLE `course_student` (
 --
 
 INSERT INTO `course_student` (`id_stud`, `id_course`, `Avancement`) VALUES
-(0, 1, 0),
-(1, 0, 0),
 (1, 1, 0),
-(32, 0, 0),
-(32, 1, 0),
-(32, 5, 0),
-(35, 1, 0),
-(35, 4, 0),
-(35, 5, 0);
+(1, 2, 0),
+(1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -176,7 +170,8 @@ CREATE TABLE `evaluation` (
 INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
 (1, 5, 1),
 (3, 4, 2),
-(4, 3, 3);
+(4, 3, 3),
+(5, 5, 9);
 
 -- --------------------------------------------------------
 
@@ -215,7 +210,12 @@ INSERT INTO `question` (`id_question`, `description`, `id_evaluation`) VALUES
 (6, 'que eu, vis quot suavitate ?', 3),
 (7, 'cripta cu, no cum modus dicam. In pro officiis vulputate, dolor ma?', 3),
 (8, 'errrrrrrrrrttttttttttttttttttterrrrrrrrrrrrrrrr', 4),
-(9, 'etertertertrettzzaaazaazaaezaezeze', 4);
+(9, 'etertertertrettzzaaazaazaaezaezeze', 4),
+(10, 'jladsnjndjsnnnnnsssssssssssssssssssss\r\n', 5),
+(11, 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 5),
+(12, 'ddddddddddddddddd', 5),
+(13, 'ddddddddddddddddd', 5),
+(14, 'sssssssssssssssssssssssssssss', 5);
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,22 @@ INSERT INTO `response` (`id_response`, `response`, `status`, `id_question`) VALU
 (24, 'ertertererte erte', 0, 8),
 (25, 'eze', 1, 9),
 (26, 'ezeez', 0, 9),
-(27, 'zezeze', 0, 9);
+(27, 'zezeze', 0, 9),
+(28, 'sssssssssssssss', 1, 10),
+(29, 'ssssssssssssssss', 0, 10),
+(30, 'sssssssssssssssssss', 0, 10),
+(31, 'dddddddddd', 1, 11),
+(32, 'dddddddddddddddddd', 0, 11),
+(33, 'ddddddddddddddd', 0, 11),
+(34, 'dddddddddddddddd', 1, 12),
+(35, 'dddddddddddddddd', 0, 12),
+(36, 'ddddddddddddddddddd', 0, 12),
+(37, 'dddddddddddddsssssssssssss', 1, 13),
+(38, 'ssssssssssssssssssssss', 0, 13),
+(39, 'ssssssssssssssssssssssssss', 0, 13),
+(40, 'ssssssssssssssssssssssssss', 1, 14),
+(41, 'ssssssssssssssssssssss', 0, 14),
+(42, 'sssssssssssssssssssss', 0, 14);
 
 --
 -- Index pour les tables déchargées
@@ -342,31 +357,31 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `chapter`
 --
 ALTER TABLE `chapter`
-  MODIFY `id_chapter` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_chapter` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id_course` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_course` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id_evaluation` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_evaluation` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_question` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `response`
 --
 ALTER TABLE `response`
-  MODIFY `id_response` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_response` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
