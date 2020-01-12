@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description[]" name="description[]" placeholder="" rows="3" required></textarea>
+                                            <textarea type="text" class="form-control" id="description[]" name="description[]" placeholder="" rows="3" maxlength="1900"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="image">Video</label>
@@ -215,7 +215,7 @@
             $(this).next('.custom-file-label').html(event.target.files[0].name);
 
         });
-        window.onbeforeunload = function() { return "Your work will be lost."; };
+        
         
     </script>
 </body>

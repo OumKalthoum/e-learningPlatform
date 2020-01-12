@@ -137,49 +137,160 @@
                                 <!-- /.card-header -->
                                 <!-- form start -->
                                 <form role="form" id="exam_form" action="actions/add_exam.php" method="post">
-                                        <section>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="q1">Threshold (out of 5):</label>
-                                                            <input type="number" class="form-control" id="threshold" name="threshold" max="5" min="3"><input type="hidden" class="form-control" id="id_course" name="id_course" value="<?php echo $id_course;?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="q1">Question 1:</label>
-                                                            <textarea type="text" class="form-control" id="q1" name="q1"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-9 offset-md-1">
-                                                        <div class="form-group">
-                                                            <label for="a1">Answer 1: (Correct answer !)</label>
-                                                            <input type="text" class="form-control" id="a1" name="a1" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-9 offset-md-1">
-                                                        <div class="form-group">
-                                                            <label for="a2">Answer 2:</label>
-                                                            <input type="text" class="form-control" id="a2" name="a2" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-9 offset-md-1">
-                                                        <div class="form-group">
-                                                            <label for="a3">Answer 3:</label>
-                                                            <input type="text" class="form-control" id="a3" name="a3" placeholder="">
-                                                        </div>
+                                    <section>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Threshold (out of 5):</label>
+                                                        <input type="number" class="form-control" id="threshold" name="threshold" max="5" min="3"><input type="hidden" class="form-control" id="id_course" name="id_course" value="<?php echo $id_course;?>">
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Question 1:</label>
+                                                        <textarea type="text" class="form-control" id="" name="questions[]"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_1">Answer 1: (Correct answer !)</label>
+                                                        <input type="text" class="form-control" id="" name="answers_1[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_2">Answer 2:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_2[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_3">Answer 3:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_3[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Question 2:</label>
+                                                        <textarea type="text" class="form-control" id="" name="questions[]"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_1">Answer 1: (Correct answer !)</label>
+                                                        <input type="text" class="form-control" id="" name="answers_1[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_2">Answer 2:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_2[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_3">Answer 3:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_3[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Question 3:</label>
+                                                        <textarea type="text" class="form-control" id="" name="questions[]"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_1">Answer 1: (Correct answer !)</label>
+                                                        <input type="text" class="form-control" id="" name="answers_1[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_2">Answer 2:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_2[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_3">Answer 3:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_3[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Question 4:</label>
+                                                        <textarea type="text" class="form-control" id="" name="questions[]"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_1">Answer 1: (Correct answer !)</label>
+                                                        <input type="text" class="form-control" id="" name="answers_1[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_2">Answer 2:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_2[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_3">Answer 3:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_3[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="questions">Question 5:</label>
+                                                        <textarea type="text" class="form-control" id="" name="questions[]"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_1">Answer 1: (Correct answer !)</label>
+                                                        <input type="text" class="form-control" id="" name="answers_1[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_2">Answer 2:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_2[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9 offset-md-1">
+                                                    <div class="form-group">
+                                                        <label for="answers_3">Answer 3:</label>
+                                                        <input type="text" class="form-control" id="" name="answers_3[]" placeholder="">
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
-
-                                            <!-- /.card-body -->
-
-                                        </section>
-                                        <div class="card-footer text-right">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
+
+                                        <!-- /.card-body -->
+
+                                    </section>
+                                    <div class="card-footer text-right">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                             <!-- /.card -->

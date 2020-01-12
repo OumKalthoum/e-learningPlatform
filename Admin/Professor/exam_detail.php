@@ -194,36 +194,36 @@
                                                         $qcounter = 1;
                                                         $rcounter = 1;
                                                         while($question_row = mysqli_fetch_assoc($question_result)):
-                                                        $id_question = $question_row['id_question'];
-                                                        $question = $question_row['description'];
-                                                        
-                                                        //display question
-                                                        echo "<h5 class='mt-5 text-muted'>Question ".$qcounter.":</h5>";
-                                                        echo "<p>".$question."</p>";
-                                                        
-                                                        $qcounter++;
-                                                        
-                                                        
-                                                        //get responses for each question
-                                                        $select_response = "SELECT * FROM `response` WHERE id_question = '$id_question'";
-                                                        $response_result = mysqli_query($conn, $select_response);
-                                                        echo "<div class='offset-md-1'>";
-                                                            while($response_row = mysqli_fetch_assoc($response_result)):
-                                                                $status = '';
-                                                                $response = $response_row['response'];
-                                                                $response_status = $response_row['status'];
+                                                            $id_question = $question_row['id_question'];
+                                                            $question = $question_row['description'];
 
-                                                                if($response_status == '1'):
-                                                                    $status = "(Correct answer !)";
-                                                                endif;
+                                                            //display question
+                                                            echo "<h5 class='mt-5 text-muted'>Question ".$qcounter.":</h5>";
+                                                            echo "<p>".$question."</p>";
 
-                                                                echo "<h7 class='mt-5 text-muted'>Answer ".$rcounter.": ".$status."</h7>";
-                                                                echo "<p style='color: black;'>".$response."</p>";
-                                                                $rcounter++;
+                                                            $qcounter++;
 
-                                                            endwhile;
-                                                        echo "</div>";
-                                                        echo "<hr>";
+
+                                                            //get responses for each question
+                                                            $select_response = "SELECT * FROM `response` WHERE id_question = '$id_question'";
+                                                            $response_result = mysqli_query($conn, $select_response);
+                                                            echo "<div class='offset-md-1'>";
+                                                                while($response_row = mysqli_fetch_assoc($response_result)):
+                                                                    $status = '';
+                                                                    $response = $response_row['response'];
+                                                                    $response_status = $response_row['status'];
+
+                                                                    if($response_status == '1'):
+                                                                        $status = "(Correct answer !)";
+                                                                    endif;
+
+                                                                    echo "<h7 class='mt-5 text-muted'>Answer ".$rcounter.": ".$status."</h7>";
+                                                                    echo "<p style='color: black;'>".$response."</p>";
+                                                                    $rcounter++;
+
+                                                                endwhile;
+                                                            echo "</div>";
+                                                            echo "<hr>";
 
                                                         endwhile;
                                                         ?>
