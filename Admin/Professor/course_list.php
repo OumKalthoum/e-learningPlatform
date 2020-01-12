@@ -140,11 +140,9 @@
                                         <tr>
                                             <th>Course</th>
                                             <th>Category</th>
-                                            <th>Description</th>
                                             <th>N° Videos</th>
                                             <th>N° Subscriptions</th>
-                                            <th>Active</th>
-                                            <th>Lunched</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -163,7 +161,7 @@
                                     $name = $row["name"];
                                     $description = $row["description"];
                                     $active = $row["active"];
-                                    $lunched = $row["lunched"];
+                                    $launched = $row["lunched"];
                                         
                                     //number of videos  
                                     $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
@@ -181,18 +179,27 @@
                                         <tr>
                                             <td><?php echo $name;?></td>
                                             <td><?php echo $label_category;?></td>
-                                            <td><?php echo $description;?></td>
                                             <td><?php echo $videos_number;?></td>
                                             <td><?php echo $student_number;?></td>
-                                            <td><?php echo $active;?></td>
-                                            <td><?php echo $lunched;?></td>
                                             <td>
+                                                <?php if($active == '1'){?>
+                                                <button type="button" class="btn btn-success btn-xs">Active</button>
+                                                <?php }else{?>
+                                                <button type="button" class="btn btn-danger btn-xs">Blocked</button>
+                                                <?php }?>
 
+                                                <?php if($launched == '1'){?>
+                                                <button type="button" class="btn btn-primary btn-xs">Launched</button>
+                                                <?php }else{?>
+                                                <button type="button" class="btn btn-warning btn-xs">On hold</button>
+                                                <?php }?>
+                                            </td>
+                                            <td>
                                                 <form method="post" action="course_detail.php">
                                                     <input type="hidden" name="id_course" value="<?php echo $id_course;?>">
                                                     <button type="submit" class="btn btn-block btn-outline-warning btn-xs">View</button>
                                                 </form>
-                                                
+
                                                 <button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button>
                                             </td>
                                         </tr>
@@ -202,11 +209,9 @@
                                         <tr>
                                             <th>Course</th>
                                             <th>Category</th>
-                                            <th>Description</th>
                                             <th>N° Videos</th>
                                             <th>N° Subscriptions</th>
-                                            <th>Active</th>
-                                            <th>Lunched</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>

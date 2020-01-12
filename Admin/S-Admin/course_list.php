@@ -154,18 +154,16 @@
                                     <tr>
                                         <th>Course</th>
                                         <th>Category</th>
-                                        <th>Description</th>
                                         <th>N° Chapters</th>
                                         <th>Professor</th>
                                         <th>Date </th>
                                         <th>N° Subscribed students</th>
                                         <th>Status</th>
-                                        <th>Lunched</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                     <?php 
 		                             
 		                                 $select_course="SELECT * FROM course  ";
@@ -178,6 +176,8 @@
 			                             $description=$row['description'];
 			                             $date=$row['release_date'];
                                          $id_category=$row['id_category'];
+                                         $launched = $row['lunched'];
+                                         $active = $row['active'];
                                          $id_prof=$row['id_prof'];
                                          //rearchCategory
                                          $select_category="SELECT * FROM category  WHERE id_category='$id_category' ";
@@ -201,39 +201,42 @@
                                          $NB_Students=$row4['count(*)'];
                                          
                                          
-		                           ?>											
-                                  <tr>
-	                               <td><?php echo $name ;?></td>
-                                   <td> <?php echo $Category;?></td>
-                                   <td> <?php echo $description ;?></td>
-                                   <td> <?php echo $NB_chapters ;?></td>
-                                   <td> <?php echo $name_prof;?></td>
-                                    <td><?php echo $date ;?></td>
-                                    <td> <?php echo $NB_Students ;?></td>
-                                   
-	                                <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
-                                    <td style="color: crimson;">No</td>
-                                    <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
-                                 </tr>
-	                          <?php } ?>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
+		                           ?>
+                                    <tr>
+                                        <td><?php echo $name ;?></td>
+                                        <td> <?php echo $Category;?></td>
+                                        <td> <?php echo $NB_chapters ;?></td>
+                                        <td> <?php echo $name_prof;?></td>
+                                        <td><?php echo $date ;?></td>
+                                        <td> <?php echo $NB_Students ;?></td>
+
+                                        <td><?php if($active == '1'){?>
+                                            <button type="button" class="btn btn-success btn-xs">Active</button>
+                                            <?php }else{?>
+                                            <button type="button" class="btn btn-danger btn-xs">Blocked</button>
+                                            <?php }?>
+                                            
+                                            <?php if($launched == '1'){?>
+                                            <button type="button" class="btn btn-primary btn-xs">Launched</button>
+                                            <?php }else{?>
+                                            <button type="button" class="btn btn-warning btn-xs">On hold</button>
+                                            <?php }?>
+                                            
+                                        </td>
+                                        <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
+                                    </tr>
+                                    <?php } ?>
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Course</th>
                                         <th>Category</th>
-                                        <th>Description</th>
                                         <th>N° Chapters</th>
-                                        <th>Total periode</th>
+                                        <th>Professor</th>
+                                        <th>Date </th>
                                         <th>N° Subscribed students</th>
-                                        <th>Active</th>
-                                        <th>Lunched</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>
@@ -283,5 +286,3 @@
 </body>
 
 </html>
-
-
