@@ -236,17 +236,24 @@
                                         while($row = $result->fetch_assoc()){
 
                                             //image part : <img src="../../Admin/image_course/'.$row["image_course"].'"
-
+                                            $id_course = $row["id_course"];
                                             echo '
                                             <div class="col-lg-6 course_col">
                                             <div class="course">
                                             <div class="course_image"><img src="../../Admin/image_course/blog_4.jpg" alt=""></div>
                                             <div class="course_body">
-                                                <h3 class="course_title"><a href="course.php?id='.$row["id_course"].'">'.$row["name"].'</a></h3>';
+                                                <h3 class="course_title"><a href="course.php?id='.$id_course.'">'.$row["name"].'</a></h3>';
 
                                             $id_prof = $row["id_prof"];
                                             $prof = mysqli_query($conn, "SELECT * from account where id_account = $id_prof");
                                             $row_account = mysqli_fetch_array($prof);
+
+
+                                            //number of students = subsriptions 
+                                            $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
+                                            $student_result = mysqli_query($conn, $student_sql);
+                                            $student_row = mysqli_fetch_assoc($student_result);
+                                            $student_number = $student_row['count'];
 
 
                                             echo '
@@ -259,7 +266,7 @@
                                                 <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
                                                     <div class="course_info">
                                                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                                        <span>20 Student</span>
+                                                        <span>'.$student_number.' Student</span>
                                                     </div>
                                                 </div>
                                             </div>
