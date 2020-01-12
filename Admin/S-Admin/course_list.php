@@ -1,3 +1,6 @@
+<?php
+    include_once("../../Database/db_connection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -164,8 +167,7 @@
                                 <tbody>
                                     
                                     <?php 
-		                             include('C:\xampp\htdocs\e-learningPlatform-master\Database\db_connection.php');
-		
+		                             
 		                                 $select_course="SELECT * FROM course  ";
 		                                 $result_course = mysqli_query($conn,$select_course);
 		                                 

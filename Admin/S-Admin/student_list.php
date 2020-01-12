@@ -1,3 +1,6 @@
+<?php
+    include_once("../../Database/db_connection.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -159,8 +162,7 @@
                                 </thead>
                                 <tbody>
                                    <?php 
-		                             include('C:\xampp\htdocs\e-learningPlatform-master\Database\db_connection.php');
-		
+
 		                                 $select_accountS="SELECT * FROM account WHERE type='S'  ";
 		                                 $result_accountS = mysqli_query($conn,$select_accountS);
 		                                 
