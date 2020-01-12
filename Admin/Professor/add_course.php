@@ -144,7 +144,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="nom">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="" maxlength="50" minlength="5" required>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="" maxlength="50" minlength="3" required>
                                             <input type="hidden" class="form-control" id="id_prof" name="id_prof" value="<?php echo $id_prof;?>" required>
                                         </div>
                                         <div class="form-group">
@@ -162,7 +162,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3" maxlength="99" minlength="20" required></textarea>
+                                            <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3" maxlength="999" minlength="20" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="sylabus">Syllabus</label>
