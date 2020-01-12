@@ -286,7 +286,7 @@
                             </div>
 
                             <!-- Course Image -->
-                            <div class="course_image"><img src="../images/course_image.jpg" alt=""></div>
+                            <div class="course_image"><img src="../../Admin/images/<?php echo $row_course["image_course"] ?>" alt=""></div>
 
                             <!-- when image is added
                             <div class="course_image"><img src="../images/<?php echo $row_course["image_course"] ?>" alt=""></div>
@@ -295,7 +295,7 @@
                             <!-- Course Tabs -->
                             <div class="course_tabs_container">
                                 <div class="tabs d-flex flex-row align-items-center justify-content-start">
-                                    <div class="tab active">description</div>
+                                    <div class="tab active">Syllabus</div>
                                 </div>
                                 <div class="tab_panels">
 
@@ -304,7 +304,7 @@
                                         <div class="tab_panel_title"><?php echo $row_course["name"] ?></div>
                                         <div class="tab_panel_content">
                                             <div class="tab_panel_text">
-                                                <p><?php echo $row_course["description"] ?></p>
+                                                <?php echo htmlspecialchars_decode($row_course["syllabus"]) ?>
                                             </div>
                                         </div>
                                     </div>
@@ -327,14 +327,33 @@
 
                                         <!-- Feature -->
                                         <div class="feature d-flex flex-row align-items-center justify-content-start">
-                                            <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Duration:</span></div>
-                                            <div class="feature_text ml-auto">2 hours</div>
+                                            <div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Number of chapters:</span></div>
+                                            <?php 
+                                            
+                                            //number of videos  
+                                            $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
+                                            $video_result = mysqli_query($conn, $video_sql);
+                                            $video_row = mysqli_fetch_assoc($video_result);
+                                            $videos_number = $video_row['count'];
+                                            echo '<div class="feature_text ml-auto">'.$videos_number.'</div>';
+                                            
+                                            ?>
                                         </div>
 
                                         <!-- Feature -->
                                         <div class="feature d-flex flex-row align-items-center justify-content-start">
                                             <div class="feature_title"><i class="fa fa-users" aria-hidden="true"></i><span>Participants:</span></div>
-                                            <div class="feature_text ml-auto">35</div>
+                                            <?php 
+                                            
+                                            //number of students = subsriptions 
+                                            $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
+                                            $student_result = mysqli_query($conn, $student_sql);
+                                            $student_row = mysqli_fetch_assoc($student_result);
+                                            $student_number = $student_row['count'];
+                                            echo '<div class="feature_text ml-auto">'.$student_number.'</div>';
+                                            
+                                            ?>
+                                           
                                         </div>
 
                                     </div>
