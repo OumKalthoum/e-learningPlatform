@@ -31,6 +31,7 @@
     <link href="../plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../styles/contact.css">
     <link rel="stylesheet" type="text/css" href="../styles/contact_responsive.css">
+    
 </head>
 
 <body>
@@ -92,7 +93,7 @@
                                         if($connected == "connected"){
                                         echo '
                                         <li>
-                                            <button class="home_search_button">
+                                            <button class="comment_button trans_200">
                                                 
                                                 '.$full_name.'
                                                 <div class="hamburger menu_mm">

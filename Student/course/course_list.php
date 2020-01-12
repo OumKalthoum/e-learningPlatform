@@ -115,7 +115,7 @@
                                             if($connected == "connected"){
                                             echo '
                                             <li>
-                                                <button class="home_search_button">
+                                                <button class="courses_search_button">
                                                     
                                                     '.$full_name.'
                                                     <div class="hamburger menu_mm">

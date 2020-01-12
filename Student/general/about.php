@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="../styles/about.css">
     <link rel="stylesheet" type="text/css" href="../styles/about_responsive.css">
+    
+    
 </head>
 
 <body>
@@ -94,7 +96,7 @@
                                             if($connected == "connected"){
                                             echo '
                                             <li>
-                                                <button class="home_search_button">
+                                                <button class="comment_button trans_200">
                                                     
                                                     '.$full_name.'
                                                     <div class="hamburger menu_mm">
