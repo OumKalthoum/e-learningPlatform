@@ -166,7 +166,7 @@
                                     $lunched = $row["lunched"];
                                         
                                     //number of videos  
-                                    $video_sql = "SELECT count(*) as count FROM `video` WHERE id_course = '$id_course'";
+                                    $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
                                     $video_result = mysqli_query($conn, $video_sql);
                                     $video_row = mysqli_fetch_assoc($video_result);
                                     $videos_number = $video_row['count'];
