@@ -11,7 +11,7 @@
     $nb_chapters = $_POST["nb_chapters"];
     $today = date("Y-m-d");
     //path to store the uploaded image & videos
-    $image_path = "../images/".basename($image);
+    $image_path = "../../images/".basename($image);
 
     //move uploaded files to folders
     if(move_uploaded_file($_FILES["image"]["tmp_name"], $image_path)){

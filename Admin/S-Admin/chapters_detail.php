@@ -1,9 +1,9 @@
 <?php
     include_once("../../Database/db_connection.php");
-    if(!isset($_POST['id_course'])):
+    if(!isset($_GET['id'])):
         header('Location: ../General/404.html');
     endif;
-    $id_course = $_POST['id_course'];
+    $id_course = $_GET['id'];
     $sql = "SELECT * FROM `course` WHERE id_course = '$id_course'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -16,23 +16,10 @@
     $active = $row["active"];
     $lunched = $row["lunched"];
 
-    //number of videos  
-    $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
-    $video_result = mysqli_query($conn, $video_sql);
-    $video_row = mysqli_fetch_assoc($video_result);
-    $videos_number = $video_row['count'];
-
-    //number of students = subsriptions 
-    $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
-    $student_result = mysqli_query($conn, $student_sql);
-    $student_row = mysqli_fetch_assoc($student_result);
-    $student_number = $student_row['count'];
-
-    //number of passed evaluations
-    $exams_sql = "SELECT count(*) as count FROM `evaluation` e INNER JOIN `evaluation_result` er ON e.id_evaluation = er. id_evaluation WHERE id_course = '$id_course'";
-    $exams_result = mysqli_query($conn, $exams_sql)or die(mysqli_error($conn));
-    $exams_row = mysqli_fetch_assoc($exams_result);
-    $exams_number = $exams_row['count'];
+    //List of chapters
+    $chapter_sql = "SELECT * FROM `chapter` WHERE id_course = '$id_course'";
+    $chapter_result = mysqli_query($conn, $chapter_sql);
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,22 +32,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
-    <!-- summernote -->
-    <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -179,66 +156,43 @@
                     <div class="row">
                         <!-- left column -->
                         <div class="col-md-12">
-                            <!-- general form elements -->
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title"><?php echo $course_name;?></h3>
+                            <div class="timeline">
+                                <!-- timeline time label -->
+                                <div class="time-label">
+                                    <span class="bg-blue">Course : <?php echo $course_name;?></span>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-                                            <div class="row">
-                                                <div class="col-12 col-sm-4">
-                                                    <div class="info-box bg-light">
-                                                        <div class="info-box-content">
-                                                            <span class="info-box-text text-center text-muted">Total Subscriptions</span>
-                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $student_number;?></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-4">
-                                                    <div class="info-box bg-light">
-                                                        <div class="info-box-content">
-                                                            <a href="chapters_detail.php?&id=<?php echo $id_course;?>">
-                                                                <span class="info-box-text text-center text-muted">Total chapters</span></a>
-                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $videos_number;?></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12 col-sm-4">
-                                                    <div class="info-box bg-light">
-                                                        <div class="info-box-content">
-                                                            <span class="info-box-text text-center text-muted">Total Passed Evaluations</span>
-                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $exams_number;?></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <h4 class="text-primary">Syllabus</h4>
-                                                    <div class="post">
-                                                        <p><?php echo $syllabus;?></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                                            <h5 class="mt-5 text-muted">Date of release: <?php echo $release_date;?></h5>
-                                            <h4 class="text-primary">Description</h4>
-                                            <p><?php echo $description?></p>
-                                            <br>
-                                            <div class="text-right mt-5 mb-3">
-                                                <a href="exam_detail.php?&id=<?php echo $id_course;?>" class="btn btn-sm btn-success">View Exam</a>
+                                <!-- /.timeline-label -->
+                                <?php 
+                                    $counter = 1;
+                                    while($chapter_row = mysqli_fetch_assoc($chapter_result)):
+                                        $title = $chapter_row['title_chapter'];
+                                        $description = $chapter_row['description_chapter'];
+                                        $video = $chapter_row['path_video'];
+                                ?>
+                                <!-- timeline item -->
+                                <div>
+                                    <i class="fas bg-blue"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header"><?php echo "Chapter  ".$counter.":      ".$title;?></h3>
 
+                                        <div class="timeline-body">
+                                            <?php echo $description;?>
+                                        </div>
+
+                                        <div class="timeline-footer text-right">
+                                        </div>
+                                        <div class="timeline-body">
+                                            <div class="col-md-10 offset-md-1">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <iframe class="embed-responsive-item" src="<?php echo $video;?>" frameborder="0" allowfullscreen=""></iframe>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                                <?php $counter++; endwhile;?>
+                                <!-- END timeline item -->
                             </div>
-                            <!-- /.card -->
                         </div>
                     </div>
                 </div>

@@ -215,15 +215,20 @@
                                             <?php }else{?>
                                             <button type="button" class="btn btn-danger btn-xs">Blocked</button>
                                             <?php }?>
-                                            
+
                                             <?php if($launched == '1'){?>
                                             <button type="button" class="btn btn-primary btn-xs">Launched</button>
                                             <?php }else{?>
                                             <button type="button" class="btn btn-warning btn-xs">On hold</button>
                                             <?php }?>
-                                            
+
                                         </td>
-                                        <td><button type="button" class="btn btn-block btn-outline-primary btn-xs">View</button></td>
+                                        <td>
+                                            <form method="post" action="course_detail.php">
+                                                <input type="hidden" name="id_course" value="<?php echo $id;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-primary btn-xs">View</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php } ?>
 

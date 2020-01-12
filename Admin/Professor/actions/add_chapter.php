@@ -12,8 +12,8 @@
         $description = $descriptions[$i];
         $video = $videos[$i];
         $tmp_video = $tmp_videos[$i];
-        $video_path = "../videos/".basename($video);
-        $path = "videos/".basename($video); //to help find the video and display it easily
+        $video_path = "../../videos/".basename($video);
+        $path = "../videos/".basename($video); //to help find the video and display it easily
         if(move_uploaded_file($tmp_video, $video_path)){
             $sql = "INSERT INTO `chapter`(`path_video`, `id_course`, `title_chapter`, `description_chapter`) 
             VALUES ('$path', '$id_course', '$title', '$description')";

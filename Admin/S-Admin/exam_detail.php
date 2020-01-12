@@ -1,33 +1,24 @@
 <?php
     include_once("../../Database/db_connection.php");
-    if(!isset($_POST['id_course'])):
+    if(!isset($_GET['id'])):
         header('Location: ../General/404.html');
     endif;
-    $id_course = $_POST['id_course'];
+    $id_course = $_GET['id'];
     $sql = "SELECT * FROM `course` WHERE id_course = '$id_course'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-
-    $id_category = $row["id_category"];
     $course_name = $row["name"];
-    $description = $row["description"];
-    $release_date = $row["release_date"];
-    $syllabus = htmlspecialchars_decode($row["syllabus"]);
-    $active = $row["active"];
-    $lunched = $row["lunched"];
 
-    //number of videos  
-    $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
-    $video_result = mysqli_query($conn, $video_sql);
-    $video_row = mysqli_fetch_assoc($video_result);
-    $videos_number = $video_row['count'];
+    $sql = "SELECT * FROM `evaluation` WHERE id_course = '$id_course'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $id_evaluation = $row['id_evaluation'];
+    $threshold = $row['threshold'];
 
-    //number of students = subsriptions 
-    $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
-    $student_result = mysqli_query($conn, $student_sql);
-    $student_row = mysqli_fetch_assoc($student_result);
-    $student_number = $student_row['count'];
-
+    //Get questions list
+    $select_question = "SELECT * FROM `question` WHERE id_evaluation = '$id_evaluation'";
+    $question_result = mysqli_query($conn, $select_question);
+    
     //number of passed evaluations
     $exams_sql = "SELECT count(*) as count FROM `evaluation` e INNER JOIN `evaluation_result` er ON e.id_evaluation = er. id_evaluation WHERE id_course = '$id_course'";
     $exams_result = mysqli_query($conn, $exams_sql)or die(mysqli_error($conn));
@@ -182,26 +173,25 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title"><?php echo $course_name;?></h3>
+                                    <h3 class="card-title">Exam</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                                        <div class="col-12 col-md-12">
                                             <div class="row">
                                                 <div class="col-12 col-sm-4">
                                                     <div class="info-box bg-light">
                                                         <div class="info-box-content">
-                                                            <span class="info-box-text text-center text-muted">Total Subscriptions</span>
-                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $student_number;?></span>
+                                                            <span class="info-box-text text-center text-muted">Course </span>
+                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $course_name;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-4">
                                                     <div class="info-box bg-light">
                                                         <div class="info-box-content">
-                                                            <a href="chapters_detail.php?&id=<?php echo $id_course;?>">
-                                                                <span class="info-box-text text-center text-muted">Total chapters</span></a>
-                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $videos_number;?></span>
+                                                            <span class="info-box-text text-center text-muted">Threshold</span>
+                                                            <span class="info-box-number text-center text-muted mb-0"><?php echo $threshold;?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -215,24 +205,51 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-12">
-                                                    <h4 class="text-primary">Syllabus</h4>
+                                                <div class="col-md-10 offset-md-1">
                                                     <div class="post">
-                                                        <p><?php echo $syllabus;?></p>
+                                                        <?php 
+                                                        $qcounter = 1;
+                                                        $rcounter = 1;
+                                                        while($question_row = mysqli_fetch_assoc($question_result)):
+                                                            $id_question = $question_row['id_question'];
+                                                            $question = $question_row['description'];
+
+                                                            //display question
+                                                            echo "<h5 class='mt-5 text-muted'>Question ".$qcounter.":</h5>";
+                                                            echo "<p>".$question."</p>";
+
+                                                            $qcounter++;
+
+
+                                                            //get responses for each question
+                                                            $select_response = "SELECT * FROM `response` WHERE id_question = '$id_question'";
+                                                            $response_result = mysqli_query($conn, $select_response);
+                                                            echo "<div class='offset-md-1'>";
+                                                                while($response_row = mysqli_fetch_assoc($response_result)):
+                                                                    $status = '';
+                                                                    $response = $response_row['response'];
+                                                                    $response_status = $response_row['status'];
+
+                                                                    if($response_status == '1'):
+                                                                        $status = "(Correct answer !)";
+                                                                    endif;
+
+                                                                    echo "<h7 class='mt-5 text-muted'>Answer ".$rcounter.": ".$status."</h7>";
+                                                                    echo "<p style='color: black;'>".$response."</p>";
+                                                                    $rcounter++;
+
+                                                                endwhile;
+                                                            echo "</div>";
+                                                            echo "<hr>";
+
+                                                        endwhile;
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
-                                        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                                            <h5 class="mt-5 text-muted">Date of release: <?php echo $release_date;?></h5>
-                                            <h4 class="text-primary">Description</h4>
-                                            <p><?php echo $description?></p>
-                                            <br>
-                                            <div class="text-right mt-5 mb-3">
-                                                <a href="exam_detail.php?&id=<?php echo $id_course;?>" class="btn btn-sm btn-success">View Exam</a>
 
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 

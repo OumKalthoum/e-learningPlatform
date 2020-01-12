@@ -197,10 +197,10 @@
                                             <td>
                                                 <form method="post" action="course_detail.php">
                                                     <input type="hidden" name="id_course" value="<?php echo $id_course;?>">
-                                                    <button type="submit" class="btn btn-block btn-outline-warning btn-xs">View</button>
+                                                    <button type="submit" class="btn btn-block btn-outline-primary btn-xs">View</button>
                                                 </form>
 
-                                                <button type="button" class="btn btn-block btn-outline-primary btn-xs">Lunch</button>
+                                                <button type="button" class="btn btn-block btn-outline-success btn-xs">Lunch</button>
                                             </td>
                                         </tr>
                                         <?php endwhile;?>
