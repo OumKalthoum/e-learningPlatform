@@ -260,7 +260,7 @@
                                             echo '
                                                 <div class="course_teacher">'.$row_account["full_name"].'</div>
                                                 <div class="course_text">
-                                                    <p>'.$row["description"].'</p>
+                                                    <p>'.substr($row["description"], 0, 150).'</p>
                                                 </div>
                                             </div>
                                             <div class="course_footer">
