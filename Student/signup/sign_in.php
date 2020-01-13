@@ -13,8 +13,9 @@
 		    $email_account    = $row["email"];      
             $password_account = $row["password"]; 
             $type_account     = $row["type"];
+            $active_account     = $row["active"];
 
-		    if($email_account == $email && $password_account == $pswd && $type_account =='S'){
+		    if($email_account == $email && $password_account == $pswd && $type_account =='S' && $active_account == 1 ){
 		    	header('Location: ../index.php');
 		    	// Set session variables
 				$_SESSION["id_account"] = $id_account;

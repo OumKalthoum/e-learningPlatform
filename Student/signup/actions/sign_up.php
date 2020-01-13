@@ -15,8 +15,8 @@
     
     if($pswd == $confpswd){
 
-        $sql = "INSERT INTO account (full_name, email, password , date, type)
-        VALUES ('$name', '$email', '$pswd', '$date', 'S')";
+        $sql = "INSERT INTO account (full_name, email, password , date, type, active)
+        VALUES ('$name', '$email', '$pswd', '$date', 'S', 1)";
 
         if ($conn->query($sql)) {
             header("Location: ../sign_in.php"); 

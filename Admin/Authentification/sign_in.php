@@ -1,3 +1,44 @@
+<?php
+	session_start();
+    include_once("../../Database/db_connection.php");
+        if(isset($_GET["btn_sing_in"])){
+            $email = $_GET["email"];
+            $pswd = $_GET["password"];
+
+            $sql = "SELECT * from account" ;
+            $result = $conn->query($sql);
+
+		while($row = $result->fetch_assoc()) { 
+		    $id_account       = $row["id_account"];
+		    $email_account    = $row["email"];      
+            $password_account = $row["password"]; 
+            $type_account     = $row["type"];
+            $active_account     = $row["active"];
+
+		    if($email_account == $email && $password_account == $pswd && $type_account =='P' && $active_account == 1){
+		    	header('Location: ../Professor/index.php');
+		    	// Set session variables
+				$_SESSION["id_account"] = $id_account;
+				$_SESSION["connected"] = "connected";
+			}else if($email_account == $email && $password_account == $pswd && $type_account =='A' && $active_account == 1){
+		    	header('Location: ../S-Admin/index.php');
+		    	// Set session variables
+				$_SESSION["id_account"] = $id_account;
+				$_SESSION["connected"] = "connected";
+			}else{
+		    	$message = "wrong Email or Password";
+                echo "<script type='text/javascript'>alert('$message');
+                window.location = 'signin.php';
+                </script>";
+		    }
+		}
+    }
+    else{
+    	$email = "";
+	    $password = "";
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
