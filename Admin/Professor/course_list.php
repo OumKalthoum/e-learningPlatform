@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("../../Database/db_connection.php");
     $sql = "SELECT * FROM `course`";
     $result = $conn->query($sql);
@@ -9,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>E-Learning | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -51,31 +52,22 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.php" class="nav-link">Profile</a>
+                    <form id="form" action="../Authentification/actions/logout.php"></form>
+                    <a class="nav-link" onclick="document.getElementById('form').submit();">Logout</a>
                 </li>
             </ul>
-
-
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">E-Learning : Admin</span>
-            </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello <?php echo $_SESSION['full_name'];?> !</a>
                     </div>
                 </div>
 
@@ -215,7 +207,7 @@
                                                 <?php if($launched == '0'){?>
                                                 <form method="post" action="actions/launch_course.php">
                                                     <input type="hidden" name="id" value="<?php echo $id_course;?>">
-                                                    <button type="submit" class="btn btn-block btn-outline-success btn-xs">Lunch</button>
+                                                    <button type="submit" class="btn btn-block btn-outline-success btn-xs">Launch</button>
                                                 </form>
                                                 <?php }?>
                                             </td>
@@ -288,6 +280,18 @@
                 echo "Toast.fire({
                         type: 'success',
                         title: '  Course has been added successfuly !'
+                    })";
+            endif;
+            if(isset($_GET['exam']) && $_GET['exam'] == 'true'):
+                echo "Toast.fire({
+                        type: 'success',
+                        title: '  Exam has been added successfuly !'
+                    })";
+            endif;
+            if(isset($_GET['chapter']) && $_GET['chapter'] == 'true'):
+                echo "Toast.fire({
+                        type: 'success',
+                        title: '  Chapters have been added successfuly !'
                     })";
             endif;
             if(isset($_GET['modify']) && $_GET['modify'] == 'true'):

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("../../../Database/db_connection.php");
 
     $id_course = $_POST["id_course"];
@@ -24,6 +25,11 @@
             endif;
         }
     }
-    header("Location: ../add_exam.php?&id=$id_course");
+
+    
+    if(isset($_POST['from_menu'])){
+        header("Location: ../course_list.php?chapter=true");
+    }else header("Location: ../add_exam.php?&id=$id_course");
+    
     
 ?>

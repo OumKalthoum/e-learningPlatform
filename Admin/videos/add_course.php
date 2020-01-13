@@ -1,8 +1,9 @@
 <?php
-    session_start();
     include_once("../../Database/db_connection.php");
-    $id_course = $_GET['id'];
-    $nb_chapters = $_GET['nb'];
+    //$id_prof = $_SESSION['id'];
+    $id_prof = '1';
+    $sql = "SELECT * FROM category WHERE active = '1'";
+    $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,27 +49,27 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.php" class="nav-link">Profile</a>
+                   <form id="form" action="../Authentification/actions/logout.php"></form>
+                    <a class="nav-link" onclick="document.getElementById('form').submit();">Logout</a>
                 </li>
             </ul>
-
-
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">E-Learning : Admin</span>
+            </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Hello <?php echo $_SESSION['full_name'];?> !</a>
+                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
                     </div>
                 </div>
 
@@ -91,13 +92,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_course.php" class="nav-link">
+                            <a href="add_course.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Course</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_chapter_course.php" class="nav-link active">
+                            <a href="add_chapter_course.php" class="nav-link">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Chapter</p>
                             </a>
@@ -108,6 +109,7 @@
                                 <p>Add Exam</p>
                             </a>
                         </li>
+
 
                     </ul>
                 </nav>
@@ -142,45 +144,65 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">New Chapters</h3>
+                                    <h3 class="card-title">New Course</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="actions/add_chapter.php" method="post" enctype="multipart/form-data">
+                                <form role="form" action="actions/add_course.php" method="post" enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <?php for($i = 0; $i<$nb_chapters; $i++):?>
                                         <div class="form-group">
-                                            <h5 class='text-primary'>Chapter <?php echo $i+1;?>:</h5>
-                                            <label for="nom">Title</label>
-                                            <input type="text" class="form-control" id="title[]" name="title[]" placeholder="" required>
-                                            <input type="hidden" class="form-control" id="id_course" name="id_course" value="<?php echo $id_course;?>" required>
+                                            <label for="nom">Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="" maxlength="50" minlength="3" required>
+                                            <input type="hidden" class="form-control" id="id_prof" name="id_prof" value="<?php echo $id_prof;?>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="categorie">Category</label>
+                                            <select class="form-control" id="category" name="category" required>
+                                                <?php
+                                            //Category data
+                                            while($row = mysqli_fetch_assoc($result)):
+                                                $id_category = $row["id_category"];
+                                                $label_category = $row["label_category"];
+                                                echo "<option value='".$id_category."'>".$label_category."</option>";
+                                                
+                                            endwhile;?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description[]" name="description[]" placeholder="" rows="3" maxlength="1900"></textarea>
+                                            <textarea type="text" class="form-control" id="description" name="description" placeholder="" rows="3" maxlength="999" minlength="20" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="image">Video</label>
+                                            <label for="sylabus">Syllabus</label>
+                                            <textarea class="textarea" placeholder="Place some text here" name="syllabus" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="image">Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video" name="videos[]" required>
-                                                    <label class="custom-file-label" for="video">Choose a file</label>
+                                                    <input type="file" class="custom-file-input" id="image" name="image" required>
+                                                    <label class="custom-file-label" for="image">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="">Open</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php endfor;?>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Lunch course immediately</label>
+                                            <select class="form-control select2" name="lunched" required>
+                                                <option value="0" selected="selected">No</option>
+                                                <option value="1">yes</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Number of chapters</label>
+                                            <input type="number" class="form-control" id="nb_chapters" name="nb_chapters" placeholder="" max="15" min="1" required>
+                                        </div>
                                     </div>
 
                                     <div class="card-footer text-right">
-                                       <?php if(isset($_GET['from_menu'])){?>
                                         <a href="course_list.php" class="btn btn-warning">Cancel</a>
-                                        <input type="hidden" name="from_menu" value="name">
-                                        <?php }else{?>
-                                        <a href="course_list.php?success=true" class="btn btn-warning">Cancel</a>
-                                        <?php }?>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
@@ -225,7 +247,7 @@
 
     </script>
     <script>
-        $(document).on('change', '#video', function(event) {
+        $(document).on('change', '#image', function(event) {
             $(this).next('.custom-file-label').html(event.target.files[0].name);
 
         });

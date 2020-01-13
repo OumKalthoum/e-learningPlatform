@@ -40,7 +40,7 @@
                 <p class="login-box-msg">Sign in</p>
                 <form action="actions/sign_up.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="fullName" id="nom" placeholder="Nom et prenom" required="required">
+                        <input type="text" class="form-control" name="full_name" id="nom" placeholder="Nom et prenom" required="required">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>

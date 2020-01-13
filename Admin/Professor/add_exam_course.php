@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("../../Database/db_connection.php");
     //$id_prof = $_SESSION['id'];
     $sql = "SELECT c.id_course, c.name FROM `course` c LEFT JOIN `evaluation` e ON c.id_course  = e.id_course WHERE e.id_evaluation IS NULL";
@@ -10,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>E-Learning | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -48,31 +49,22 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.php" class="nav-link">Profile</a>
+                   <form id="form" action="../Authentification/actions/logout.php"></form>
+                    <a class="nav-link" onclick="document.getElementById('form').submit();">Logout</a>
                 </li>
             </ul>
-
-
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">E-Learning : Admin</span>
-            </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello <?php echo $_SESSION['full_name'];?> !</a>
                     </div>
                 </div>
 
