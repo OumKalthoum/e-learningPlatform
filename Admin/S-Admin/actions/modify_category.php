@@ -1,10 +1,10 @@
 <?php
     include_once("../../../Database/db_connection.php");
 
-    $id_category = $_POST["id"];
-    $label_category = $_POST["label"];
-    $description = $_POST["description"];
-    $active = $_POST["active"];
+    $id_category = $conn -> real_escape_string($_POST["id"]);
+    $label_category = $conn -> real_escape_string($_POST["label"]);
+    $description = $conn -> real_escape_string($_POST["description"]);
+    $active = $conn -> real_escape_string($_POST["active"]);
 
     //check if no modification has been applied
     $duplicat = "SELECT * FROM category WHERE BINARY label_category = '$label_category' and description = '$description'  and active = '$active'";

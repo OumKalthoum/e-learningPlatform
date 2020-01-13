@@ -1,9 +1,9 @@
 <?php
     include_once("../../../Database/db_connection.php");
 
-    $name = $_POST["name"];
-    $description = addslashes($_POST["description"]);
-    $syllabus = addslashes(htmlspecialchars($_POST["syllabus"]));
+    $name = $conn -> real_escape_string($_POST["name"]);
+    $description = $conn -> real_escape_string($_POST["description"]);
+    $syllabus = $conn -> real_escape_string(htmlspecialchars($_POST["syllabus"]));
     $id_prof = $_POST["id_prof"];
     $image = $_FILES["image"]["name"];
     $category = $_POST["category"];
