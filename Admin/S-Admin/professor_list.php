@@ -157,6 +157,7 @@
                                         <th>Date of subscription</th>
                                         <th>Courses</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -167,11 +168,12 @@
 		                                 
 		                                 while($row = mysqli_fetch_assoc($result_account)) {
 			
-			                             $id= $row['id_account'];
+			                             $id_account= $row['id_account'];
 			                             $name=$row['full_name'];
 			                             $email=$row['email'];
 			                             $date=$row['date'];
-                                         $select_course="SELECT count(*) FROM course  WHERE id_prof='$id' ";
+                                        $active=$row['active'];
+                                         $select_course="SELECT count(*) FROM course  WHERE id_prof='$id_account' ";
                                          $result_course = mysqli_query($conn,$select_course);
                                          $row1= mysqli_fetch_assoc($result_course);
                                          $NB_course=$row1['count(*)'];
@@ -182,7 +184,28 @@
                                    <td> <?php echo $email;?></td>
                                    <td> <?php echo $date ;?></td>
                                    <td> <?php echo $NB_course ;?></td>
-	                              <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
+	                              <td>
+                                            <?php if($active == '1'){?>
+                                            <button type="button" class="btn btn-success btn-xs">Active</button>
+                                            <?php }else{?>
+                                            <button type="button" class="btn btn-warning btn-xs">Hidden</button>
+                                            <?php }?>
+                                  </td>
+                                      <td>
+                                    <?php if($active == '1'):?>
+                                            <form method="post" action="actions/hideProf_account.php?&id=<?php echo $id_account;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+
+                                            </form>
+                                            <?php endif;?>
+                                            <?php if($active == '0'):?>
+                                            <form method="post" action="actions/showProf_account.php?&id=<?php echo $id_account;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-success btn-xs">Show</button>
+
+                                            </form>
+                                            <?php endif;?>
+                                            
+                                      </td>
                                  </tr>
 	                          <?php } ?>
                                 </tbody>
