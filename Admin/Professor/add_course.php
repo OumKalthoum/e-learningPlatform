@@ -176,7 +176,7 @@
                                             <label for="image">Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="image" name="image" required>
+                                                    <input type="file" class="custom-file-input" id="image" name="image" accept="image/x-png,image/gif,image/jpeg" required>
                                                     <label class="custom-file-label" for="image">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">

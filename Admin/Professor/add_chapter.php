@@ -163,7 +163,7 @@
                                             <label for="image">Video</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video" name="videos[]" required>
+                                                    <input type="file" class="custom-file-input" id="video" name="videos[]" accept="video/*" required>
                                                     <label class="custom-file-label" for="video">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">
