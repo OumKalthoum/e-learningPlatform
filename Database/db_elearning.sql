@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 12 jan. 2020 à 21:38
--- Version du serveur :  10.4.8-MariaDB
--- Version de PHP :  7.3.11
+-- Généré le :  lun. 13 jan. 2020 à 01:45
+-- Version du serveur :  10.1.36-MariaDB
+-- Version de PHP :  7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,18 +34,19 @@ CREATE TABLE `account` (
   `email` varchar(35) DEFAULT NULL,
   `password` varchar(11) NOT NULL,
   `date` date NOT NULL,
-  `type` varchar(11) NOT NULL
+  `type` varchar(11) NOT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `account`
 --
 
-INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`) VALUES
-(1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S'),
-(30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A'),
-(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P'),
-(32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S');
+INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`, `active`) VALUES
+(1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S', 1),
+(30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A', 0),
+(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P', 0),
+(32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S', 1);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE `category` (
   `id_category` int(11) NOT NULL,
   `label_category` varchar(100) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 1
+  `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -116,8 +117,8 @@ CREATE TABLE `course` (
   `id_prof` int(15) NOT NULL,
   `image_course` varchar(100) NOT NULL,
   `id_category` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT 1,
-  `lunched` tinyint(1) NOT NULL DEFAULT 0,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `lunched` tinyint(1) NOT NULL DEFAULT '0',
   `release_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -278,6 +279,41 @@ INSERT INTO `response` (`id_response`, `response`, `status`, `id_question`) VALU
 (41, 'ssssssssssssssssssssss', 0, 14),
 (42, 'sssssssssssssssssssss', 0, 14);
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `result_evaluation`
+--
+
+CREATE TABLE `result_evaluation` (
+  `id_student` int(15) NOT NULL,
+  `id_evaluation` int(15) NOT NULL,
+  `note` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `video`
+--
+
+CREATE TABLE `video` (
+  `id_video` int(15) NOT NULL,
+  `path` varchar(30) NOT NULL,
+  `id_course` int(15) NOT NULL,
+  `description_video` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `video`
+--
+
+INSERT INTO `video` (`id_video`, `path`, `id_course`, `description_video`) VALUES
+(1, 'path', 1, 'chapter 1 : introduction'),
+(2, 'path', 1, 'chapter 2 : Basics'),
+(3, 'path', 1, 'chapter 3 : demo'),
+(4, 'path', 2, 'chapter 1 : introduction');
+
 --
 -- Index pour les tables déchargées
 --
@@ -338,6 +374,12 @@ ALTER TABLE `response`
   ADD PRIMARY KEY (`id_response`);
 
 --
+-- Index pour la table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id_video`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -382,6 +424,12 @@ ALTER TABLE `question`
 --
 ALTER TABLE `response`
   MODIFY `id_response` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT pour la table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id_video` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
