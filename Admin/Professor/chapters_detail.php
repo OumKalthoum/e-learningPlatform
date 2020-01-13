@@ -168,7 +168,7 @@
                                         <div class="timeline-body">
                                             <div class="col-md-10 offset-md-1">
                                                 <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="<?php echo $video;?>" frameborder="0" allowfullscreen=""></iframe>
+                                                    <iframe class="embed-responsive-item" src="../videos/<?php echo $video;?>" frameborder="0" allowfullscreen=""></iframe>
                                                 </div>
                                             </div>
                                         </div>

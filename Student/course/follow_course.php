@@ -237,7 +237,7 @@
                             <div class="">
                                 <div class="blog_post_video_container">
                                     <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
-                                    <source src="../../Admin/<?php echo $row["path_video"] ?>" type="video/mp4">
+                                    <source src="../../Admin/videos/<?php echo $row["path_video"] ?>" type="video/mp4">
                                         Your browser does not support HTML5 video.
                                     </video>
                                 </div>
@@ -278,7 +278,7 @@
                                 <div class="blog_post_video_container">
                                     <video class="blog_post_video video-js" data-setup='{"controls": true, "autoplay": false, "preload": "auto"}'>
                                         <!--<source src="../images/mov_bbb.mp4" type="video/mp4">-->
-                                        <source src="../../Admin/<?php echo $row["path_video"] ?>" type="video/mp4">
+                                        <source src="../../Admin/videos/<?php echo $row["path_video"] ?>" type="video/mp4">
                                         Your browser does not support HTML5 video.
                                     </video>
                                 </div>

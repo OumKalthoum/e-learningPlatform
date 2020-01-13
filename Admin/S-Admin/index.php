@@ -178,7 +178,7 @@
                                       $num_rows = mysqli_num_rows($run_post);   
                                     ?>
                                     <h3><div class="huge"><?php echo $num_rows;?></div></h3>
-                                    <p>Subscriptions</p>
+                                    <p>Subscriptions (All)</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>

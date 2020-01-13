@@ -138,7 +138,10 @@
                             <div class="small-box bg-success">
                                 <div class="inner">
                                     <?php
-                                      $post = "SELECT * FROM course INNER JOIN account ON course.id_prof=account.id_account";
+                                    
+                                      //a corriger
+                                      //$post = "SELECT * FROM course INNER JOIN account ON course.id_prof=account.id_account where id_prof = ".$_SESSION['id_prof'];
+                                      $post = "SELECT * FROM course INNER JOIN account ON course.id_prof=account.id_account ";
                                       $run_post = mysqli_query($conn,$post);  
                                       $num_rows = mysqli_num_rows($run_post);   
                                     ?>
@@ -155,7 +158,9 @@
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <?php
+                                    //a corriger 
                                       $typeA='P';
+                                      //$post = "SELECT * FROM `course_student` cs INNER JOIN `course` c ON cs.id_course = c.id_course  WHERE  c.id_prof =". $_SESSION['id_prof'] ;
                                       $post = "SELECT * FROM `account` WHERE `type`='$typeA' ";
                                       $result = mysqli_query($conn,$post);  
                                       $rowcount = mysqli_num_rows($result);   
@@ -174,9 +179,10 @@
                             <div class="small-box bg-danger">
                                 <div class="inner">
                                      <?php
-                                      $post = "SELECT * FROM evaluation  JOIN course
-                                       ON evaluation.id_course=course.id_course
-                                      JOIN account ON course.id_prof=account.id_account";;
+                                      //$post = "SELECT * FROM evaluation e JOIN course c ON e.id_course = c.id_course JOIN account ON c.id_prof=account.id_account WHERE c.c.id_prof = ".$_SESSION['id_prof'];
+                                      $post = "SELECT * FROM evaluation e JOIN course c
+                                       ON e.id_course = c.id_course
+                                      JOIN account ON course.id_prof=account.id_account ";
                                       $result = mysqli_query($conn,$post);  
                                       $rowcount = mysqli_num_rows($result);   
                                     ?>
@@ -194,6 +200,7 @@
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <?php
+                                    //a corriger !!!
                                       $post = "SELECT * FROM evaluation_result JOIN evaluation     
                                          ON evaluation_result.id_evaluation=evaluation.id_evaluation
                                         JOIN course ON evaluation.id_course=course.id_course
