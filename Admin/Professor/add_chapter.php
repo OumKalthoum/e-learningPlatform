@@ -94,12 +94,23 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_course.php" class="nav-link active">
+                            <a href="add_course.php" class="nav-link">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Course</p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="add_chapter_course.php" class="nav-link active">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Chapter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="add_chapter_course.php" class="nav-link active">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Exam</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>
@@ -134,7 +145,7 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">New Course</h3>
+                                    <h3 class="card-title">New Chapters</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
@@ -167,7 +178,8 @@
                                     </div>
 
                                     <div class="card-footer text-right">
-                                        <button type="submit" class="btn btn-primary">Submit & Create Exam</button>
+                                        <a href="course_list.php" class="btn btn-warning">Cancel</a>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -215,8 +227,7 @@
             $(this).next('.custom-file-label').html(event.target.files[0].name);
 
         });
-        
-        
+
     </script>
 </body>
 

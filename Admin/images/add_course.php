@@ -101,18 +101,6 @@
                                 <p>Add Course</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="add_chapter_course.php" class="nav-link">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p>Add Chapter</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add_exam_course.php" class="nav-link">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p>Add Exam</p>
-                            </a>
-                        </li>
 
 
                     </ul>
@@ -201,7 +189,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputFile">Number of chapters</label>
-                                            <input type="number" class="form-control" id="nb_chapters" name="nb_chapters" placeholder="" max="15" min="1" required>
+                                            <input type="number" class="form-control" id="nb_chapters" name="nb_chapters" placeholder="" max="15" min="2" required>
                                         </div>
                                     </div>
 

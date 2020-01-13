@@ -1,7 +1,8 @@
 <?php
     include_once("../../Database/db_connection.php");
-    $sql = "SELECT * FROM `course`";
-    $result = $conn->query($sql);
+    //$id_prof = $_SESSION['id'];
+    $sql = "SELECT * FROM course";
+    $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +23,6 @@
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
     <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -90,7 +89,7 @@
                         </li>
                         <li class="nav-header">COURSE MANAGEMENT</li>
                         <li class="nav-item">
-                            <a href="course_list.php" class="nav-link active">
+                            <a href="course_list.php" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>Course List</p>
                             </a>
@@ -102,7 +101,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_chapter_course.php" class="nav-link">
+                            <a href="add_chapter_course.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Chapter</p>
                             </a>
@@ -130,7 +129,7 @@
                         <div class="col-sm-6 ml-auto">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active">Course List</li>
+                                <li class="breadcrumb-item active">Add Course</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -141,100 +140,52 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">New Chapter</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <!-- form start -->
+                                <form role="form" action="add_chapter.php" method="get" enctype="multipart/form-data">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="categorie">Course</label>
+                                            <select class="form-control" id="id" name="id" required>
+                                                <option value="" selected>Please select a course</option>
+                                                <?php
+                                            //Course data
+                                            while($row = mysqli_fetch_assoc($result)):
+                                                $id_course = $row["id_course"];
+                                                $course_name = $row["name"];
+                                                echo "<option value='".$id_course."'>".$course_name."</option>";
+                                                
+                                            endwhile;?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">Number of chapters</label>
+                                            <input type="number" class="form-control" id="nb" name="nb" placeholder="" max="15" min="1" required>
+                                        </div>
+                                    </div>
 
-                    <div class="card row">
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div>
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Course</th>
-                                            <th>Category</th>
-                                            <th>N° Videos</th>
-                                            <th>N° Subscriptions</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                    //Course data
-                                    while($row = $result->fetch_assoc()):
-                                    $id_course = $row["id_course"];
-                                    //Get category name
-                                    $id_category = $row["id_category"];
-                                    $category_sql = "SELECT * FROM `category` WHERE id_category = '$id_category'";
-                                    $category_result = mysqli_query($conn, $category_sql);
-                                    $category_row = mysqli_fetch_assoc($category_result);
-                                    $label_category = $category_row["label_category"];
-                                    
-                                    $name = $row["name"];
-                                    $description = $row["description"];
-                                    $active = $row["active"];
-                                    $launched = $row["lunched"];
-                                        
-                                    //number of videos  
-                                    $video_sql = "SELECT count(*) as count FROM `chapter` WHERE id_course = '$id_course'";
-                                    $video_result = mysqli_query($conn, $video_sql);
-                                    $video_row = mysqli_fetch_assoc($video_result);
-                                    $videos_number = $video_row['count'];
-                                        
-                                        
-                                    //number of students = subsriptions 
-                                    $student_sql = "SELECT count(*) as count FROM `course_student` WHERE id_course = '$id_course'";
-                                    $student_result = mysqli_query($conn, $student_sql);
-                                    $student_row = mysqli_fetch_assoc($student_result);
-                                    $student_number = $student_row['count'];
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $name;?></td>
-                                            <td><?php echo $label_category;?></td>
-                                            <td><?php echo $videos_number;?></td>
-                                            <td><?php echo $student_number;?></td>
-                                            <td>
-                                                <?php if($active == '1'){?>
-                                                <button type="button" class="btn btn-success btn-xs">Active</button>
-                                                <?php }else{?>
-                                                <button type="button" class="btn btn-danger btn-xs">Blocked</button>
-                                                <?php }?>
-
-                                                <?php if($launched == '1'){?>
-                                                <button type="button" class="btn btn-primary btn-xs">Launched</button>
-                                                <?php }else{?>
-                                                <button type="button" class="btn btn-warning btn-xs">On hold</button>
-                                                <?php }?>
-                                            </td>
-                                            <td>
-                                                <form method="post" action="course_detail.php">
-                                                    <input type="hidden" name="id_course" value="<?php echo $id_course;?>">
-                                                    <button type="submit" class="btn btn-block btn-outline-primary btn-xs">View</button>
-                                                </form>
-
-                                                <button type="button" class="btn btn-block btn-outline-success btn-xs">Lunch</button>
-                                            </td>
-                                        </tr>
-                                        <?php endwhile;?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Course</th>
-                                            <th>Category</th>
-                                            <th>N° Videos</th>
-                                            <th>N° Subscriptions</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                    <div class="card-footer text-right">
+                                        <a href="course_list.php" class="btn btn-warning">Cancel</a>
+                                        <button type="submit" class="btn btn-primary">Create chapters</button>
+                                    </div>
+                                </form>
                             </div>
-                        </div> <!-- /.card-body -->
+                            <!-- /.card -->
+                        </div>
                     </div>
-
                 </div>
             </section>
 
         </div>
+        <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
     <!-- /.content -->
     <!-- /.content-wrapper -->
@@ -249,23 +200,21 @@
     </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
-    <script src="../plugins/datatables/jquery.dataTables.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
-    <!-- page script -->
+    <!-- Summernote -->
+    <script src="../plugins/summernote/summernote-bs4.min.js"></script>
     <script>
-        $(document).ready(function() {
-            var table = $('#example1').DataTable();
-        });
+        $(function() {
+            // Summernote
+            $('.textarea').summernote()
+        })
 
     </script>
 </body>
