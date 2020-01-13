@@ -1,5 +1,9 @@
 <?php
     session_start();
+    //check if user has logged in
+    if(isset($_SESSION['id_account']) && !empty($_SESSION['id_account'])){}
+    else header("Location: ../Authentification/sign_in.php");
+
     include_once("../../Database/db_connection.php");
     $sql = "SELECT * FROM `course`";
     $result = $conn->query($sql);

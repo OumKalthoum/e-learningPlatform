@@ -1,5 +1,10 @@
 <?php
     session_start();
+    
+    //check if user has logged in
+    if(isset($_SESSION['id_account']) && !empty($_SESSION['id_account'])){}
+    else header("Location: ../Authentification/sign_in.php");
+
     include_once("../../Database/db_connection.php");
     //$id_prof = $_SESSION['id'];
     $sql = "SELECT c.id_course, c.name FROM `course` c LEFT JOIN `evaluation` e ON c.id_course  = e.id_course WHERE e.id_evaluation IS NULL";
