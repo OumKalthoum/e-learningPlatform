@@ -158,6 +158,7 @@
                                         <th>Courses</th>
                                         <th>Evaluations</th>
                                         <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -168,15 +169,16 @@
 		                                 
 		                                 while($row = mysqli_fetch_assoc($result_accountS)) {
 			
-			                             $id= $row['id_account'];
+			                             $id_account= $row['id_account'];
 			                             $name=$row['full_name'];
 			                             $email=$row['email'];
 			                             $date=$row['date'];
-                                         $select_course="SELECT count(*) FROM course_student  WHERE id_stud='$id' ";
+                                         $active=$row['active'];
+                                         $select_course="SELECT count(*) FROM course_student  WHERE id_stud='$id_account' ";
                                          $result_course = mysqli_query($conn,$select_course);
                                          $row1= mysqli_fetch_assoc($result_course);
                                          $NB_course=$row1['count(*)'];
-                                         $select_evaluation="SELECT count(*) FROM evaluation_result  WHERE id_stud='$id' ";
+                                         $select_evaluation="SELECT count(*) FROM evaluation_result  WHERE id_stud='$id_account' ";
                                          $result_evaluation = mysqli_query($conn,$select_evaluation);
                                          $row2= mysqli_fetch_assoc($result_evaluation);
                                          $NB_evaluation=$row2['count(*)'];
@@ -188,7 +190,28 @@
                                    <td> <?php echo $date ;?></td>
                                    <td> <?php echo $NB_course ;?></td>
                                    <td> <?php echo $NB_evaluation;?></td>
-	                              <td><button type="button" class="btn btn-success btn-xs">Active</button></td>
+	                               <td>
+                                            <?php if($active == '1'){?>
+                                            <button type="button" class="btn btn-success btn-xs">Active</button>
+                                            <?php }else{?>
+                                            <button type="button" class="btn btn-warning btn-xs">Hidden</button>
+                                            <?php }?>
+                                  </td>
+                                      <td>
+                                    <?php if($active == '1'):?>
+                                            <form method="post" action="actions/hide_account.php?&id=<?php echo $id_account;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Hide</button>
+
+                                            </form>
+                                            <?php endif;?>
+                                            <?php if($active == '0'):?>
+                                            <form method="post" action="actions/show_account.php?&id=<?php echo $id_account;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-success btn-xs">Show</button>
+
+                                            </form>
+                                            <?php endif;?>
+                                            
+                                      </td>
                                  </tr>
 	                          <?php } ?>
                                 </tbody>
@@ -238,6 +261,7 @@
     <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+      
     <!-- page script -->
     <script>
         $(function() {
