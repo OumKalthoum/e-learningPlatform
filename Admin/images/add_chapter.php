@@ -1,7 +1,7 @@
 <?php
     include_once("../../Database/db_connection.php");
-    $id_course = $_GET['id'];
-    $nb_chapters = $_GET['nb'];
+    $id_course = $_POST['id'];
+    $nb_chapters = $_POST['nb'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -178,7 +178,7 @@
                                     </div>
 
                                     <div class="card-footer text-right">
-                                       <?php if(isset($_GET['from_menu'])){?>
+                                       <?php if(isset($_POST['from_menu'])){?>
                                         <a href="course_list.php" class="btn btn-warning">Cancel</a>
                                         <?php }else{?>
                                         <a href="course_list.php?success=true" class="btn btn-warning">Cancel</a>

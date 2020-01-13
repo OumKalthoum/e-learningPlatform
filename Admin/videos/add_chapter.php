@@ -94,23 +94,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_course.php" class="nav-link">
+                            <a href="add_course.php" class="nav-link active">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Course</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="add_chapter_course.php" class="nav-link active">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p>Add Chapter</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add_exam_course.php" class="nav-link">
-                                <i class="nav-icon fas fa-plus"></i>
-                                <p>Add Exam</p>
-                            </a>
-                        </li>
+
 
                     </ul>
                 </nav>
@@ -145,7 +134,7 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">New Chapters</h3>
+                                    <h3 class="card-title">New Course</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
@@ -178,11 +167,7 @@
                                     </div>
 
                                     <div class="card-footer text-right">
-                                       <?php if(isset($_GET['from_menu'])){?>
                                         <a href="course_list.php" class="btn btn-warning">Cancel</a>
-                                        <?php }else{?>
-                                        <a href="course_list.php?success=true" class="btn btn-warning">Cancel</a>
-                                        <?php }?>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>

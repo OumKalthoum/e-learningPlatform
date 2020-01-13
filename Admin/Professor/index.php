@@ -98,6 +98,18 @@
                                 <p>Add Course</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="add_chapter_course.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Chapter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="add_exam_course.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Exam</p>
+                            </a>
+                        </li>
 
 
                     </ul>

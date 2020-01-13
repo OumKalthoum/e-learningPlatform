@@ -97,7 +97,18 @@
                                 <p>Add Course</p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="add_chapter_course.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Chapter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="add_exam_course.php" class="nav-link">
+                                <i class="nav-icon fas fa-plus"></i>
+                                <p>Add Exam</p>
+                            </a>
+                        </li>
 
                     </ul>
                 </nav>
@@ -289,6 +300,7 @@
 
                                     </section>
                                     <div class="card-footer text-right">
+                                        <a href="course_list.php" class="btn btn-warning">Cancel</a>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>

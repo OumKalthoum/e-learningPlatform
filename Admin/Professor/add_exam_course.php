@@ -1,7 +1,8 @@
 <?php
     include_once("../../Database/db_connection.php");
-    $id_course = $_GET['id'];
-    $nb_chapters = $_GET['nb'];
+    //$id_prof = $_SESSION['id'];
+    $sql = "SELECT c.id_course, c.name FROM `course` c LEFT JOIN `evaluation` e ON c.id_course  = e.id_course WHERE e.id_evaluation IS NULL";
+    $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,7 +101,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="add_chapter_course.php" class="nav-link active">
+                            <a href="add_chapter_course.php" class="nav-link">
                                 <i class="nav-icon fas fa-plus"></i>
                                 <p>Add Chapter</p>
                             </a>
@@ -145,45 +146,30 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">New Chapters</h3>
+                                    <h3 class="card-title">New Exam</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form role="form" action="actions/add_chapter.php" method="post" enctype="multipart/form-data">
+                                <form role="form" action="add_exam.php" method="get" enctype="multipart/form-data">
                                     <div class="card-body">
-                                        <?php for($i = 0; $i<$nb_chapters; $i++):?>
                                         <div class="form-group">
-                                            <h5 class='text-primary'>Chapter <?php echo $i+1;?>:</h5>
-                                            <label for="nom">Title</label>
-                                            <input type="text" class="form-control" id="title[]" name="title[]" placeholder="" required>
-                                            <input type="hidden" class="form-control" id="id_course" name="id_course" value="<?php echo $id_course;?>" required>
+                                            <label for="categorie">Course</label>
+                                            <select class="form-control" id="id" name="id" required>
+                                               <option value="" selected>Please select a course</option>
+                                                <?php
+                                            //Course data
+                                            while($row = mysqli_fetch_assoc($result)):
+                                                $id_course = $row["id_course"];
+                                                $course_name = $row["name"];
+                                                echo "<option value='".$id_course."'>".$course_name."</option>";
+                                            endwhile;?>
+                                            </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea type="text" class="form-control" id="description[]" name="description[]" placeholder="" rows="3" maxlength="1900"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="image">Video</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="video" name="videos[]" required>
-                                                    <label class="custom-file-label" for="video">Choose a file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="">Open</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php endfor;?>
                                     </div>
 
                                     <div class="card-footer text-right">
-                                       <?php if(isset($_GET['from_menu'])){?>
                                         <a href="course_list.php" class="btn btn-warning">Cancel</a>
-                                        <?php }else{?>
-                                        <a href="course_list.php?success=true" class="btn btn-warning">Cancel</a>
-                                        <?php }?>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Create Exam</button>
                                     </div>
                                 </form>
                             </div>
@@ -226,13 +212,7 @@
         })
 
     </script>
-    <script>
-        $(document).on('change', '#video', function(event) {
-            $(this).next('.custom-file-label').html(event.target.files[0].name);
 
-        });
-
-    </script>
 </body>
 
 </html>
