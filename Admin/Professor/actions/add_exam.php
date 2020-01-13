@@ -19,6 +19,7 @@
         $exam_row = mysqli_fetch_assoc($exam_result);
         $id_evaluation = $exam_row['id_evaluation'];
 
+
         if($exam_result):
             for ($i = 0; $i < count($questions); ++$i) {
                 $question = $questions[$i];

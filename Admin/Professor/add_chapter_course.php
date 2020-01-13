@@ -169,6 +169,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputFile">Number of chapters</label>
                                             <input type="number" class="form-control" id="nb" name="nb" placeholder="" max="15" min="1" required>
+                                            <input type="hidden" class="form-control" id="from_menu" name="from_menu" required>
                                         </div>
                                     </div>
 
