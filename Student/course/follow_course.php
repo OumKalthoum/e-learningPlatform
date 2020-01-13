@@ -311,7 +311,12 @@
                                     ?>
                                         <li><a href="follow_course.php?id=<?php echo $id_chapter.'&counter='.$count ?>" class="clearfix">Chapter  <?php echo $count.' : <span>'.substr($title_chapter, 0, 40).'</span>'; ?></a></li>								
                                         <?php } ?>
-                                        <li><a href="../exam/exam.php" class="clearfix">Exam</a></li>
+                                        <?php 
+                                            $query = "SELECT * from evaluation where id_course = $id_course";
+                                            $result_query = $conn->query($query);
+                                            $row = $result_query->fetch_assoc();
+                                        ?>
+                                        <li><a href="../exam/exam.php?id=<?php echo $row["id_evaluation"]?>" class="clearfix">Exam</a></li>
                                         
                                     </ul>
                                 </div>
