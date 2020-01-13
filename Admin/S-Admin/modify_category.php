@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    //check if user has logged in
+    if(isset($_SESSION['id_account']) && !empty($_SESSION['id_account'])){}
+    else header("Location: ../Authentification/sign_in.php");
+
     include_once("../../Database/db_connection.php");
     $id_category = $_GET['id'];
     $sql = "SELECT * FROM category WHERE id_category = '$id_category'";

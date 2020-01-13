@@ -1,4 +1,11 @@
 <?php
+
+    session_start();
+
+    //check if user has logged in
+    if(isset($_SESSION['id_account']) && !empty($_SESSION['id_account'])){}
+    else header("Location: ../Authentification/sign_in.php");
+
     include_once("../../Database/db_connection.php");
     if(!isset($_POST['id_course'])):
         header('Location: ../General/404.html');
