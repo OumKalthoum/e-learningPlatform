@@ -24,8 +24,17 @@
     }
     
     else if(isset($_GET["btn_search"])){
-    	$search_word = $_GET['search'];
-    	$sql = "SELECT * FROM course  WHERE name like '%$search_word%'";
+
+        $search_word = $_GET['search'];
+       
+        if(!empty($_GET['searchCat'])){
+            $search_cat = $_GET['searchCat'];
+            $sql = "SELECT * FROM course  WHERE name like '%$search_word%' and id_category = '$search_cat'";
+        }else{
+            $sql = "SELECT * FROM course  WHERE name like '%$search_word%'";
+        }
+        
+    	
     }
 
     else{  

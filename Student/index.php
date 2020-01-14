@@ -15,7 +15,30 @@
             $full_name    = $row["full_name"];      
             
         }           
-	}
+    }
+    
+
+
+    if(isset($_GET["id"])){
+        $search_word = "";
+        $id = $_GET['id'];
+    	$sql = "SELECT * FROM course  WHERE id_category= $id";
+    }
+    
+    else if(isset($_GET["btn_search"])){
+    	$search_word = $_GET['search'];
+    	$sql = "SELECT * FROM course  WHERE name like '%$search_word%'";
+    }
+
+    else{  
+    	$search_word = "";
+    	$sql = "SELECT * FROM course";
+    }
+
+    $result = $conn->query($sql);
+
+    $sql_category 	 = "SELECT * FROM category";
+    $result_category = $conn->query($sql_category);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,21 +201,32 @@
                                         <div class="home_slider_title">The Free System Education</div>
                                         <div class="home_slider_subtitle">Future Of Education Technology</div>
                                         <div class="home_slider_form_container">
-                                            <form action="#" id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
+                                            <form action="./course/course_list.php" method="GET" id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
                                                 <div class="d-flex flex-row align-items-center justify-content-start">
-                                                    <input type="search" class="home_search_input" placeholder="Keyword Search" required="required">
+                                                <input type="search" name="search" value="<?php echo $search_word ?>" class="home_search_input" placeholder="Search Courses" >
+                                                       
                                                     <select class="dropdown_item_select home_search_input">
-                                                        <option>Category Courses</option>
-                                                        <option>Category</option>
-                                                        <option>Category</option>
-                                                    </select>
-                                                    <select class="dropdown_item_select home_search_input">
-                                                        <option>Select Professor</option>
-                                                        <option>Professor 1</option>
-                                                        <option>Professor 2</option>
-                                                    </select>
-                                                </div>
-                                                <button type="submit" class="home_search_button">search</button>
+                                                    <optgroup label="Categories">
+                                                    <option value="empty">Search by category</option>
+                                                    <?php
+                                                        // output data of each row
+                                                        while($row = $result_category->fetch_assoc()) { 
+                                                            $id_cat  = $row["id_category"];   
+                                                            $label_cat = $row["label_category"];     
+                                                    ?>
+                                                        
+                                                        <option name="searchCat" value="<?php echo $id_cat ?>"><?php echo $label_cat ?></a></option>								
+                                                        <?php } ?>
+                                                        </optgroup>
+                                                       </select>
+                                                       <select class="dropdown_item_select home_search_input">
+                                                           <option>Select Professor</option>
+                                                           <option>Professor 1</option>
+                                                           <option>Professor 2</option>
+                                                       </select>
+                                                   </div>
+                                                   <button type="submit" class="home_search_button" name="btn_search">search</button>
+                                                
                                             </form>
                                         </div>
                                     </div>
