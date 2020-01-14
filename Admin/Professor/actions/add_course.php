@@ -14,7 +14,7 @@
 
     //move uploaded files to folders
     if(move_uploaded_file($_FILES["image"]["tmp_name"], $image_path)){
-        $sql = "INSERT INTO `course`(`name`, `description`, `syllabus`, `id_prof`,                 `image_course`, `id_category`, `lunched`, `release_date`)
+        $sql = "INSERT INTO `course`(`name`, `description`, `syllabus`, `id_prof`,                 `image_course`, `id_category`, `lunched`)
             VALUES ('$name', '$description', '$syllabus', '$id_prof', '$image', '$category', '$lunched')";
         $result = mysqli_query($conn,$sql)or die(mysqli_error($conn));
         if($result):

@@ -3,10 +3,10 @@
     include_once("../../../Database/db_connection.php");
 
     $id_course = $_POST["id_course"];
-    $titles = $conn -> real_escape_string($_POST["title"]);
-    $descriptions = $conn -> real_escape_string($_POST["description"]);
-    $tmp_videos = $conn -> real_escape_string($_FILES["videos"]["tmp_name"]);
-    $videos = $conn -> real_escape_string($_FILES["videos"]["name"]);
+    $titles = $_POST["title"];
+    $descriptions = $_POST["description"];
+    $tmp_videos = $_FILES["videos"]["tmp_name"];
+    $videos = $_FILES["videos"]["name"];
     
     for ($i = 0; $i < count($titles); ++$i) {
         $title = $titles[$i];
