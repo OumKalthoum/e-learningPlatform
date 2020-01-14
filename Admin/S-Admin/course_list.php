@@ -225,6 +225,17 @@
                                                 <input type="hidden" name="id_course" value="<?php echo $id;?>">
                                                 <button type="submit" class="btn btn-block btn-outline-primary btn-xs">View</button>
                                             </form>
+                                            <?php if($active == '1'){?>
+                                            <form method="get" action="actions/block_course.php">
+                                                <input type="hidden" name="id" value="<?php echo $id;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-danger btn-xs">Block</button>
+                                            </form>
+                                            <?php }else{?>
+                                            <form method="get" action="actions/unblock_course.php">
+                                                <input type="hidden" name="id" value="<?php echo $id;?>">
+                                                <button type="submit" class="btn btn-block btn-outline-success btn-xs">Unblock</button>
+                                            </form>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                     <?php } ?>
