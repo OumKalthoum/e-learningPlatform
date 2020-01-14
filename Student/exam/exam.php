@@ -1,8 +1,28 @@
+
+<?php
+include_once("../../Database/db_connection.php");
+$id_evaluation = $_GET['id'];
+
+$sql = "SELECT * FROM `course` INNER JOIN evaluation 
+ON course.id_course=evaluation.id_course
+ WHERE id_evaluation = '$id_evaluation'";
+
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $course_name = $row['name'];
+    $course_date = $row['release_date'];
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Examen</title>
+    <title>E-learning</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Unicat project">
@@ -146,81 +166,55 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="blog_content">
-                            <div class="blog_title">‘I Kept Thinking of Antioch’: Long Before #MeToo, a times Video Journalist Remembered</div>
+                            <div class="blog_title"> <?php echo $course_name;?></div>
                             <div class="blog_meta">
                                 <ul>
-                                    <li>Post on <a href="#">May 5, 2018</a></li>
+                                    <li>Post on <a href="#"><?php echo $course_date;?></a></li>
                                     <li>By <a href="#">admin</a></li>
                                 </ul>
                             </div>
-                            <div class="blog_subtitle">Question 1 : This is the content of the first question</div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
-                            <br>
-                            <div class="courses_search_container">
-                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                    <option>Answer</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                            <div class="blog_subtitle">Question 2 : This is the content of the second question</div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
-                            <br>
-                            <div class="courses_search_container">
-                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                    <option>Answer</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                            <div class="blog_subtitle">Question 3 : This is the content of the third question</div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
-                            <br>
-                            <div class="courses_search_container">
-                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                    <option>Answer</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
-                            <div class="blog_subtitle">Question 4 : This is the content of the fourth question</div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
-                            <br>
-                            <div class="courses_search_container">
-                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                    <option>Answer</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
+                                <?php
+                                      $select_question = "SELECT * FROM `question` WHERE id_evaluation = '$id_evaluation'";
+                                       $question_result = mysqli_query($conn, $select_question);
+                                while($question_row = mysqli_fetch_assoc($question_result)):
+                                     $id_question = $question_row['id_question'];
+                                     $question = $question_row['description'];  
+                                     echo "<div class='blog_subtitle'>".$question."</div>";
+                                 ?>
+                                    <div class="courses_search_container">
+                                    <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
+                                    <?php 
 
-                            <div class="blog_subtitle">Question 5 : This is the content of the fifth question</div>
-                            <p>Times Insider delivers behind-the-scenes insights into how news, features and opinion come together at The New York Times.Before I could spend the night in my younger sister’s dorm room at Antioch</p>
-                            <br>
-                            <div class="courses_search_container">
-                                <select id="courses_search_select" style="margin-top: 15px; margin-bottom: 15px; width: 700px" class="courses_search_select courses_search_input">
-                                    <option>Answer</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                            </div>
+                                    $select_response = "SELECT * FROM `response` WHERE id_question = '$id_question'";                    
+                                     $response_result = mysqli_query($conn, $select_response);
+                                     echo " <div class='courses_search_container'>";
+
+                                    while($response_row = mysqli_fetch_array($response_result)){
+                                        ?>
+                                        
+                                        <option><?php echo $response_row['response'];?> </option>
+                                        
+                                        <?php 
+
+                                        }
+                                     ?>
+                                    
+                                    </select>
+                                    </div>
+                                                        
+                                <?php endwhile;?>      
+                            
+
                         </div>
-                        <div class="blog_extra d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-                        </div>
-                        <br>
-                        <form action="result.php">
+                           <br>
+
+                        <form action="result.php" method="post" value="<?php echo $id_evaluation;?>">
                             <button type="submit" class="home_search_button">Submit</button>
                         </form>
                     </div>
 
                 </div>
             </div>
-
         </div>
 
         <!-- Footer -->
