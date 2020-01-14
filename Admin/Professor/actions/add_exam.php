@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once("../../../Database/db_connection.php");
 
     $id_course = $_POST["id_course"];
@@ -52,6 +53,6 @@
 
     endif;
 
-    header("Location: ../course_list.php?success=true");
+    header("Location: ../course_list.php?exam=true");
 
 ?>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  lun. 13 jan. 2020 à 01:45
--- Version du serveur :  10.1.36-MariaDB
--- Version de PHP :  7.2.11
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 13 jan. 2020 à 20:57
+-- Version du serveur :  5.7.26
+-- Version de PHP :  7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,25 +28,29 @@ SET time_zone = "+00:00";
 -- Structure de la table `account`
 --
 
-CREATE TABLE `account` (
-  `id_account` int(15) NOT NULL,
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `id_account` int(15) NOT NULL AUTO_INCREMENT,
   `full_name` varchar(30) DEFAULT NULL,
   `email` varchar(35) DEFAULT NULL,
-  `password` varchar(11) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `type` varchar(11) NOT NULL,
-  `active` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_account`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `account`
 --
 
 INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `type`, `active`) VALUES
-(1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S', 1),
-(30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A', 0),
-(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P', 0),
-(32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S', 1);
+(1, 'Oumaiyma', 'oumaintissar@gmail.com', '123azerty', '2001-01-20', 'S', 0),
+(30, 'Admin', 'administrator@ssjs.ss', 'azert', '2001-01-20', 'A', 1),
+(31, 'Professor', 'prof@prof.ma', 'prof', '2001-01-20', 'P', 1),
+(32, 'Oumaiyma', 'o.intissar@mundiapolis.ma', 'azerty', '2001-01-20', 'S', 0),
+(33, 'JJ', 'chanchafjaouhara@gmail.com', '123', '2001-12-20', 'S', 0),
+(34, 'jaouhara', 'chanchafjaouhara@gmail.com', '11934d224d605bdbea519d5dec2d065ce803d5f9', '2020-01-13', 'P', 1);
 
 -- --------------------------------------------------------
 
@@ -54,12 +58,14 @@ INSERT INTO `account` (`id_account`, `full_name`, `email`, `password`, `date`, `
 -- Structure de la table `category`
 --
 
-CREATE TABLE `category` (
-  `id_category` int(11) NOT NULL,
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `label_category` varchar(100) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_category`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `category`
@@ -68,12 +74,13 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id_category`, `label_category`, `description`, `active`) VALUES
 (1, 'informatique', '', 1),
 (2, 'Kitchen', 'This category is related to cooking and bakery courses only!', 1),
-(3, 'Dance ', '', 1),
+(3, 'Dance ', 'zegez', 1),
 (6, 'Java beginners course  ', 'Java programming course', 1),
 (13, 'Java beginners course	', '', 1),
 (14, 'Python', '', 1),
 (15, 'Sign language', '', 1),
-(16, 'Design patterns', '', 1);
+(16, 'Design patterns', '', 0),
+(17, 'Category 1', 'zegeg', 1);
 
 -- --------------------------------------------------------
 
@@ -81,27 +88,37 @@ INSERT INTO `category` (`id_category`, `label_category`, `description`, `active`
 -- Structure de la table `chapter`
 --
 
-CREATE TABLE `chapter` (
-  `id_chapter` int(15) NOT NULL,
+DROP TABLE IF EXISTS `chapter`;
+CREATE TABLE IF NOT EXISTS `chapter` (
+  `id_chapter` int(15) NOT NULL AUTO_INCREMENT,
   `path_video` varchar(5000) NOT NULL,
   `id_course` int(15) NOT NULL,
   `title_chapter` varchar(2000) NOT NULL,
-  `description_chapter` varchar(50000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `description_chapter` varchar(50000) NOT NULL,
+  PRIMARY KEY (`id_chapter`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `chapter`
 --
 
 INSERT INTO `chapter` (`id_chapter`, `path_video`, `id_course`, `title_chapter`, `description_chapter`) VALUES
-(1, 'videos/v1.mp4', 1, 'The alphabets in BSL', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
-(2, 'videos/v2.mp4', 1, 'Commun signs related to school', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
-(3, 'videos/v3.mp4', 1, 'Commun signs related to travel', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
-(4, 'videos/v3.mp4', 2, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.\r\n\r\nCu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.\r\n\r\nEx sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. '),
-(5, 'videos/v1.mp4', 2, 'erunt philosophatibus vim, id requtam.', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.\r\n\r\nEx sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.\r\n\r\nVeniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit deco'),
-(6, 'videos/v2.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '-----------------------------------------------------'),
-(7, 'videos/v1.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '----------------------------------------------________________________________________----------------------------'),
-(8, 'videos/v3.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '----------------Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨____________--------------------Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨___________');
+(1, 'v1.mp4', 1, 'The alphabets in BSL', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
+(2, 'v2.mp4', 1, 'Commun signs related to school', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
+(3, '../videos/v3.mp4', 1, 'Commun signs related to travel', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"'),
+(4, '../videos/v3.mp4', 2, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.\r\n\r\nCu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.\r\n\r\nEx sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. '),
+(5, '../videos/v1.mp4', 2, 'erunt philosophatibus vim, id requtam.', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.\r\n\r\nEx sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.\r\n\r\nVeniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit deco'),
+(6, '../videos/v2.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '-----------------------------------------------------'),
+(7, '../videos/v1.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '----------------------------------------------________________________________________----------------------------'),
+(8, '../videos/v3.mp4', 3, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', '----------------Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨____________--------------------Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨Ã¨___________'),
+(9, '../videos/v3.mp4', 4, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'gezg'),
+(10, '../videos/v1.mp4', 4, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'zegg'),
+(11, 'add_chapter.php', 1, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'cnvkdsn'),
+(12, 'course_list.php', 2, 'Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.', 'BB'),
+(13, 'add_course.php', 3, 'eryry', 'fezre'),
+(14, 'add_exam.php', 3, 'eryry', 'gdsegez'),
+(15, 'add_course.php', 3, 'eryry', 'sdv'),
+(16, 'add_course.php', 3, 'eryry', 'sdv');
 
 -- --------------------------------------------------------
 
@@ -109,8 +126,9 @@ INSERT INTO `chapter` (`id_chapter`, `path_video`, `id_course`, `title_chapter`,
 -- Structure de la table `course`
 --
 
-CREATE TABLE `course` (
-  `id_course` int(15) NOT NULL,
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE IF NOT EXISTS `course` (
+  `id_course` int(15) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   `description` varchar(50000) NOT NULL,
   `syllabus` mediumtext NOT NULL,
@@ -119,17 +137,21 @@ CREATE TABLE `course` (
   `id_category` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `lunched` tinyint(1) NOT NULL DEFAULT '0',
-  `release_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `release_date` date DEFAULT NULL,
+  PRIMARY KEY (`id_course`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `course`
 --
 
 INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`, `image_course`, `id_category`, `active`, `lunched`, `release_date`) VALUES
-(1, 'BSL  ', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"', '&lt;div id=&quot;Content&quot; style=&quot;margin: 0px; padding: 0px; position: relative; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;div id=&quot;Translation&quot; style=&quot;margin: 0px 28.7917px; padding: 0px; text-align: left;&quot;&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198); font-weight: bold;&quot;&gt;The standard Lorem Ipsum passage, used since the 1500s&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;1914 translation by H. Rackham&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;1914 translation by H. Rackham&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr style=&quot;margin: 0px; padding: 0px; border-top: 0px; clear: both; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;br&gt;', 1, 'gallery_6_large.jpg', 15, 1, 0, '2020-01-12'),
-(2, 'Demo course 1', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit sin', '&lt;p&gt;Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Ex sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Veniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit decore quodsi, case eruditi adolescens ne vim.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At mutat accusamus voluptatum mei, sed ut inermis recteque elaboraret. Cu cum idque audiam dignissim, cum agam scripta cu, no cum modus dicam. In pro officiis vulputate, dolor maluisset et vix. Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.&lt;/p&gt;', 1, 'gallery_6_large.jpg', 16, 1, 0, '2020-01-12'),
-(3, 'Demo course 2', '______________________    ', '&lt;p&gt;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&lt;/p&gt;', 1, 'blog_4.jpg', 1, 1, 0, '2020-01-12');
+(1, 'BSL  ', '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"', '&lt;div id=&quot;Content&quot; style=&quot;margin: 0px; padding: 0px; position: relative; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;div id=&quot;Translation&quot; style=&quot;margin: 0px 28.7917px; padding: 0px; text-align: left;&quot;&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198); font-weight: bold;&quot;&gt;The standard Lorem Ipsum passage, used since the 1500s&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.32 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;1914 translation by H. Rackham&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;&lt;span style=&quot;color: rgb(57, 132, 198);&quot;&gt;Section 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot;, written by Cicero in 45 BC&lt;/span&gt;&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.&quot;&lt;/p&gt;&lt;h3 style=&quot;margin: 15px 0px; padding: 0px; font-weight: 700; font-size: 14px;&quot;&gt;1914 translation by H. Rackham&lt;/h3&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify;&quot;&gt;&quot;On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.&quot;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr style=&quot;margin: 0px; padding: 0px; border-top: 0px; clear: both; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: center;&quot;&gt;&lt;br&gt;', 1, 'i1.png', 15, 1, 1, '2020-01-12'),
+(2, 'Demo course 1', 'Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit sin', '&lt;p&gt;Lorem ipsum dolor sit amet, malis option sit ei, ex sed timeam discere, his ex vocibus insolens. Vix in mentitum appetere repudiare, causae virtute sea ex. Vis ferri malis aeque eu, vis quot suavitate molestiae ei. Summo regione admodum ne pri. Ut oblique invenire mei. Has at mutat exerci eleifend, sit graeci verear eleifend ne.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Cu vel dolore consulatu, mel solet feugiat et, vix munere imperdiet ne. Eu regione nostrum intellegam eum. Sea novum tollit no. Facete delenit singulis eos ne, malorum imperdiet ad quo, malis quaerendum mel ei. Labore audire epicurei ex his, mel ad accusam cotidieque.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Ex sea altera primis. Ut semper aeterno tincidunt per, ad offendit theophrastus eam. Falli feugait vel et, debet legere tincidunt et vix. Affert lobortis moderatius no est. Purto graeci postulant mea no, mea et vide malorum neglegentur. Vix dolorem deserunt philosophia te, ex clita ignota blandit cum, veri meliore democritum et cum.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Veniam everti accusam vis ex. Ei mel semper integre, per cu movet corrumpit. Ei ullum electram necessitatibus vim, id reque zril appellantur sea, agam summo usu no. Cum agam ornatus reprehendunt ea, pro ea justo volumus, et alia invidunt his. Usu te vide magna, ut tale accumsan nec. In vel fugit decore quodsi, case eruditi adolescens ne vim.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;At mutat accusamus voluptatum mei, sed ut inermis recteque elaboraret. Cu cum idque audiam dignissim, cum agam scripta cu, no cum modus dicam. In pro officiis vulputate, dolor maluisset et vix. Pri novum graecis eu. Vide libris nostrud vel in, nec te alii oportere conceptam.&lt;/p&gt;', 1, 'i1.png', 16, 0, 1, '2020-01-13'),
+(3, 'Demo course 2', '______________________    ', '&lt;p&gt;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&lt;/p&gt;', 1, 'i1.png', 1, 1, 1, '2020-01-13'),
+(4, 'SPAGUETTIII', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '&lt;p&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Lorem Ipsum&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum &lt;span style=&quot;background-color: rgb(255, 255, 0);&quot;&gt;passages&lt;/span&gt;, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;Lorem Ipsum&lt;/strong&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&amp;nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px; text-align: justify;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 'v.txt', 2, 1, 0, '2020-01-13'),
+(5, 'CVCVC', 'dddddddddddddddddddddddddddddddd', '&lt;p&gt;ddddddddddd&lt;/p&gt;', 1, 'add_course.php', 1, 1, 1, '2020-01-13'),
+(6, 'java course', 'BDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', '&lt;p&gt;JKNNNNNNNNNNNNNNNNNNNNNNNNNNNN&lt;/p&gt;', 1, 'add_chapter.php', 3, 1, 1, '2020-01-13');
 
 -- --------------------------------------------------------
 
@@ -137,20 +159,11 @@ INSERT INTO `course` (`id_course`, `name`, `description`, `syllabus`, `id_prof`,
 -- Structure de la table `course_student`
 --
 
-CREATE TABLE `course_student` (
+DROP TABLE IF EXISTS `course_student`;
+CREATE TABLE IF NOT EXISTS `course_student` (
   `id_stud` int(15) NOT NULL,
-  `id_course` int(15) NOT NULL,
-  `Avancement` int(100) NOT NULL
+  `id_course` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `course_student`
---
-
-INSERT INTO `course_student` (`id_stud`, `id_course`, `Avancement`) VALUES
-(1, 1, 0),
-(1, 2, 0),
-(1, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -158,11 +171,13 @@ INSERT INTO `course_student` (`id_stud`, `id_course`, `Avancement`) VALUES
 -- Structure de la table `evaluation`
 --
 
-CREATE TABLE `evaluation` (
-  `id_evaluation` int(15) NOT NULL,
+DROP TABLE IF EXISTS `evaluation`;
+CREATE TABLE IF NOT EXISTS `evaluation` (
+  `id_evaluation` int(15) NOT NULL AUTO_INCREMENT,
   `threshold` int(15) NOT NULL,
-  `id_course` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_course` int(15) NOT NULL,
+  PRIMARY KEY (`id_evaluation`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `evaluation`
@@ -172,7 +187,7 @@ INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
 (1, 5, 1),
 (3, 4, 2),
 (4, 3, 3),
-(5, 5, 9);
+(5, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -180,10 +195,12 @@ INSERT INTO `evaluation` (`id_evaluation`, `threshold`, `id_course`) VALUES
 -- Structure de la table `evaluation_result`
 --
 
-CREATE TABLE `evaluation_result` (
+DROP TABLE IF EXISTS `evaluation_result`;
+CREATE TABLE IF NOT EXISTS `evaluation_result` (
   `id_evaluation` int(15) NOT NULL,
   `note` int(15) NOT NULL,
-  `id_stud` int(15) NOT NULL
+  `id_stud` int(15) NOT NULL,
+  PRIMARY KEY (`id_evaluation`,`id_stud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -192,11 +209,13 @@ CREATE TABLE `evaluation_result` (
 -- Structure de la table `question`
 --
 
-CREATE TABLE `question` (
-  `id_question` int(15) NOT NULL,
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE IF NOT EXISTS `question` (
+  `id_question` int(15) NOT NULL AUTO_INCREMENT,
   `description` varchar(60000) DEFAULT NULL,
-  `id_evaluation` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_evaluation` int(15) NOT NULL,
+  PRIMARY KEY (`id_question`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `question`
@@ -212,11 +231,11 @@ INSERT INTO `question` (`id_question`, `description`, `id_evaluation`) VALUES
 (7, 'cripta cu, no cum modus dicam. In pro officiis vulputate, dolor ma?', 3),
 (8, 'errrrrrrrrrttttttttttttttttttterrrrrrrrrrrrrrrr', 4),
 (9, 'etertertertrettzzaaazaazaaezaezeze', 4),
-(10, 'jladsnjndjsnnnnnsssssssssssssssssssss\r\n', 5),
-(11, 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 5),
-(12, 'ddddddddddddddddd', 5),
-(13, 'ddddddddddddddddd', 5),
-(14, 'sssssssssssssssssssssssssssss', 5);
+(10, '2334234', 5),
+(11, '2334234', 5),
+(12, '2334234', 5),
+(13, '2334234', 5),
+(14, '2334234', 5);
 
 -- --------------------------------------------------------
 
@@ -224,12 +243,14 @@ INSERT INTO `question` (`id_question`, `description`, `id_evaluation`) VALUES
 -- Structure de la table `response`
 --
 
-CREATE TABLE `response` (
-  `id_response` int(15) NOT NULL,
+DROP TABLE IF EXISTS `response`;
+CREATE TABLE IF NOT EXISTS `response` (
+  `id_response` int(15) NOT NULL AUTO_INCREMENT,
   `response` varchar(20000) NOT NULL,
   `status` int(1) DEFAULT NULL,
-  `id_question` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_question` int(15) NOT NULL,
+  PRIMARY KEY (`id_response`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `response`
@@ -263,173 +284,21 @@ INSERT INTO `response` (`id_response`, `response`, `status`, `id_question`) VALU
 (25, 'eze', 1, 9),
 (26, 'ezeez', 0, 9),
 (27, 'zezeze', 0, 9),
-(28, 'sssssssssssssss', 1, 10),
-(29, 'ssssssssssssssss', 0, 10),
-(30, 'sssssssssssssssssss', 0, 10),
-(31, 'dddddddddd', 1, 11),
-(32, 'dddddddddddddddddd', 0, 11),
-(33, 'ddddddddddddddd', 0, 11),
-(34, 'dddddddddddddddd', 1, 12),
-(35, 'dddddddddddddddd', 0, 12),
-(36, 'ddddddddddddddddddd', 0, 12),
-(37, 'dddddddddddddsssssssssssss', 1, 13),
-(38, 'ssssssssssssssssssssss', 0, 13),
-(39, 'ssssssssssssssssssssssssss', 0, 13),
-(40, 'ssssssssssssssssssssssssss', 1, 14),
-(41, 'ssssssssssssssssssssss', 0, 14),
-(42, 'sssssssssssssssssssss', 0, 14);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `result_evaluation`
---
-
-CREATE TABLE `result_evaluation` (
-  `id_student` int(15) NOT NULL,
-  `id_evaluation` int(15) NOT NULL,
-  `note` int(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `video`
---
-
-CREATE TABLE `video` (
-  `id_video` int(15) NOT NULL,
-  `path` varchar(30) NOT NULL,
-  `id_course` int(15) NOT NULL,
-  `description_video` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `video`
---
-
-INSERT INTO `video` (`id_video`, `path`, `id_course`, `description_video`) VALUES
-(1, 'path', 1, 'chapter 1 : introduction'),
-(2, 'path', 1, 'chapter 2 : Basics'),
-(3, 'path', 1, 'chapter 3 : demo'),
-(4, 'path', 2, 'chapter 1 : introduction');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `account`
---
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`id_account`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- Index pour la table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id_category`);
-
---
--- Index pour la table `chapter`
---
-ALTER TABLE `chapter`
-  ADD PRIMARY KEY (`id_chapter`);
-
---
--- Index pour la table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`id_course`);
-
---
--- Index pour la table `course_student`
---
-ALTER TABLE `course_student`
-  ADD PRIMARY KEY (`id_stud`,`id_course`);
-
---
--- Index pour la table `evaluation`
---
-ALTER TABLE `evaluation`
-  ADD PRIMARY KEY (`id_evaluation`);
-
---
--- Index pour la table `evaluation_result`
---
-ALTER TABLE `evaluation_result`
-  ADD PRIMARY KEY (`id_evaluation`,`id_stud`);
-
---
--- Index pour la table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id_question`);
-
---
--- Index pour la table `response`
---
-ALTER TABLE `response`
-  ADD PRIMARY KEY (`id_response`);
-
---
--- Index pour la table `video`
---
-ALTER TABLE `video`
-  ADD PRIMARY KEY (`id_video`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `account`
---
-ALTER TABLE `account`
-  MODIFY `id_account` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT pour la table `category`
---
-ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT pour la table `chapter`
---
-ALTER TABLE `chapter`
-  MODIFY `id_chapter` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT pour la table `course`
---
-ALTER TABLE `course`
-  MODIFY `id_course` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT pour la table `evaluation`
---
-ALTER TABLE `evaluation`
-  MODIFY `id_evaluation` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT pour la table `question`
---
-ALTER TABLE `question`
-  MODIFY `id_question` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `response`
---
-ALTER TABLE `response`
-  MODIFY `id_response` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT pour la table `video`
---
-ALTER TABLE `video`
-  MODIFY `id_video` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+(28, '2334234', 1, 10),
+(29, 'Qfergr', 0, 10),
+(30, 'Smkge ggteir r', 0, 10),
+(31, '2334234', 1, 11),
+(32, '2334234', 0, 11),
+(33, '2334234', 0, 11),
+(34, '2334234', 1, 12),
+(35, '2334234', 0, 12),
+(36, '2334234', 0, 12),
+(37, '2334234', 1, 13),
+(38, '2334234', 0, 13),
+(39, '2334234', 0, 13),
+(40, '2334234', 1, 14),
+(41, '2334234', 0, 14),
+(42, '2334234', 0, 14);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

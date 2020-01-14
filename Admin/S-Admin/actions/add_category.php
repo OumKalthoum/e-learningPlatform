@@ -1,9 +1,9 @@
 <?php
     include_once("../../../Database/db_connection.php");
 
-    $label_category = $_POST["label"];
-    $description = $_POST["description"];
-    $active = $_POST["active"];
+    $label_category = $conn -> real_escape_string($_POST["label"]);
+    $description = $conn -> real_escape_string($_POST["description"]);
+    $active = $conn -> real_escape_string($_POST["active"]);
 
     //check if category already exists
     $duplicat = "SELECT * FROM category WHERE label_category = '$label_category'";
@@ -16,8 +16,8 @@
 
     //if category does not exist let's create it!
     $sql = "INSERT INTO `category`(`label_category`, `description`, `active`) 
-            VALUES ('$label_category', '$description', '$active')";
-    $result = mysqli_query($conn,$sql);
+            VALUES ('$label_category', '$description', '$active') ";
+    $result = mysqli_query($conn,$sql)or die(mysqli_error($conn));
     if($result):
         header("Location: ../category_list.php?success=true");
         exit();

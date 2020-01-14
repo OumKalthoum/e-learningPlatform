@@ -1,11 +1,12 @@
 <?php
+    session_start();
     include_once("../../../Database/db_connection.php");
 
     $id_course = $_POST["id_course"];
-    $titles = $_POST["title"];
-    $descriptions = $_POST["description"];
-    $tmp_videos = $_FILES["videos"]["tmp_name"];
-    $videos = $_FILES["videos"]["name"];
+    $titles = $conn -> real_escape_string($_POST["title"]);
+    $descriptions = $conn -> real_escape_string($_POST["description"]);
+    $tmp_videos = $conn -> real_escape_string($_FILES["videos"]["tmp_name"]);
+    $videos = $conn -> real_escape_string($_FILES["videos"]["name"]);
     
     for ($i = 0; $i < count($titles); ++$i) {
         $title = $titles[$i];
@@ -24,6 +25,11 @@
             endif;
         }
     }
-    header("Location: ../add_exam.php?&id=$id_course");
+
+    
+    if(isset($_POST['from_menu'])){
+        header("Location: ../course_list.php?chapter=true");
+    }else header("Location: ../add_exam.php?&id=$id_course");
+    
     
 ?>

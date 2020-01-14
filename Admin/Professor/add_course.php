@@ -1,4 +1,10 @@
 <?php
+    session_start();
+
+    //check if user has logged in
+    if(isset($_SESSION['id_account']) && !empty($_SESSION['id_account'])){}
+    else header("Location: ../Authentification/sign_in.php");
+
     include_once("../../Database/db_connection.php");
     //$id_prof = $_SESSION['id'];
     $id_prof = '1';
@@ -11,7 +17,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>E-Learning | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -49,31 +55,22 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../Authentification/sign_up.php" class="nav-link">Logout</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="profile.php" class="nav-link">Profile</a>
+                   <form id="form" action="../Authentification/actions/logout.php"></form>
+                    <a class="nav-link" onclick="document.getElementById('form').submit();">Logout</a>
                 </li>
             </ul>
-
-
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">E-Learning : Admin</span>
-            </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">Hello Alexander Pierce !</a>
+                        <a href="#" class="d-block">Hello <?php echo $_SESSION['full_name'];?> !</a>
                     </div>
                 </div>
 
@@ -184,7 +181,7 @@
                                             <label for="image">Image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="image" name="image" required>
+                                                    <input type="file" class="custom-file-input" id="image" name="image" accept="image/x-png,image/gif,image/jpeg" required>
                                                     <label class="custom-file-label" for="image">Choose a file</label>
                                                 </div>
                                                 <div class="input-group-append">
