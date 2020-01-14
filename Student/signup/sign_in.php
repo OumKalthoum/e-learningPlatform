@@ -22,8 +22,7 @@
 				$_SESSION["connected"] = "connected";
 			}
 		    else{
-		    	$message = "wrong Email or Password";
-				echo "<script type='text/javascript'>alert('$message');</script>";
+		    	header('Location: sign_up.php');
 		    }
 		}
     }
