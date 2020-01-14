@@ -1,36 +1,3 @@
-<?php
-	session_start();
-    include_once("../../Database/db_connection.php");
-        if(isset($_GET["btn_sing_in"])){
-            $email = $_GET["email"];
-            $pswd = $_GET["password"];
-
-            $sql = "SELECT * from account" ;
-            $result = $conn->query($sql);
-
-		while($row = $result->fetch_assoc()) { 
-		    $id_account       = $row["id_account"];
-		    $email_account    = $row["email"];      
-            $password_account = $row["password"]; 
-            $type_account     = $row["type"];
-            $active_account     = $row["active"];
-
-		    if($email_account == $email && $password_account == $pswd && $type_account =='S' && $active_account == 1 ){
-		    	header('Location: ../index.php');
-		    	// Set session variables
-				$_SESSION["id_account"] = $id_account;
-				$_SESSION["connected"] = "connected";
-			}
-		    else{
-		    	header('Location: sign_up.php');
-		    }
-		}
-    }
-    else{
-    	$email = "";
-	    $password = "";
-    }
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +41,7 @@
                 <div class="counter_form">
                     <div class="row fill_height">
                         <div class="col fill_height">
-                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="sign_in.php" method="Get">
+                            <form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="actions/sign_in.php" method="get">
                                 <div class="counter_form_title">Se connecter</div>
                                 <input type="email" class="counter_input" name="email" placeholder="E-mail" required="required">
                                 <input type="password" class="counter_input" name="password" placeholder="Mot de passe" required="required">

@@ -2,14 +2,15 @@
     include_once("../Database/db_connection.php");
     session_start();
     $connected = "";
+    $full_name = "";
 	if(isset($_SESSION["connected"])){
         $id_account = $_SESSION["id_account"];
         $connected = $_SESSION["connected"];
         
         $sql = "SELECT * from account where id_account = $id_account" ;
-        $result = $conn->query($sql);
+        $result = mysqli_query($conn, $sql);
 
-        while($row = $result->fetch_assoc()) { 
+        while($row = mysqli_fetch_assoc($result)) { 
             $id_account   = $row["id_account"];
             $full_name    = $row["full_name"];      
             
