@@ -204,28 +204,8 @@
                                             <form action="./course/course_list.php" method="GET" id="home_search_form_3" class="home_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between">
                                                 <div class="d-flex flex-row align-items-center justify-content-start">
                                                 <input type="search" name="search" value="<?php echo $search_word ?>" class="home_search_input" placeholder="Search Courses" >
-                                                       
-                                                    <select class="dropdown_item_select home_search_input">
-                                                    <optgroup label="Categories">
-                                                    <option value="empty">Search by category</option>
-                                                    <?php
-                                                        // output data of each row
-                                                        while($row = $result_category->fetch_assoc()) { 
-                                                            $id_cat  = $row["id_category"];   
-                                                            $label_cat = $row["label_category"];     
-                                                    ?>
-                                                        
-                                                        <option name="searchCat" value="<?php echo $id_cat ?>"><?php echo $label_cat ?></a></option>								
-                                                        <?php } ?>
-                                                        </optgroup>
-                                                       </select>
-                                                       <select class="dropdown_item_select home_search_input">
-                                                           <option>Select Professor</option>
-                                                           <option>Professor 1</option>
-                                                           <option>Professor 2</option>
-                                                       </select>
-                                                   </div>
-                                                   <button type="submit" class="home_search_button" name="btn_search">search</button>
+                                                </div>
+                                                <button type="submit" class="home_search_button" name="btn_search">search</button>
                                                 
                                             </form>
                                         </div>
