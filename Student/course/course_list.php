@@ -20,17 +20,17 @@
     if(isset($_GET["id"])){
         $search_word = "";
         $id = $_GET['id'];
-    	$sql = "SELECT * FROM course  WHERE id_category= $id";
+    	$sql = "SELECT * FROM course  WHERE id_category= $id AND active = 1 AND lunched = 1";
     }
     
     else if(isset($_GET["btn_search"])){
     	$search_word = $_GET['search'];
-    	$sql = "SELECT * FROM course  WHERE name like '%$search_word%'";
+    	$sql = "SELECT * FROM course  WHERE name like '%$search_word%' AND active = 1 AND lunched = 1";
     }
 
     else{  
     	$search_word = "";
-    	$sql = "SELECT * FROM course";
+    	$sql = "SELECT * FROM course WHERE active = 1 AND lunched = 1";
     }
 
     $result = $conn->query($sql);

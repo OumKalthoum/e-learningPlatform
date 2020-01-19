@@ -210,7 +210,7 @@
                         <?php 
                         $id_course = $_GET['id'];
                         $_SESSION["id_course"] = $id_course;
-                        $sql = mysqli_query($conn, "SELECT * FROM course  WHERE id_course= $id_course");
+                        $sql = mysqli_query($conn, "SELECT * FROM course  WHERE id_course= $id_course AND active = 1 AND lunched = 1");
                         $row_course = mysqli_fetch_array($sql);
 
                         $id_prof = $row_course["id_prof"];
