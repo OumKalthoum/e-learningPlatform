@@ -4,7 +4,7 @@
 
     if(isset($_GET["btn_sing_in"])){
             $email = $_GET["email"];
-            $pswd = $_GET["password"];
+            $pswd = sha1($_GET["password"]);
 
             $sql = "SELECT * from `account` WHERE email = '$email' AND password = '$pswd' AND active = 1 AND type = 'S'" ;
             $select = mysqli_query($conn, $sql) or die(mysqli_error($conn));
