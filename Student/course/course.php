@@ -16,14 +16,7 @@
         }
             
     }
-    if(isset($_GET['startcourse']))
-    {
-        $id_course = $_SESSION["id_course"];
-        $query = "INSERT INTO course_student (id_stud, id_course, Avancement) VALUES ($id_account, $id_course, '0')";
-        if ($conn->query($query)) {
-            header("Location: follow_course.php"); 
-        }
-    }
+  
         
     
 
@@ -253,7 +246,7 @@
                                     }
                                     else{
                                         echo '
-                                        <form method="GET" action="course.php" >
+                                        <form method="GET" action="follow_course.php" >
                                             <button name="" type="submit" class="home_search_button">Start</button>
                                             <input name="startcourse" type="hidden" value="'.$id_course.'">
                                             
