@@ -249,7 +249,6 @@
                              </div></p>';
                         
                         }else{
-
                             $query = "SELECT * from chapter where id_course = $id_course ORDER BY `chapter`.`id_chapter` ASC ";
                             $result_query = $conn->query($query);
                             $row = $result_query->fetch_assoc();

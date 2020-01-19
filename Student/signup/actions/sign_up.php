@@ -9,6 +9,7 @@
 
   
     if($pswd == $confpswd){
+        $pswd = sha1($pswd);
         $sql = "INSERT INTO account (full_name, email, password , date, type, active)
         VALUES ('$name', '$email', '$pswd', '$date', 'S', 1)";
         $insert = mysqli_query($conn, $sql) or die(mysqli_error($conn));

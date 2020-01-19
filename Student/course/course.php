@@ -253,7 +253,7 @@
                                     }
                                     else{
                                         echo '
-                                        <form method="GET" action="follow_course.php" >
+                                        <form method="GET" action="course.php" >
                                             <button name="" type="submit" class="home_search_button">Start</button>
                                             <input name="startcourse" type="hidden" value="'.$id_course.'">
                                             

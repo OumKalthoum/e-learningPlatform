@@ -6,7 +6,7 @@
             $email = $_GET["email"];
             $pswd = $_GET["password"];
 
-            $sql = "SELECT * from `account` WHERE email = '$email' AND password = '$pswd' AND active = 1" ;
+            $sql = "SELECT * from `account` WHERE email = '$email' AND password = '$pswd' AND active = 1 AND type = 'S'" ;
             $select = mysqli_query($conn, $sql) or die(mysqli_error($conn));
             $row = mysqli_num_rows($select);
             $account_row = mysqli_fetch_assoc($select);
