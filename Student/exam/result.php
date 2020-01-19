@@ -148,14 +148,9 @@
                     <!-- Blog Content -->
                     <div class="col-lg-8 col-offset-1">
                         <div class="blog_content">
-                            <div class="blog_title">‘I Kept Thinking of Antioch’: Long Before #MeToo, a times Video Journalist Remembered</div>
-                            <div class="blog_meta">
-                                <ul>
-                                    <li>Post on <a href="#">May 5, 2018</a></li>
-                                    <li>By <a href="#">admin</a></li>
-                                </ul>
-                            </div>
-                            <div class="blog_subtitle">You Result for the exam is: 15/20</div>
+                            <div class="blog_title">Exam result of course "Demo 1"</div>
+                            
+                            <div class="blog_subtitle">You Result for the exam is: 18/20</div>
                         </div>
                         
                         <br>
